@@ -19,6 +19,7 @@ const ROLES = {
 const FLAG_TITLES = {
   "videos 1–9": "Defined more fully in the earlier videos of the cow-vocalization series; the meaning here is inferred from context.",
   "general elk": "Widely-taught elk behavior, carried over with the same “calls are words” approach — not defined in the cow-vocalization series. Can be pinned to a specific source if you have one.",
+  "pending": "The clip is here; Chris Roe’s definition is being added from his bull lesson.",
 };
 
 const CALLS = [
@@ -91,30 +92,36 @@ const CALLS = [
     pairs:["assemblyMew","demandingMew","frustratedWhine","aggravatedWhine"] },
 
   /* ---------------------- BULL --------------------- */
-  { id:"contactBugle", name:"Contact bugle", role:"cue", voice:"bull",
-    short:"His quiet answer — your cue to switch to assembly.",
-    meaning:"Not your call to start with — his. A quiet, low-key bugle a bull uses to answer. Learn to hear it: it tells you he’s engaged and it’s time to switch from locating (lost mew) to directing (assembly mew).",
-    pairs:["lostMew","assemblyMew"] },
+  /* Chris Roe's bull system: Contact & Dominant bugles graded by intensity
+     (Level 1–3), plus the chuckle. Definitions pending his bull lesson. */
+  { id:"contactBugle", name:"Contact bugle", role:"locate", voice:"bull", flag:"pending",
+    clips:[
+      { label:"Level 1", src:"assets/media/bull-contact-1.mp3" },
+      { label:"Level 2", src:"assets/media/bull-contact-2.mp3" },
+      { label:"Level 3", src:"assets/media/bull-contact-3.mp3" }
+    ],
+    short:"A bull’s contact bugle, graded by intensity (Level 1 → 3). Definition coming.",
+    meaning:"A bull’s contact bugle, graded by intensity from Level 1 (lowest-key) up to Level 3. Chris Roe’s exact definition is being added from his bull lesson — for now, use the Level buttons above to hear how the three intensities differ.",
+    pairs:["dominantBugle","chuckle"] },
 
-  { id:"locationBugle", name:"Location bugle", role:"locate", voice:"bull", flag:"general elk",
-    short:"“Here I am — anyone out there?” Locate a bull & read his mood.",
-    meaning:"“Here I am — who else is out here?” A bull advertising himself and locating other elk. Use it to make a bull answer and give away his position, or to plant the idea that a new bull just showed up. Once he answers, read his mood and choose your next voice.",
-    pairs:["contactBugle","challengeBugle","lostMew","assemblyMew"] },
+  { id:"dominantBugle", name:"Dominant bugle", role:"challenge", voice:"bull", flag:"pending",
+    clips:[
+      { label:"Level 1", src:"assets/media/bull-dominant-1.mp3" },
+      { label:"Level 2", src:"assets/media/bull-dominant-2.mp3" },
+      { label:"Level 3", src:"assets/media/bull-dominant-3.mp3" }
+    ],
+    short:"A bull’s dominance bugle, graded by intensity (Level 1 → 3). Definition coming.",
+    meaning:"A bull’s dominance bugle, graded by intensity from Level 1 up to Level 3. Chris Roe’s exact definition is being added from his bull lesson — use the Level buttons above to hear the escalation.",
+    pairs:["contactBugle","chuckle"] },
 
-  { id:"challengeBugle", name:"Challenge bugle", role:"challenge", voice:"bull", flag:"general elk",
-    short:"“My ground, my cows — back off.” Provokes a herd bull to defend.",
-    meaning:"“This is my ground and my cows — back off.” A direct threat aimed at another bull. Use it to make a dominant, herded-up bull come defend his territory when he won’t leave his cows for cow calls. Back it with confidence sounds and a little cow talk so it sounds like a rival who already has company.",
-    pairs:["chuckle","glunk","aggravatedWhine","assemblyMew"] },
-
-  { id:"chuckle", name:"Chuckle", role:"challenge", voice:"bull", flag:"general elk",
-    short:"Tags a bugle; sounds like a confident, fired-up bull.",
-    meaning:"The guttural stutter often tacked onto the end of a bugle. It says a real, confident, fired-up bull. Add it to a location or challenge bugle to sound legit and to push a rival’s buttons.",
-    pairs:["locationBugle","challengeBugle","glunk"] },
-
-  { id:"glunk", name:"Glunk / tending grunt", role:"challenge", voice:"bull", flag:"general elk",
-    short:"Deep grunts of a dominant bull tending his cows.",
-    meaning:"Deep, guttural grunts a dominant bull makes while tending his cows — the sound of a mature herd bull at home. Mix it with raking and movement to sound like a rival setting up right in his living room.",
-    pairs:["challengeBugle","chuckle"] },
+  { id:"chuckle", name:"Chuckle", role:"challenge", voice:"bull", flag:"pending",
+    clips:[
+      { label:"High-pitched", src:"assets/media/bull-chuckle-highpitched.mp3" },
+      { label:"Excited", src:"assets/media/bull-chuckle-excited.mp3" }
+    ],
+    short:"The guttural stutter a bull tags onto a bugle. Definition coming.",
+    meaning:"The guttural stutter a bull tacks onto a bugle. Chris Roe’s exact definition is being added from his bull lesson — two versions are here (high-pitched fast-paced, and excited); play them with the buttons above.",
+    pairs:["contactBugle","dominantBugle"] },
 ];
 
 const SCENARIOS = [
@@ -175,8 +182,8 @@ const SCENARIOS = [
     title:"Locating a bull at first light", tag:"Find him first",
     situation:"Dark timber, cold morning, and you don’t yet know where the bull is or what kind of mood he’s in.",
     steps:[
-      { call:"locationBugle", action:"Throw a location bugle to prompt an answer.", note:"You’re asking “anyone out here?” — not picking a fight yet." },
-      { call:"contactBugle", action:"Read his reply.", note:"An answer tells you where he is and how fired up he is." },
+      { call:"contactBugle", action:"Throw a contact bugle to prompt an answer.", note:"You’re announcing yourself and asking who’s out there — not picking a fight yet." },
+      { call:"contactBugle", action:"Read his reply.", note:"His answering bugle tells you where he is and how fired up he is." },
       { call:"tip", action:"Now pick your voice.", note:"Lone or satellite bull → switch to cow calls (lost mew → assembly mew) to bring him in. Fired-up herd bull → switch to a challenge." },
     ],
     principle:"Locate first, then choose the cow or bull voice that fits the bull you’ve actually got."
@@ -186,10 +193,10 @@ const SCENARIOS = [
     situation:"A mature bull is bugling but he has a harem and won’t leave them for cow calls. You have to make him defend his ground.",
     setup:"Get the wind right and be able to close the gap. You’re selling a rival bull — ideally one who already has cows of his own — moving in on his.",
     steps:[
-      { call:"challengeBugle", action:"Open with a challenge bugle aimed straight at him.", note:"“Your ground, your cows — I’m taking them.”" },
+      { call:"dominantBugle", action:"Open with a dominant bugle aimed straight at him.", note:"“Your ground, your cows — I’m taking them.”" },
       { call:"chuckle", action:"Tag chuckles on the end.", note:"Sound like a confident, fired-up bull, not a nervous one." },
       { call:"assemblyMew", action:"Mix in a few cow mews.", note:"Now it sounds like that rival already has company — doubly infuriating." },
-      { call:"glunk", action:"Add glunks, rake a tree, and close the distance.", note:"Sound like he’s setting up right in the herd bull’s living room." },
+      { call:"dominantBugle", action:"Escalate the dominant bugle, rake a tree, and close the distance.", note:"Sound like a rival setting up right in the herd bull’s living room." },
       { call:"silence", action:"When he commits and comes looking for the fight, stop and get ready.", note:"If he hangs up instead, either escalate harder or back off and go cow-only." },
     ],
     principle:"Give a herd bull a reason he can’t ignore: a rival moving in on his cows."

@@ -12,6 +12,27 @@
     + '<rect x="66" y="5" width="4" height="20" rx="2"/><rect x="74" y="8" width="4" height="14" rx="2"/>'
     + '<rect x="82" y="11" width="4" height="8" rx="2"/></svg>';
   const isAudio = path => /\.(mp3|m4a|aac|wav|ogg)$/i.test(path || "");
+  const hasClip = c => !!(c && (c.clip || (c.clips && c.clips.length)));
+
+  // Build an <audio> or <video> player element for one source; reveal `fb` on error.
+  function buildPlayer(src, fb){
+    if(isAudio(src)){
+      const box = el("div","clip-audio", WAVE);
+      const a = document.createElement("audio");
+      a.controls = true; a.preload = "metadata"; a.src = src;
+      a.addEventListener("error", () => { box.style.display = "none"; fb.style.display = "block"; });
+      box.appendChild(a);
+      return box;
+    }
+    const box = el("div","clip-video");
+    const v = document.createElement("video");
+    v.controls = true; v.playsInline = true; v.preload = "metadata"; v.setAttribute("controlslist","nodownload");
+    const s = document.createElement("source"); s.src = src; s.type = "video/mp4"; v.appendChild(s);
+    const onErr = () => { box.style.display = "none"; fb.style.display = "block"; };
+    v.addEventListener("error", onErr); s.addEventListener("error", onErr);
+    box.appendChild(v);
+    return box;
+  }
 
   /* ---- State ---- */
   let activeRole = null;
@@ -51,7 +72,7 @@
     chip.type = "button";
     chip.style.setProperty("--c", `var(${cvar(t.role)})`);
     chip.dataset.target = pid;
-    chip.innerHTML = `<span class="dot"></span>${t.name}${t.clip ? PLAY : ""}`;
+    chip.innerHTML = `<span class="dot"></span>${t.name}${hasClip(t) ? PLAY : ""}`;
     chip.addEventListener("click", () => openCall(pid));
     return chip;
   }
@@ -67,11 +88,11 @@
     card.dataset.text = (c.name + " " + c.meaning).toLowerCase();
 
     const top = el("div","call-top");
-    const nameBtn = el("button", "callname" + (c.clip ? " has-clip" : ""));
+    const nameBtn = el("button", "callname" + (hasClip(c) ? " has-clip" : ""));
     nameBtn.type = "button";
     nameBtn.dataset.id = c.id;
-    nameBtn.innerHTML = `<span>${c.name}</span>${c.clip ? PLAY : ""}`;
-    nameBtn.title = c.clip ? "Play this call" : "Open this call";
+    nameBtn.innerHTML = `<span>${c.name}</span>${hasClip(c) ? PLAY : ""}`;
+    nameBtn.title = hasClip(c) ? "Play this call" : "Open this call";
     nameBtn.addEventListener("click", () => openCall(c.id));
     const nameWrap = el("h3");
     nameWrap.appendChild(nameBtn);
@@ -149,8 +170,8 @@
         const c = byId[st.call];
         chip = el("button","call-chip"); chip.type = "button";
         chip.style.setProperty("--c", `var(${cvar(c.role)})`);
-        chip.innerHTML = `<span class="dot"></span>${c.name}${c.clip ? PLAY : ""}`;
-        chip.title = c.clip ? "Play this call" : "Open this call";
+        chip.innerHTML = `<span class="dot"></span>${c.name}${hasClip(c) ? PLAY : ""}`;
+        chip.title = hasClip(c) ? "Play this call" : "Open this call";
         chip.addEventListener("click", () => openCall(st.call));
       }
       main.appendChild(chip);
@@ -168,7 +189,7 @@
   applyFilter();
 
   /* =======================================================================
-     CALL MODAL — click any call name to see its meaning, clip, and pairings
+     CALL MODAL — click any call name to see its clip(s), meaning, breakdown
      ======================================================================= */
   const modal      = document.getElementById("callModal");
   const mName      = document.getElementById("modalName");
@@ -199,28 +220,34 @@
       mBadges.insertAdjacentHTML("beforeend", ` <span class="foundation" title="${t}">${c.flag}</span>`);
     }
 
-    // Media: audio player, video player, or a friendly placeholder
+    // Media: multi-clip (level/variant selector), single clip, or a placeholder
     mMedia.innerHTML = "";
-    if(c.clip){
+    if(c.clips && c.clips.length){
       const fb = el("div","vid-note", FALLBACK); fb.style.display = "none";
-      if(isAudio(c.clip)){
-        const box = el("div","clip-audio", WAVE);
-        const a = document.createElement("audio");
-        a.controls = true; a.preload = "metadata"; a.src = c.clip;
-        a.addEventListener("error", () => { box.style.display = "none"; fb.style.display = "block"; });
-        box.appendChild(a);
-        mMedia.appendChild(box);
-      } else {
-        const box = el("div","clip-video");
-        const v = document.createElement("video");
-        v.controls = true; v.playsInline = true; v.preload = "metadata"; v.setAttribute("controlslist","nodownload");
-        const src = document.createElement("source"); src.src = c.clip; src.type = "video/mp4";
-        v.appendChild(src);
-        const onErr = () => { box.style.display = "none"; fb.style.display = "block"; };
-        v.addEventListener("error", onErr); src.addEventListener("error", onErr);
-        box.appendChild(v);
-        mMedia.appendChild(box);
-      }
+      const outer = el("div","clip-multi");
+      const sel = el("div","clip-levels");
+      const area = el("div","clip-area");
+      c.clips.forEach((cl, idx) => {
+        const b = el("button","clip-lvl"); b.type = "button";
+        b.textContent = cl.label;
+        b.setAttribute("aria-pressed", String(idx === 0));
+        b.addEventListener("click", () => {
+          [...sel.children].forEach(x => x.setAttribute("aria-pressed","false"));
+          b.setAttribute("aria-pressed","true");
+          area.querySelectorAll("video,audio").forEach(m => { try { m.pause(); } catch(e){} });
+          area.innerHTML = ""; fb.style.display = "none";
+          area.appendChild(buildPlayer(cl.src, fb));
+        });
+        sel.appendChild(b);
+      });
+      outer.appendChild(sel);
+      outer.appendChild(area);
+      mMedia.appendChild(outer);
+      mMedia.appendChild(fb);
+      area.appendChild(buildPlayer(c.clips[0].src, fb));
+    } else if(c.clip){
+      const fb = el("div","vid-note", FALLBACK); fb.style.display = "none";
+      mMedia.appendChild(buildPlayer(c.clip, fb));
       mMedia.appendChild(fb);
     } else {
       mMedia.appendChild(el("div","vid-empty", `${PLAY}<span>Clip coming soon &mdash; being uploaded.</span>`));

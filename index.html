@@ -230,6 +230,10 @@ section{padding-top:52px; scroll-margin-top:60px}
 .clip-audio .wave{width:88px; height:30px}
 .clip-audio .wave rect{fill:var(--gold-bright)}
 .clip-audio audio{width:100%}
+.clip-levels{display:flex; gap:6px; margin-bottom:10px; flex-wrap:wrap}
+.clip-lvl{font-family:var(--mono); font-size:.72rem; letter-spacing:.04em; text-transform:uppercase; cursor:pointer; border:1px solid var(--line-2); background:var(--surface); color:var(--muted); padding:6px 12px; border-radius:999px}
+.clip-lvl[aria-pressed="true"]{color:var(--ink); border-color:var(--gold); background:color-mix(in srgb,var(--gold) 12%,var(--surface))}
+.clip-lvl:focus-visible{outline:2px solid var(--gold); outline-offset:2px}
 .vid-note{border-radius:12px; background:var(--surface-2); color:var(--muted); font-size:.86rem; padding:16px; text-align:center}
 .vid-empty{border-radius:12px; display:flex; flex-direction:column; align-items:center; gap:8px; padding:34px 16px; color:var(--muted); background:var(--surface-2); font-size:.9rem; text-align:center}
 .vid-empty .play{width:26px; height:26px; fill:var(--faint)}
