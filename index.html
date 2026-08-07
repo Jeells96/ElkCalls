@@ -223,10 +223,15 @@ section{padding-top:52px; scroll-margin-top:60px}
 .modal-head h3{font-size:1.5rem; letter-spacing:-.01em}
 .modal-badges{display:flex; flex-wrap:wrap; align-items:center; gap:7px}
 .voice-pill{font-family:var(--mono); font-size:.62rem; letter-spacing:.08em; text-transform:uppercase; padding:4px 8px; border-radius:5px; color:var(--muted); border:1px solid var(--line-2)}
-.modal-video{border-radius:12px; overflow:hidden; background:#000; margin-bottom:15px}
-.modal-video video{display:block; width:100%; max-height:62vh; background:#000}
-.vid-note{background:var(--surface-2); color:var(--muted); font-size:.86rem; padding:16px; text-align:center}
-.vid-empty{display:flex; flex-direction:column; align-items:center; gap:8px; padding:34px 16px; color:var(--muted); background:var(--surface-2); font-size:.9rem; text-align:center}
+.modal-video{margin-bottom:15px}
+.clip-video{border-radius:12px; overflow:hidden; background:#000}
+.clip-video video{display:block; width:100%; max-height:62vh; background:#000}
+.clip-audio{border-radius:12px; padding:20px 20px 22px; background:linear-gradient(150deg,var(--hero-1),var(--hero-2)); display:flex; flex-direction:column; gap:14px; align-items:center}
+.clip-audio .wave{width:88px; height:30px}
+.clip-audio .wave rect{fill:var(--gold-bright)}
+.clip-audio audio{width:100%}
+.vid-note{border-radius:12px; background:var(--surface-2); color:var(--muted); font-size:.86rem; padding:16px; text-align:center}
+.vid-empty{border-radius:12px; display:flex; flex-direction:column; align-items:center; gap:8px; padding:34px 16px; color:var(--muted); background:var(--surface-2); font-size:.9rem; text-align:center}
 .vid-empty .play{width:26px; height:26px; fill:var(--faint)}
 .modal-meaning{font-size:.98rem; margin-bottom:16px}
 .modal-pairs-wrap .pairs-label,.modal-pairs-wrap .pairs{padding-left:0}
@@ -287,7 +292,7 @@ footer{border-top:1px solid var(--line); background:var(--paper-2)}
     <div class="section-head">
       <div class="eyebrow">The lexicon</div>
       <h2>The calls &amp; what they mean</h2>
-      <p class="sub">Each call is a word. <b>Tap a call&rsquo;s name (▶) to watch the clip.</b> Filter by <b>voice</b> (who makes it) or <b>job</b> (the colored key); open any call for its meaning, video, and what it pairs with.</p>
+      <p class="sub">Each call is a word. <b>Tap a call&rsquo;s name (▶) to play its clip.</b> Filter by <b>voice</b> (who makes it) or <b>job</b> (the colored key); open any call for its meaning, clip, and what it pairs with.</p>
     </div>
     <div class="controls">
       <label class="search">

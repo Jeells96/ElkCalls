@@ -4,6 +4,14 @@
   const cvar = role => (ROLES[role] ? ROLES[role].var : "--neutral");
   const el = (tag, cls, html) => { const n = document.createElement(tag); if(cls) n.className = cls; if(html != null) n.innerHTML = html; return n; };
   const PLAY = '<svg class="play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+  const WAVE = '<svg class="wave" viewBox="0 0 88 30" aria-hidden="true">'
+    + '<rect x="2" y="11" width="4" height="8" rx="2"/><rect x="10" y="7" width="4" height="16" rx="2"/>'
+    + '<rect x="18" y="3" width="4" height="24" rx="2"/><rect x="26" y="9" width="4" height="12" rx="2"/>'
+    + '<rect x="34" y="1" width="4" height="28" rx="2"/><rect x="42" y="6" width="4" height="18" rx="2"/>'
+    + '<rect x="50" y="2" width="4" height="26" rx="2"/><rect x="58" y="10" width="4" height="10" rx="2"/>'
+    + '<rect x="66" y="5" width="4" height="20" rx="2"/><rect x="74" y="8" width="4" height="14" rx="2"/>'
+    + '<rect x="82" y="11" width="4" height="8" rx="2"/></svg>';
+  const isAudio = path => /\.(mp3|m4a|aac|wav|ogg)$/i.test(path || "");
 
   /* ---- State ---- */
   let activeRole = null;
@@ -43,7 +51,7 @@
     chip.type = "button";
     chip.style.setProperty("--c", `var(${cvar(t.role)})`);
     chip.dataset.target = pid;
-    chip.innerHTML = `<span class="dot"></span>${t.name}${t.video ? PLAY : ""}`;
+    chip.innerHTML = `<span class="dot"></span>${t.name}${t.clip ? PLAY : ""}`;
     chip.addEventListener("click", () => openCall(pid));
     return chip;
   }
@@ -59,11 +67,11 @@
     card.dataset.text = (c.name + " " + c.meaning).toLowerCase();
 
     const top = el("div","call-top");
-    const nameBtn = el("button", "callname" + (c.video ? " has-video" : ""));
+    const nameBtn = el("button", "callname" + (c.clip ? " has-clip" : ""));
     nameBtn.type = "button";
     nameBtn.dataset.id = c.id;
-    nameBtn.innerHTML = `<span>${c.name}</span>${c.video ? PLAY : ""}`;
-    nameBtn.title = c.video ? "Watch this call" : "Open this call";
+    nameBtn.innerHTML = `<span>${c.name}</span>${c.clip ? PLAY : ""}`;
+    nameBtn.title = c.clip ? "Play this call" : "Open this call";
     nameBtn.addEventListener("click", () => openCall(c.id));
     const nameWrap = el("h3");
     nameWrap.appendChild(nameBtn);
@@ -141,8 +149,8 @@
         const c = byId[st.call];
         chip = el("button","call-chip"); chip.type = "button";
         chip.style.setProperty("--c", `var(${cvar(c.role)})`);
-        chip.innerHTML = `<span class="dot"></span>${c.name}${c.video ? PLAY : ""}`;
-        chip.title = c.video ? "Watch this call" : "Open this call";
+        chip.innerHTML = `<span class="dot"></span>${c.name}${c.clip ? PLAY : ""}`;
+        chip.title = c.clip ? "Play this call" : "Open this call";
         chip.addEventListener("click", () => openCall(st.call));
       }
       main.appendChild(chip);
@@ -165,11 +173,13 @@
   const modal      = document.getElementById("callModal");
   const mName      = document.getElementById("modalName");
   const mBadges    = document.getElementById("modalBadges");
-  const mVideo     = document.getElementById("modalVideo");
+  const mMedia     = document.getElementById("modalVideo");
   const mMeaning   = document.getElementById("modalMeaning");
   const mPairsWrap = document.getElementById("modalPairsWrap");
   const mPairs     = document.getElementById("modalPairs");
   let lastFocus = null;
+
+  const FALLBACK = "This clip plays on the live site (and from the repo) &mdash; the preview can&rsquo;t load media files.";
 
   function openCall(id){
     const c = byId[id]; if(!c || !modal) return;
@@ -188,22 +198,31 @@
       mBadges.insertAdjacentHTML("beforeend", ` <span class="foundation" title="${t}">${c.flag}</span>`);
     }
 
-    // Video (or a friendly placeholder for calls not yet filmed)
-    mVideo.innerHTML = "";
-    if(c.video){
-      const v = document.createElement("video");
-      v.controls = true; v.playsInline = true; v.preload = "metadata"; v.setAttribute("controlslist","nodownload");
-      const src = document.createElement("source");
-      src.src = c.video; src.type = "video/mp4";
-      v.appendChild(src);
-      const fb = el("div","vid-note", "This clip plays on the live site (and from the repo) — the preview can&rsquo;t load video files.");
-      fb.style.display = "none";
-      v.addEventListener("error", () => { v.style.display = "none"; fb.style.display = "block"; });
-      src.addEventListener("error", () => { v.style.display = "none"; fb.style.display = "block"; });
-      mVideo.appendChild(v);
-      mVideo.appendChild(fb);
+    // Media: audio player, video player, or a friendly placeholder
+    mMedia.innerHTML = "";
+    if(c.clip){
+      const fb = el("div","vid-note", FALLBACK); fb.style.display = "none";
+      if(isAudio(c.clip)){
+        const box = el("div","clip-audio", WAVE);
+        const a = document.createElement("audio");
+        a.controls = true; a.preload = "metadata"; a.src = c.clip;
+        a.addEventListener("error", () => { box.style.display = "none"; fb.style.display = "block"; });
+        box.appendChild(a);
+        mMedia.appendChild(box);
+      } else {
+        const box = el("div","clip-video");
+        const v = document.createElement("video");
+        v.controls = true; v.playsInline = true; v.preload = "metadata"; v.setAttribute("controlslist","nodownload");
+        const src = document.createElement("source"); src.src = c.clip; src.type = "video/mp4";
+        v.appendChild(src);
+        const onErr = () => { box.style.display = "none"; fb.style.display = "block"; };
+        v.addEventListener("error", onErr); src.addEventListener("error", onErr);
+        box.appendChild(v);
+        mMedia.appendChild(box);
+      }
+      mMedia.appendChild(fb);
     } else {
-      mVideo.appendChild(el("div","vid-empty", `${PLAY}<span>Clip coming soon &mdash; being uploaded.</span>`));
+      mMedia.appendChild(el("div","vid-empty", `${PLAY}<span>Clip coming soon &mdash; being uploaded.</span>`));
     }
 
     mMeaning.innerHTML = c.meaning;
@@ -225,11 +244,10 @@
 
   function closeModal(){
     if(!modal || modal.hidden) return;
-    const v = mVideo.querySelector("video");
-    if(v){ try { v.pause(); } catch(e){} }
+    mMedia.querySelectorAll("video,audio").forEach(m => { try { m.pause(); } catch(e){} });
     modal.classList.remove("open");
     modal.hidden = true;
-    mVideo.innerHTML = "";
+    mMedia.innerHTML = "";
     document.body.style.overflow = "";
     if(lastFocus && lastFocus.focus) lastFocus.focus();
   }

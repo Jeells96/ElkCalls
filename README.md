@@ -32,7 +32,7 @@ Plain static site — no build step, no dependencies.
 | `data.js` | **All content** — the single source of truth |
 | `app.js` | Renders the guide from `data.js` |
 | `cheatsheet.js` | Renders the field card from `data.js` |
-| `assets/videos/` | Call demo clips (`.mp4`), one per call |
+| `assets/media/` | Call demo clips (`.mp4` video or `.mp3` audio), one per call |
 
 - **Locally:** open `index.html` in any browser.
 - **Live (one-time setup):** on GitHub, go to **Settings → Pages → Build and
@@ -46,10 +46,10 @@ Plain static site — no build step, no dependencies.
 All content lives in **`data.js`** — add an entry and it renders in both the
 guide and the field card automatically.
 
-- `CALLS` — `{ id, name, role, voice, short, meaning, pairs:[ids], flag?, video? }`
-  - `video` *(optional)*: path to an MP4 clip (e.g. `assets/videos/chirp.mp4`);
-    tapping the call name plays it. Drop new clips in `assets/videos/` and add
-    the path here.
+- `CALLS` — `{ id, name, role, voice, short, meaning, pairs:[ids], flag?, clip? }`
+  - `clip` *(optional)*: path to an audio (`.mp3`) or video (`.mp4`) clip in
+    `assets/media/` (e.g. `assets/media/chirp.mp4`). Tapping the call name plays
+    it — `.mp4` shows a video player, `.mp3` shows an audio player.
   - `role`: `locate | direct | emotion | challenge | cue | combo` (sets its color).
   - `voice`: `"cow" | "bull"` (powers the Cow/Bull toggle).
   - `short`: the one-line version used on the field card.
