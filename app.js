@@ -3,16 +3,7 @@
   const byId = Object.fromEntries(CALLS.map(c => [c.id, c]));
   const cvar = role => (ROLES[role] ? ROLES[role].var : "--neutral");
   const el = (tag, cls, html) => { const n = document.createElement(tag); if(cls) n.className = cls; if(html != null) n.innerHTML = html; return n; };
-
-  /* ---- Principles ---- */
-  const pGrid = document.getElementById("principleGrid");
-  PRINCIPLES.forEach((p, i) => {
-    const c = el("div","principle");
-    c.appendChild(el("div","pn", String(i+1).padStart(2,"0")));
-    c.appendChild(el("h3", null, p.t));
-    c.appendChild(el("p", null, p.d));
-    pGrid.appendChild(c);
-  });
+  const PLAY = '<svg class="play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
 
   /* ---- State ---- */
   let activeRole = null;
@@ -45,7 +36,19 @@
     legend.appendChild(b);
   });
 
-  /* ---- Calls ---- */
+  /* ---- A clickable call pill (used for "pairs with" everywhere) ---- */
+  function pairPill(pid){
+    const t = byId[pid]; if(!t) return null;
+    const chip = el("button","pair");
+    chip.type = "button";
+    chip.style.setProperty("--c", `var(${cvar(t.role)})`);
+    chip.dataset.target = pid;
+    chip.innerHTML = `<span class="dot"></span>${t.name}${t.video ? PLAY : ""}`;
+    chip.addEventListener("click", () => openCall(pid));
+    return chip;
+  }
+
+  /* ---- Calls (the lexicon) ---- */
   const callGrid = document.getElementById("callGrid");
   CALLS.forEach(c => {
     const card = el("article","call");
@@ -56,12 +59,19 @@
     card.dataset.text = (c.name + " " + c.meaning).toLowerCase();
 
     const top = el("div","call-top");
-    let title = c.name;
+    const nameBtn = el("button", "callname" + (c.video ? " has-video" : ""));
+    nameBtn.type = "button";
+    nameBtn.dataset.id = c.id;
+    nameBtn.innerHTML = `<span>${c.name}</span>${c.video ? PLAY : ""}`;
+    nameBtn.title = c.video ? "Watch this call" : "Open this call";
+    nameBtn.addEventListener("click", () => openCall(c.id));
+    const nameWrap = el("h3");
+    nameWrap.appendChild(nameBtn);
     if(c.flag){
       const t = (FLAG_TITLES[c.flag] || "").replace(/"/g,"&quot;");
-      title += ` <span class="foundation" title="${t}">${c.flag}</span>`;
+      nameWrap.insertAdjacentHTML("beforeend", ` <span class="foundation" title="${t}">${c.flag}</span>`);
     }
-    top.appendChild(el("h3", null, title));
+    top.appendChild(nameWrap);
     top.appendChild(el("span","badge", ROLES[c.role].label));
     card.appendChild(top);
 
@@ -70,32 +80,11 @@
     if (c.pairs && c.pairs.length){
       card.appendChild(el("div","pairs-label","Pairs with"));
       const wrap = el("div","pairs");
-      c.pairs.forEach(pid => {
-        const t = byId[pid]; if(!t) return;
-        const chip = el("button","pair");
-        chip.type = "button";
-        chip.style.setProperty("--c", `var(${cvar(t.role)})`);
-        chip.dataset.target = pid;
-        chip.innerHTML = `<span class="dot"></span>${t.name}`;
-        chip.addEventListener("click", () => focusCall(pid));
-        wrap.appendChild(chip);
-      });
+      c.pairs.forEach(pid => { const p = pairPill(pid); if(p) wrap.appendChild(p); });
       card.appendChild(wrap);
     }
     callGrid.appendChild(card);
   });
-
-  function focusCall(id){
-    document.getElementById("callFilter").value = "";
-    activeRole = null; activeVoice = "all";
-    [...legend.children].forEach(x => x.setAttribute("aria-pressed","false"));
-    [...seg.children].forEach(x => x.setAttribute("aria-pressed", String(x.dataset.voice === "all")));
-    applyFilter();
-    const node = document.getElementById("call-" + id);
-    if(!node) return;
-    node.scrollIntoView({behavior:"smooth", block:"center"});
-    node.classList.remove("flash"); void node.offsetWidth; node.classList.add("flash");
-  }
 
   /* ---- Filtering ---- */
   const filterInput = document.getElementById("callFilter");
@@ -152,9 +141,9 @@
         const c = byId[st.call];
         chip = el("button","call-chip"); chip.type = "button";
         chip.style.setProperty("--c", `var(${cvar(c.role)})`);
-        chip.innerHTML = `<span class="dot"></span>${c.name}`;
-        chip.title = "Jump to this call";
-        chip.addEventListener("click", () => { document.getElementById("calls").scrollIntoView({behavior:"smooth"}); setTimeout(()=>focusCall(st.call), 350); });
+        chip.innerHTML = `<span class="dot"></span>${c.name}${c.video ? PLAY : ""}`;
+        chip.title = c.video ? "Watch this call" : "Open this call";
+        chip.addEventListener("click", () => openCall(st.call));
       }
       main.appendChild(chip);
       main.appendChild(el("p","action", st.action));
@@ -169,6 +158,86 @@
   });
 
   applyFilter();
+
+  /* =======================================================================
+     CALL MODAL — click any call name to see its meaning, clip, and pairings
+     ======================================================================= */
+  const modal      = document.getElementById("callModal");
+  const mName      = document.getElementById("modalName");
+  const mBadges    = document.getElementById("modalBadges");
+  const mVideo     = document.getElementById("modalVideo");
+  const mMeaning   = document.getElementById("modalMeaning");
+  const mPairsWrap = document.getElementById("modalPairsWrap");
+  const mPairs     = document.getElementById("modalPairs");
+  let lastFocus = null;
+
+  function openCall(id){
+    const c = byId[id]; if(!c || !modal) return;
+    lastFocus = document.activeElement;
+
+    mName.textContent = c.name;
+    modal.style.setProperty("--c", `var(${cvar(c.role)})`);
+
+    mBadges.innerHTML = "";
+    const rb = el("span","badge", ROLES[c.role].label);
+    rb.style.setProperty("--c", `var(${cvar(c.role)})`);
+    mBadges.appendChild(rb);
+    mBadges.appendChild(el("span","voice-pill", c.voice === "bull" ? "Bull" : "Cow"));
+    if(c.flag){
+      const t = (FLAG_TITLES[c.flag] || "").replace(/"/g,"&quot;");
+      mBadges.insertAdjacentHTML("beforeend", ` <span class="foundation" title="${t}">${c.flag}</span>`);
+    }
+
+    // Video (or a friendly placeholder for calls not yet filmed)
+    mVideo.innerHTML = "";
+    if(c.video){
+      const v = document.createElement("video");
+      v.controls = true; v.playsInline = true; v.preload = "metadata"; v.setAttribute("controlslist","nodownload");
+      const src = document.createElement("source");
+      src.src = c.video; src.type = "video/mp4";
+      v.appendChild(src);
+      const fb = el("div","vid-note", "This clip plays on the live site (and from the repo) — the preview can&rsquo;t load video files.");
+      fb.style.display = "none";
+      v.addEventListener("error", () => { v.style.display = "none"; fb.style.display = "block"; });
+      src.addEventListener("error", () => { v.style.display = "none"; fb.style.display = "block"; });
+      mVideo.appendChild(v);
+      mVideo.appendChild(fb);
+    } else {
+      mVideo.appendChild(el("div","vid-empty", `${PLAY}<span>Clip coming soon &mdash; being uploaded.</span>`));
+    }
+
+    mMeaning.innerHTML = c.meaning;
+
+    mPairs.innerHTML = "";
+    if(c.pairs && c.pairs.length){
+      c.pairs.forEach(pid => { const p = pairPill(pid); if(p) mPairs.appendChild(p); });
+      mPairsWrap.style.display = "";
+    } else {
+      mPairsWrap.style.display = "none";
+    }
+
+    modal.hidden = false;
+    requestAnimationFrame(() => modal.classList.add("open"));
+    document.body.style.overflow = "hidden";
+    const closeBtn = modal.querySelector(".modal-close");
+    if(closeBtn) closeBtn.focus();
+  }
+
+  function closeModal(){
+    if(!modal || modal.hidden) return;
+    const v = mVideo.querySelector("video");
+    if(v){ try { v.pause(); } catch(e){} }
+    modal.classList.remove("open");
+    modal.hidden = true;
+    mVideo.innerHTML = "";
+    document.body.style.overflow = "";
+    if(lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  if(modal){
+    modal.addEventListener("click", (e) => { if(e.target.hasAttribute("data-close")) closeModal(); });
+    document.addEventListener("keydown", (e) => { if(e.key === "Escape") closeModal(); });
+  }
 
   /* ---- Topographic contour motif — drawn once (static) ---- */
   const cv = document.getElementById("topo");

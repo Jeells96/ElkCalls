@@ -199,6 +199,39 @@ section{padding-top:52px; scroll-margin-top:60px}
 .principle-line .label{color:var(--gold); font-size:.62rem; margin-right:2px}
 
 /* ============================================================
+   CLICKABLE CALL NAME + PLAY ICON
+   ============================================================ */
+.callname{font-family:var(--serif); font-size:1.1rem; font-weight:600; color:var(--ink); background:none; border:0; padding:0; cursor:pointer; display:inline-flex; align-items:center; gap:6px; letter-spacing:-.005em; text-align:left}
+.callname:hover{color:var(--gold)}
+.callname .play{width:15px; height:15px; fill:var(--gold); flex:none}
+.callname:hover .play{transform:scale(1.1)}
+.callname:focus-visible{outline:2px solid var(--gold); outline-offset:3px; border-radius:4px}
+.call-chip .play,.pair .play{width:12px; height:12px; fill:currentColor; flex:none; margin-left:1px}
+
+/* ============================================================
+   CALL MODAL
+   ============================================================ */
+.modal{position:fixed; inset:0; z-index:60; display:grid; place-items:center; padding:20px}
+.modal[hidden]{display:none}
+.modal-backdrop{position:absolute; inset:0; background:rgba(9,12,8,.66); backdrop-filter:blur(3px); opacity:0; transition:opacity .2s ease}
+.modal.open .modal-backdrop{opacity:1}
+.modal-card{position:relative; z-index:1; width:min(560px,100%); max-height:90vh; overflow:auto; background:var(--surface); border:1px solid var(--line-2); border-top:4px solid var(--c,var(--pine)); border-radius:16px; box-shadow:var(--shadow); padding:22px; transform:translateY(8px) scale(.985); opacity:0; transition:transform .22s ease, opacity .22s ease}
+.modal.open .modal-card{transform:none; opacity:1}
+.modal-close{position:absolute; top:10px; right:12px; width:34px; height:34px; border-radius:50%; border:1px solid var(--line-2); background:var(--surface-2); color:var(--muted); font-size:1.3rem; line-height:1; cursor:pointer}
+.modal-close:hover{color:var(--ink); border-color:var(--gold)}
+.modal-head{display:flex; flex-wrap:wrap; align-items:baseline; gap:9px 12px; padding-right:36px; margin-bottom:14px}
+.modal-head h3{font-size:1.5rem; letter-spacing:-.01em}
+.modal-badges{display:flex; flex-wrap:wrap; align-items:center; gap:7px}
+.voice-pill{font-family:var(--mono); font-size:.62rem; letter-spacing:.08em; text-transform:uppercase; padding:4px 8px; border-radius:5px; color:var(--muted); border:1px solid var(--line-2)}
+.modal-video{border-radius:12px; overflow:hidden; background:#000; margin-bottom:15px}
+.modal-video video{display:block; width:100%; max-height:62vh; background:#000}
+.vid-note{background:var(--surface-2); color:var(--muted); font-size:.86rem; padding:16px; text-align:center}
+.vid-empty{display:flex; flex-direction:column; align-items:center; gap:8px; padding:34px 16px; color:var(--muted); background:var(--surface-2); font-size:.9rem; text-align:center}
+.vid-empty .play{width:26px; height:26px; fill:var(--faint)}
+.modal-meaning{font-size:.98rem; margin-bottom:16px}
+.modal-pairs-wrap .pairs-label,.modal-pairs-wrap .pairs{padding-left:0}
+
+/* ============================================================
    FOOTER
    ============================================================ */
 footer{border-top:1px solid var(--line); background:var(--paper-2)}
@@ -221,7 +254,7 @@ footer{border-top:1px solid var(--line); background:var(--paper-2)}
 }
 @media (prefers-reduced-motion:reduce){
   *{scroll-behavior:auto!important}
-  .call.flash{animation:none}
+  .modal-backdrop,.modal-card{transition:none}
 }
 </style>
 </head>
@@ -242,29 +275,19 @@ footer{border-top:1px solid var(--line); background:var(--paper-2)}
 
 <nav class="subnav">
   <div class="subnav-inner">
-    <a href="#principles"><span class="n">01</span>Principles</a>
-    <a href="#calls"><span class="n">02</span>The Calls</a>
-    <a href="#scenarios"><span class="n">03</span>Scenarios</a>
+    <a href="#calls"><span class="n">01</span>The Calls</a>
+    <a href="#scenarios"><span class="n">02</span>Scenarios</a>
     <span class="spacer"></span>
     <a class="card-link" href="cheatsheet.html">⎙ Field card</a>
   </div>
 </nav>
 
 <main>
-  <section id="principles">
-    <div class="section-head">
-      <div class="eyebrow">Start here</div>
-      <h2>The philosophy, in nine ideas</h2>
-      <p class="sub">Every scenario below is just these ideas applied. <b>Understand the words, and there isn&rsquo;t a vocal scenario you can&rsquo;t create.</b></p>
-    </div>
-    <div class="principles" id="principleGrid"></div>
-  </section>
-
   <section id="calls">
     <div class="section-head">
       <div class="eyebrow">The lexicon</div>
       <h2>The calls &amp; what they mean</h2>
-      <p class="sub">Each call is a word. Filter by <b>voice</b> (who makes it) or by <b>job</b> (the colored key), and tap a <b>pairs&nbsp;with</b> tag to jump to the call it leads into.</p>
+      <p class="sub">Each call is a word. <b>Tap a call&rsquo;s name (▶) to watch the clip.</b> Filter by <b>voice</b> (who makes it) or <b>job</b> (the colored key); open any call for its meaning, video, and what it pairs with.</p>
     </div>
     <div class="controls">
       <label class="search">
@@ -298,6 +321,23 @@ footer{border-top:1px solid var(--line); background:var(--paper-2)}
     <p>A living reference &mdash; calls and scenarios live in <b>data.js</b> and are easy to add to. Looking for the pocket version? <a href="cheatsheet.html">Open the field card &rarr;</a></p>
   </div>
 </footer>
+
+<div class="modal" id="callModal" hidden>
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalName">
+    <button class="modal-close" type="button" data-close aria-label="Close">&times;</button>
+    <div class="modal-head">
+      <h3 id="modalName"></h3>
+      <div class="modal-badges" id="modalBadges"></div>
+    </div>
+    <div class="modal-video" id="modalVideo"></div>
+    <p class="modal-meaning" id="modalMeaning"></p>
+    <div class="modal-pairs-wrap" id="modalPairsWrap">
+      <div class="pairs-label">Pairs with</div>
+      <div class="pairs" id="modalPairs"></div>
+    </div>
+  </div>
+</div>
 
 <script src="data.js"></script>
 <script src="app.js"></script>

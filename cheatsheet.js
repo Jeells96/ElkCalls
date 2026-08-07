@@ -44,10 +44,6 @@
     scnHost.appendChild(sc);
   });
 
-  /* ---- Rules (principle titles) ---- */
-  const rulesHost = document.getElementById("cheatRules");
-  PRINCIPLES.forEach(p => rulesHost.appendChild(el("span","r", p.t)));
-
   /* ---- Footer ---- */
   document.getElementById("cheatFoot").textContent =
     "Cow calls from the Understanding Cow-Elk Vocalizations series; bull sounds carry the same approach over to widely-taught elk behavior. Filter, cross-reference, and full definitions in the web guide.";

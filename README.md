@@ -12,10 +12,10 @@ can string them together to tell a bull whatever story the moment calls for.
 
 ## What's inside
 
-- **Principles** — the philosophy distilled into nine ideas.
 - **The Calls** — a searchable lexicon. Filter by **voice** (Cow / Bull) or by
   **job** (a color key: locate / direct / emotion / challenge / his-reply /
-  combo), and tap a call's **"pairs with"** tags to jump to what it leads into.
+  combo). **Tap any call name to play its demo clip**, read its meaning, and see
+  what it pairs with.
 - **Scenarios** — real situations with a numbered, step-by-step calling
   sequence, including two that mix cow and bull calling.
 - **Field card** (`cheatsheet.html`) — a compact, print-first pocket reference.
@@ -32,6 +32,7 @@ Plain static site — no build step, no dependencies.
 | `data.js` | **All content** — the single source of truth |
 | `app.js` | Renders the guide from `data.js` |
 | `cheatsheet.js` | Renders the field card from `data.js` |
+| `assets/videos/` | Call demo clips (`.mp4`), one per call |
 
 - **Locally:** open `index.html` in any browser.
 - **Live (one-time setup):** on GitHub, go to **Settings → Pages → Build and
@@ -45,7 +46,10 @@ Plain static site — no build step, no dependencies.
 All content lives in **`data.js`** — add an entry and it renders in both the
 guide and the field card automatically.
 
-- `CALLS` — `{ id, name, role, voice, short, meaning, pairs:[ids], flag? }`
+- `CALLS` — `{ id, name, role, voice, short, meaning, pairs:[ids], flag?, video? }`
+  - `video` *(optional)*: path to an MP4 clip (e.g. `assets/videos/chirp.mp4`);
+    tapping the call name plays it. Drop new clips in `assets/videos/` and add
+    the path here.
   - `role`: `locate | direct | emotion | challenge | cue | combo` (sets its color).
   - `voice`: `"cow" | "bull"` (powers the Cow/Bull toggle).
   - `short`: the one-line version used on the field card.

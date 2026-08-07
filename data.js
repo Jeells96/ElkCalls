@@ -24,6 +24,7 @@ const FLAG_TITLES = {
 const CALLS = [
   /* ---------------------- COW ---------------------- */
   { id:"chirp", name:"Chirp", role:"locate", voice:"cow", flag:"videos 1–9",
+    video:"assets/videos/chirp.mp4",
     short:"Calm herd contact; a conversation opener.",
     meaning:"Relaxed, everyday herd talk — “we’re just elk here, all is calm.” An opener you use to start a conversation and get a bull to reveal himself.",
     pairs:["mew","lostMew"] },
@@ -39,11 +40,13 @@ const CALLS = [
     pairs:["assemblyMew","longMew","aggravatedWhine"] },
 
   { id:"assemblyMew", name:"Assembly mew", role:"direct", voice:"cow",
+    video:"assets/videos/assembly-mew.mp4",
     short:"“Come to me — here I am.” Your finishing call.",
     meaning:"“Come to me — this is where I am.” The directing call. Once he’s interested, stop asking where he is and simply tell him to keep coming to you. This is your finishing call.",
     pairs:["lostMew","frustratedWhine","demandingMew","longMew"] },
 
   { id:"demandingMew", name:"Demanding mew", role:"direct", voice:"cow", flag:"videos 1–9",
+    video:"assets/videos/demanding-mew.mp4",
     short:"Insistent “come here — now.”",
     meaning:"A more insistent “come here — now.” A stronger, pushier assembly mew for a reluctant bull, and a core ingredient of the hyper-hot combination.",
     pairs:["assemblyMew","frustratedWhine","aggravatedWhine"] },
@@ -59,6 +62,7 @@ const CALLS = [
     pairs:["assemblyMew","demandingMew"] },
 
   { id:"aggravatedWhine", name:"Aggravated whine", role:"emotion", voice:"cow",
+    video:"assets/videos/aggravated-whine.mp4",
     short:"Agitated cow; adds urgency to a scene.",
     meaning:"An agitated cow — think of one fed up with a pestering young bull. Adds urgency and agitation to a scene; a key part of the desperate-cow tactic and the hyper-hot combination.",
     pairs:["lostMew","assemblyMew","demandingMew"] },
@@ -174,6 +178,8 @@ const SCENARIOS = [
   },
 ];
 
+/* Kept for reference but NOT displayed anywhere — the on-page philosophy list
+   was removed per request. Each scenario still carries its own "takeaway". */
 const PRINCIPLES = [
   { t:"Learn the words", d:"Once you know what each call means, you can combine them to say almost anything a cow can say." },
   { t:"One caller, one cow", d:"Keep the same call and voice through a sequence so the bull focuses on a single animal. Multiple calls paint multiple animals." },
