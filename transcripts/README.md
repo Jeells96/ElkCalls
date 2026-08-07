@@ -8,13 +8,15 @@ distilled, reworded "Full breakdown" for each call instead (the `lesson` field
 in `../data.js`). This folder is the raw source of record.
 
 > Note: these are auto-generated transcripts (expect the odd mis-hear, e.g. the
-> name comes through as "Rowe" — it's Chris Roe; "muse"/"mews" and "read"/"reed"
-> also get swapped). They're stored for personal reference.
+> name comes through as "Rowe" — it's Chris Roe; "muse"/"mews", "read"/"reed",
+> "loss mew"/"lost mew", and "hyperlap"/"Hyperlip" also get swapped). Stored for
+> personal reference.
 
 ## Index
 
-| # | Call | Transcript |
-|---|------|-----------|
-| 1 | Chirp | [01-chirp.md](01-chirp.md) |
+| Call | Transcript |
+|------|-----------|
+| Chirp | [chirp.md](chirp.md) |
+| Assembly mew | [assembly-mew.md](assembly-mew.md) |
 
 _More added here as each lesson comes in._
