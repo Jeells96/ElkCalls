@@ -71,6 +71,12 @@ const CALLS = [
     meaning:"An agitated cow — think of one fed up with a pestering young bull. Adds urgency and agitation to a scene; a key part of the desperate-cow tactic and the hyper-hot combination.",
     pairs:["lostMew","assemblyMew","demandingMew"] },
 
+  { id:"selfishMew", name:"Selfish mew", role:"emotion", voice:"cow", flag:"videos 1–9",
+    clip:"assets/media/selfish-mew.mp3",
+    short:"Definition coming soon (from videos 1–9).",
+    meaning:"A cow mew defined in Chris Roe’s earlier videos in the series. Its exact meaning is being confirmed and will be filled in here — for now you can still play the clip.",
+    pairs:[] },
+
   { id:"hyperHot", name:"Hyper-hot / hyper-estrous", role:"combo", voice:"cow",
     clip:"assets/media/hyper-hot.mp3",
     short:"Fast combo of everyday calls = “need a bull NOW.” Last resort.",
