@@ -34,9 +34,11 @@ Plain static site — no build step, no dependencies.
 | `cheatsheet.js` | Renders the field card from `data.js` |
 
 - **Locally:** open `index.html` in any browser.
-- **Live:** a GitHub Actions workflow (`.github/workflows/deploy-pages.yml`)
-  publishes the site to **GitHub Pages** on every push to `main`, at
-  `https://jeells96.github.io/ElkCalls/`.
+- **Live (one-time setup):** on GitHub, go to **Settings → Pages → Build and
+  deployment**, set **Source: Deploy from a branch**, choose **Branch: `main`**
+  and **`/ (root)`**, and Save. The site publishes at
+  `https://jeells96.github.io/ElkCalls/` and rebuilds automatically on every
+  push to `main`.
 
 ## Editing / extending
 
