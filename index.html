@@ -3,245 +3,238 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Elk Calls — Cow Vocalization Playbook</title>
-<meta name="description" content="A field reference for cow-elk vocalizations: what each call means, what it pairs with, and which sequence to use in each scenario.">
+<meta name="color-scheme" content="light dark">
+<title>Elk — A Field Phrasebook of Cow Vocalizations</title>
+<meta name="description" content="A backcountry field reference for cow-elk vocalizations: what each call means, what it pairs with, and which sequence to run in each scenario.">
 <style>
-/* ---------- Design tokens ---------- */
+/* ============================================================
+   TOKENS — three-state theming (light default, system dark, explicit dark)
+   ============================================================ */
 :root{
-  --bg:#f4f1e7; --bg-2:#ece7d8; --card:#fffdf7; --ink:#22261e; --muted:#6c6f61;
-  --line:#e3ddcc; --line-strong:#d3ccb6;
-  --brand:#2f4a3c; --brand-2:#39604c; --brand-ink:#eaf1ea;
-  --accent:#b0651f;
-  --locate:#357a58; --direct:#bd7d26; --emotion:#b0532c; --cue:#556577; --combo:#7a559f; --neutral:#7c7f70;
-  --radius:14px; --radius-sm:9px;
-  --shadow:0 1px 2px rgba(28,32,24,.06), 0 10px 30px rgba(28,32,24,.07);
-  --shadow-sm:0 1px 2px rgba(28,32,24,.08);
-  --maxw:1080px;
-  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  /* field paper (light) */
+  --paper:#e8ebe2; --paper-2:#dfe3d8; --surface:#f4f6ee; --surface-2:#ecefe4;
+  --ink:#1b241d; --muted:#5f6659; --faint:#7c8274;
+  --line:#d3d8ca; --line-2:#c3c9b6;
+  --pine:#23402f; --pine-ink:#eef2e6;
+  --gold:#8f6b1e; --gold-bright:#b58a2c;
+
+  /* hero (dark pine in BOTH themes) */
+  --hero-1:#20402d; --hero-2:#2c5942; --hero-ink:#eef3e7; --hero-dim:#b9c9b7;
+
+  /* semantic role hues */
+  --locate:#3f7a58; --direct:#9c7420; --emotion:#a5482f; --cue:#456079; --combo:#6f4d86; --neutral:#6e7566;
+
+  --radius:12px; --radius-sm:8px;
+  --shadow:0 1px 2px rgba(22,30,22,.05), 0 14px 34px rgba(22,30,22,.07);
+  --shadow-sm:0 1px 2px rgba(22,30,22,.07);
+  --maxw:1120px;
+  --serif:"Hoefler Text","Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
   --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono","Cascadia Code",Menlo,Consolas,"Liberation Mono",monospace;
 }
 @media (prefers-color-scheme:dark){
-  :root{
-    --bg:#14160f; --bg-2:#191c13; --card:#1e2118; --ink:#eae7d8; --muted:#a3a495;
-    --line:#2c3025; --line-strong:#3a3f30;
-    --brand:#243a2f; --brand-2:#2c4a3a; --brand-ink:#e7efe8;
-    --accent:#d78a45;
-    --locate:#4f9a72; --direct:#d29a45; --emotion:#d47549; --cue:#7d8ea1; --combo:#a284c6; --neutral:#9a9c8b;
-    --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 34px rgba(0,0,0,.35);
-    --shadow-sm:0 1px 2px rgba(0,0,0,.4);
+  :root:not([data-theme="light"]){
+    --paper:#10140f; --paper-2:#0b0f0a; --surface:#171d15; --surface-2:#1e251b;
+    --ink:#e6ebdd; --muted:#a4ac97; --faint:#868d78;
+    --line:#2a3226; --line-2:#3a4333;
+    --pine:#7fb593; --pine-ink:#eef3e7;
+    --gold:#d8ab54; --gold-bright:#e6bd6a;
+    --hero-1:#132018; --hero-2:#1d3527; --hero-ink:#eef3e7; --hero-dim:#9fb3a1;
+    --locate:#63b083; --direct:#d6a94f; --emotion:#dd7c60; --cue:#7f9bb4; --combo:#ac8ecb; --neutral:#98a08a;
+    --shadow:0 1px 2px rgba(0,0,0,.5), 0 16px 40px rgba(0,0,0,.4);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.5);
   }
 }
+:root[data-theme="dark"]{
+  --paper:#10140f; --paper-2:#0b0f0a; --surface:#171d15; --surface-2:#1e251b;
+  --ink:#e6ebdd; --muted:#a4ac97; --faint:#868d78;
+  --line:#2a3226; --line-2:#3a4333;
+  --pine:#7fb593; --pine-ink:#eef3e7;
+  --gold:#d8ab54; --gold-bright:#e6bd6a;
+  --hero-1:#132018; --hero-2:#1d3527; --hero-ink:#eef3e7; --hero-dim:#9fb3a1;
+  --locate:#63b083; --direct:#d6a94f; --emotion:#dd7c60; --cue:#7f9bb4; --combo:#ac8ecb; --neutral:#98a08a;
+  --shadow:0 1px 2px rgba(0,0,0,.5), 0 16px 40px rgba(0,0,0,.4);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.5);
+}
 
+/* ============================================================
+   BASE
+   ============================================================ */
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  margin:0; background:var(--bg); color:var(--ink);
-  font-family:var(--sans); line-height:1.55;
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--sans); line-height:1.58; font-size:16px;
   -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
 }
-a{color:inherit}
-h1,h2,h3{font-family:var(--serif); font-weight:600; letter-spacing:-.01em; line-height:1.15; margin:0}
+h1,h2,h3{font-family:var(--serif); font-weight:600; line-height:1.14; margin:0; text-wrap:balance}
+p{margin:0}
 
-/* ---------- Hero ---------- */
-.hero{
-  background:
-    radial-gradient(1200px 400px at 80% -10%, rgba(255,255,255,.10), transparent 60%),
-    linear-gradient(160deg, var(--brand), var(--brand-2));
-  color:var(--brand-ink);
-  border-bottom:1px solid rgba(0,0,0,.15);
+/* label register — the "field data" voice */
+.label{
+  font-family:var(--mono); font-size:.7rem; letter-spacing:.12em; text-transform:uppercase;
+  font-weight:600;
 }
-.hero-inner{max-width:var(--maxw); margin:0 auto; padding:46px 22px 40px}
-.kicker{
-  display:inline-flex; align-items:center; gap:8px;
-  font-size:.78rem; letter-spacing:.14em; text-transform:uppercase;
-  color:var(--brand-ink); opacity:.82; margin-bottom:14px;
+.eyebrow{
+  font-family:var(--sans); font-size:.74rem; letter-spacing:.2em; text-transform:uppercase;
+  font-weight:700; color:var(--gold);
 }
-.kicker svg{width:18px;height:18px;opacity:.9}
-.hero h1{font-size:clamp(2rem, 5vw, 3.1rem); max-width:16ch}
-.hero p.lede{
-  margin:14px 0 0; max-width:60ch; font-size:1.06rem; color:var(--brand-ink); opacity:.92;
-}
-.hero .attribution{margin-top:18px; font-size:.86rem; opacity:.8}
 
-/* ---------- Sub nav ---------- */
-.subnav{
-  position:sticky; top:0; z-index:20;
-  background:color-mix(in srgb, var(--bg) 86%, transparent);
-  backdrop-filter:saturate(1.4) blur(8px);
-  border-bottom:1px solid var(--line);
-}
-.subnav-inner{max-width:var(--maxw); margin:0 auto; padding:10px 22px; display:flex; gap:8px; flex-wrap:wrap; align-items:center}
-.subnav a{
-  text-decoration:none; font-weight:600; font-size:.92rem;
-  padding:7px 13px; border-radius:999px; color:var(--muted);
-  border:1px solid transparent;
-}
-.subnav a:hover{color:var(--ink); background:var(--bg-2); border-color:var(--line)}
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{position:relative; overflow:hidden; background:linear-gradient(155deg,var(--hero-1),var(--hero-2)); color:var(--hero-ink); border-bottom:1px solid rgba(0,0,0,.28)}
+.hero canvas{position:absolute; inset:0; width:100%; height:100%; display:block; pointer-events:none}
+.hero-inner{position:relative; max-width:var(--maxw); margin:0 auto; padding:54px 24px 48px}
+.hero .kicker{display:inline-flex; align-items:center; gap:9px; color:var(--hero-dim); margin-bottom:18px}
+.hero .kicker svg{width:19px; height:19px}
+.hero h1{font-size:clamp(2.05rem,4.8vw,3.15rem); max-width:19ch; letter-spacing:-.015em}
+.hero .lede{margin-top:16px; max-width:56ch; font-size:1.08rem; color:var(--hero-ink); opacity:.94}
+.hero .lede b{color:var(--gold-bright); font-weight:600}
+.hero .credit{margin-top:22px; padding-top:16px; border-top:1px solid rgba(255,255,255,.14); font-size:.85rem; color:var(--hero-dim); max-width:56ch}
 
-/* ---------- Layout ---------- */
-main{max-width:var(--maxw); margin:0 auto; padding:12px 22px 80px}
-section{padding-top:44px; scroll-margin-top:64px}
-.section-head{margin-bottom:18px}
-.section-head .eyebrow{
-  font-size:.76rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); font-weight:700;
-}
-.section-head h2{font-size:clamp(1.5rem,3.2vw,2rem); margin-top:6px}
-.section-head p{margin:8px 0 0; color:var(--muted); max-width:66ch}
+/* ============================================================
+   NAV
+   ============================================================ */
+.subnav{position:sticky; top:0; z-index:30; background:color-mix(in srgb,var(--paper) 88%,transparent); backdrop-filter:saturate(1.3) blur(9px); border-bottom:1px solid var(--line)}
+.subnav-inner{max-width:var(--maxw); margin:0 auto; padding:9px 24px; display:flex; gap:6px; flex-wrap:wrap; align-items:center}
+.subnav a{font-family:var(--mono); font-size:.78rem; letter-spacing:.04em; text-decoration:none; color:var(--muted); padding:7px 13px; border-radius:999px; border:1px solid transparent}
+.subnav a:hover{color:var(--ink); background:var(--surface-2); border-color:var(--line)}
+.subnav a .n{color:var(--faint); margin-right:7px}
 
-/* ---------- Principles ---------- */
-.principles{
-  display:grid; grid-template-columns:repeat(auto-fill, minmax(240px,1fr)); gap:14px;
-}
-.principle{
-  background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
-  padding:16px 16px 15px; box-shadow:var(--shadow-sm); position:relative; overflow:hidden;
-}
-.principle::before{content:""; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--brand-2)}
-.principle h3{font-size:1.02rem; margin-bottom:5px; padding-left:2px}
-.principle p{margin:0; font-size:.92rem; color:var(--muted)}
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+main{max-width:var(--maxw); margin:0 auto; padding:8px 24px 84px}
+section{padding-top:52px; scroll-margin-top:60px}
+.section-head{margin-bottom:22px; max-width:70ch}
+.section-head h2{font-size:clamp(1.55rem,3.2vw,2.05rem); margin-top:8px; letter-spacing:-.01em}
+.section-head .sub{margin-top:9px; color:var(--muted)}
+.section-head .sub b{color:var(--ink); font-weight:600}
 
-/* ---------- Controls (calls) ---------- */
-.controls{display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-bottom:18px}
-.search{
-  flex:1 1 240px; min-width:200px; display:flex; align-items:center; gap:8px;
-  background:var(--card); border:1px solid var(--line-strong); border-radius:999px; padding:9px 15px;
-  box-shadow:var(--shadow-sm);
-}
+/* ============================================================
+   PRINCIPLES
+   ============================================================ */
+.principles{display:grid; grid-template-columns:repeat(auto-fill,minmax(238px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden}
+.principle{background:var(--surface); padding:18px 18px 16px; position:relative}
+.principle .pn{font-family:var(--mono); font-size:.72rem; color:var(--gold); letter-spacing:.06em}
+.principle h3{font-size:1.02rem; margin:8px 0 5px}
+.principle p{font-size:.9rem; color:var(--muted)}
+
+/* ============================================================
+   CONTROLS
+   ============================================================ */
+.controls{display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-bottom:20px}
+.search{flex:1 1 240px; min-width:190px; display:flex; align-items:center; gap:9px; background:var(--surface); border:1px solid var(--line-2); border-radius:999px; padding:10px 16px; box-shadow:var(--shadow-sm)}
 .search input{border:0; outline:0; background:transparent; color:var(--ink); font:inherit; width:100%}
-.search svg{width:17px;height:17px;color:var(--muted);flex:none}
-.legend{display:flex; flex-wrap:wrap; gap:7px}
-.chip-btn{
-  font:inherit; font-size:.82rem; font-weight:600; cursor:pointer;
-  border:1px solid var(--line-strong); background:var(--card); color:var(--muted);
-  padding:6px 11px; border-radius:999px; display:inline-flex; align-items:center; gap:7px;
-}
-.chip-btn .dot{width:9px;height:9px;border-radius:50%;background:var(--c,var(--neutral))}
-.chip-btn[aria-pressed="true"]{color:var(--ink); border-color:var(--c,var(--ink)); background:color-mix(in srgb, var(--c,var(--ink)) 12%, var(--card))}
+.search svg{width:16px; height:16px; color:var(--faint); flex:none}
+.legend{display:flex; flex-wrap:wrap; gap:6px}
+.chip-btn{font-family:var(--mono); font-size:.72rem; letter-spacing:.04em; text-transform:uppercase; cursor:pointer; border:1px solid var(--line-2); background:var(--surface); color:var(--muted); padding:7px 11px; border-radius:999px; display:inline-flex; align-items:center; gap:7px}
+.chip-btn .dot{width:9px; height:9px; border-radius:2px; background:var(--c,var(--neutral))}
+.chip-btn[aria-pressed="true"]{color:var(--ink); border-color:var(--c,var(--ink)); background:color-mix(in srgb,var(--c,var(--ink)) 13%,var(--surface))}
+.chip-btn:focus-visible,.pair:focus-visible,.call-chip:focus-visible,.subnav a:focus-visible,.search:focus-within{outline:2px solid var(--gold); outline-offset:2px}
 
-/* ---------- Call grid ---------- */
-.call-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:14px}
-.call{
-  background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
-  padding:16px; box-shadow:var(--shadow-sm); border-left:5px solid var(--c,var(--neutral));
-  transition:box-shadow .2s ease, transform .2s ease, border-color .2s ease;
-}
+/* ============================================================
+   CALLS — the lexicon
+   ============================================================ */
+.call-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(288px,1fr)); gap:15px}
+.call{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:17px 17px 16px; box-shadow:var(--shadow-sm); position:relative}
+.call::before{content:""; position:absolute; left:0; top:14px; bottom:14px; width:3px; border-radius:3px; background:var(--c,var(--neutral))}
 .call.hidden{display:none}
-.call.flash{animation:flash 1.3s ease}
-@keyframes flash{0%,100%{box-shadow:var(--shadow-sm)}18%{box-shadow:0 0 0 3px color-mix(in srgb, var(--c) 55%, transparent), var(--shadow)}}
-.call-top{display:flex; align-items:center; gap:10px; justify-content:space-between; margin-bottom:9px}
-.call-top h3{font-size:1.12rem}
-.badge{
-  font-size:.68rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
-  padding:4px 9px; border-radius:999px; white-space:nowrap;
-  color:var(--c,var(--neutral)); background:color-mix(in srgb, var(--c,var(--neutral)) 14%, transparent);
-}
-.foundation{
-  display:inline-block; margin-left:8px; font-size:.66rem; font-weight:700; letter-spacing:.04em;
-  color:var(--muted); border:1px dashed var(--line-strong); padding:2px 7px; border-radius:6px; vertical-align:middle;
-}
-.call .meaning{margin:0 0 12px; font-size:.94rem; color:var(--ink)}
-.pairs-label{font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:6px}
-.pairs{display:flex; flex-wrap:wrap; gap:6px}
-.pair{
-  font:inherit; font-size:.8rem; font-weight:600; cursor:pointer;
-  border:1px solid color-mix(in srgb, var(--c,var(--neutral)) 40%, var(--line));
-  background:color-mix(in srgb, var(--c,var(--neutral)) 9%, var(--card));
-  color:var(--ink); padding:4px 10px; border-radius:999px; display:inline-flex; align-items:center; gap:6px;
-}
-.pair .dot{width:8px;height:8px;border-radius:50%;background:var(--c,var(--neutral))}
+.call.flash{animation:flash 1.4s ease}
+@keyframes flash{0%,100%{box-shadow:var(--shadow-sm)}16%{box-shadow:0 0 0 2px var(--c), var(--shadow)}}
+.call-top{display:flex; align-items:baseline; gap:10px; justify-content:space-between; margin-bottom:9px; padding-left:9px}
+.call-top h3{font-size:1.1rem}
+.badge{font-family:var(--mono); font-size:.64rem; letter-spacing:.09em; text-transform:uppercase; padding:4px 8px; border-radius:5px; white-space:nowrap; color:var(--c,var(--neutral)); background:color-mix(in srgb,var(--c,var(--neutral)) 15%,transparent)}
+.foundation{display:inline-block; margin-left:7px; font-family:var(--mono); font-size:.6rem; letter-spacing:.04em; color:var(--faint); border:1px dashed var(--line-2); padding:2px 6px; border-radius:5px; vertical-align:middle; text-transform:uppercase}
+.call .meaning{margin:0 0 13px; font-size:.93rem; padding-left:9px}
+.pairs-label{font-family:var(--mono); font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; color:var(--faint); margin-bottom:7px; padding-left:9px}
+.pairs{display:flex; flex-wrap:wrap; gap:6px; padding-left:9px}
+.pair{font-family:var(--sans); font-size:.8rem; font-weight:600; cursor:pointer; border:1px solid color-mix(in srgb,var(--c,var(--neutral)) 38%,var(--line)); background:color-mix(in srgb,var(--c,var(--neutral)) 8%,var(--surface)); color:var(--ink); padding:4px 10px 4px 8px; border-radius:999px; display:inline-flex; align-items:center; gap:6px}
+.pair .dot{width:7px; height:7px; border-radius:2px; background:var(--c,var(--neutral))}
 .pair:hover{border-color:var(--c,var(--neutral))}
-.no-results{color:var(--muted); font-style:italic; padding:20px 4px}
+.no-results{color:var(--muted); font-style:italic; padding:22px 4px}
 
-/* ---------- Scenarios ---------- */
+/* ============================================================
+   SCENARIOS — field dispatches
+   ============================================================ */
 .scenarios{display:flex; flex-direction:column; gap:14px}
-.scenario{
-  background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
-  box-shadow:var(--shadow-sm); overflow:hidden;
-}
-.scenario > summary{
-  list-style:none; cursor:pointer; padding:16px 18px; display:flex; align-items:flex-start; gap:14px;
-}
-.scenario > summary::-webkit-details-marker{display:none}
-.scenario .num{
-  flex:none; width:30px; height:30px; border-radius:8px; background:var(--brand); color:var(--brand-ink);
-  display:grid; place-items:center; font-family:var(--serif); font-size:1rem; font-weight:700; margin-top:1px;
-}
+.scenario{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow-sm); overflow:hidden}
+.scenario>summary{list-style:none; cursor:pointer; padding:17px 19px; display:flex; align-items:flex-start; gap:15px}
+.scenario>summary::-webkit-details-marker{display:none}
+.scenario .num{flex:none; width:34px; height:34px; border-radius:8px; background:var(--pine); color:var(--pine-ink); display:grid; place-items:center; font-family:var(--mono); font-size:.82rem; font-weight:700; margin-top:2px}
+:root[data-theme="dark"] .scenario .num,
+:root:not([data-theme="light"]) .scenario .num{color:#0b0f0a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .scenario .num{color:#0b0f0a}}
 .scenario .s-head{flex:1}
-.scenario .s-tag{
-  display:inline-block; font-size:.7rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase;
-  color:var(--accent); margin-bottom:4px;
-}
-.scenario .s-head h3{font-size:1.14rem}
-.scenario .caret{flex:none; color:var(--muted); transition:transform .2s ease; margin-top:4px}
+.scenario .s-tag{color:var(--gold); display:block; margin-bottom:5px}
+.scenario .s-head h3{font-size:1.15rem; letter-spacing:-.005em}
+.scenario .caret{flex:none; color:var(--faint); transition:transform .2s ease; margin-top:5px; font-size:1.3rem; line-height:1}
 .scenario[open] .caret{transform:rotate(90deg)}
-.s-body{padding:0 18px 20px 62px}
-.s-body .situation{margin:0 0 14px; color:var(--ink)}
-.callout{
-  border-radius:var(--radius-sm); padding:11px 13px; margin:0 0 14px; font-size:.9rem;
-  border:1px solid var(--line); background:var(--bg-2);
-}
-.callout b{color:var(--accent)}
-.steps{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px}
-.step{display:flex; gap:12px}
-.step .stepnum{
-  flex:none; width:22px; height:22px; border-radius:50%; border:1px solid var(--line-strong);
-  color:var(--muted); font-size:.78rem; font-weight:700; display:grid; place-items:center; margin-top:2px;
-}
-.step .step-main{flex:1}
-.step .call-chip{
-  font-size:.78rem; font-weight:700; padding:3px 10px; border-radius:999px; cursor:pointer;
-  display:inline-flex; align-items:center; gap:6px; margin-bottom:5px; border:1px solid transparent;
-  color:var(--c,var(--neutral)); background:color-mix(in srgb, var(--c,var(--neutral)) 14%, transparent);
-}
-.step .call-chip .dot{width:8px;height:8px;border-radius:50%;background:var(--c,var(--neutral))}
-.step .call-chip.static{cursor:default}
+.s-body{padding:2px 19px 22px 68px}
+.s-body .situation{margin:0 0 15px}
+.callout{border-radius:var(--radius-sm); padding:11px 14px; margin:0 0 15px; font-size:.9rem; border:1px solid var(--line); background:var(--surface-2)}
+.callout .label{color:var(--gold); display:block; margin-bottom:3px; font-size:.62rem}
+
+.steps{list-style:none; margin:0; padding:0; position:relative; display:flex; flex-direction:column; gap:16px}
+.steps::before{content:""; position:absolute; left:12px; top:14px; bottom:14px; width:2px; background:var(--line-2)}
+.step{display:flex; gap:14px; position:relative}
+.step .stepnum{flex:none; width:26px; height:26px; border-radius:50%; background:var(--surface); border:2px solid var(--line-2); color:var(--muted); font-family:var(--mono); font-size:.74rem; font-weight:700; display:grid; place-items:center; z-index:1}
+.step .step-main{flex:1; padding-top:1px}
+.call-chip{font-family:var(--sans); font-size:.78rem; font-weight:700; padding:3px 11px 3px 9px; border-radius:999px; cursor:pointer; display:inline-flex; align-items:center; gap:6px; margin-bottom:5px; border:1px solid transparent; color:var(--c,var(--neutral)); background:color-mix(in srgb,var(--c,var(--neutral)) 15%,transparent)}
+.call-chip .dot{width:7px; height:7px; border-radius:2px; background:var(--c,var(--neutral))}
+.call-chip.static{cursor:default}
 .step .action{margin:0; font-size:.94rem}
-.step .note{margin:3px 0 0; font-size:.87rem; color:var(--muted)}
-.principle-line{
-  margin:16px 0 0; padding:12px 14px; border-left:4px solid var(--accent);
-  background:color-mix(in srgb, var(--accent) 8%, transparent); border-radius:0 var(--radius-sm) var(--radius-sm) 0;
-  font-size:.92rem;
-}
-.principle-line b{color:var(--accent)}
+.step .note{margin:4px 0 0; font-size:.86rem; color:var(--muted)}
+.principle-line{margin:18px 0 0; padding:12px 15px; border-left:3px solid var(--gold); background:color-mix(in srgb,var(--gold) 8%,transparent); border-radius:0 var(--radius-sm) var(--radius-sm) 0; font-size:.92rem}
+.principle-line .label{color:var(--gold); font-size:.62rem; margin-right:2px}
 
-/* ---------- Footer ---------- */
-footer{
-  border-top:1px solid var(--line); background:var(--bg-2);
-}
-.footer-inner{max-width:var(--maxw); margin:0 auto; padding:26px 22px; color:var(--muted); font-size:.88rem}
-.footer-inner p{margin:0 0 8px}
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{border-top:1px solid var(--line); background:var(--paper-2)}
+.footer-inner{max-width:var(--maxw); margin:0 auto; padding:28px 24px; color:var(--muted); font-size:.87rem; max-width:80ch}
+.footer-inner p{margin:0 0 9px}
+.footer-inner b{color:var(--ink)}
+.footer-inner .foundation{margin:0 3px}
 
-@media (max-width:640px){
-  .s-body{padding-left:18px}
-  .hero-inner{padding:38px 18px 32px}
+@media (max-width:620px){
+  .hero-inner{padding:42px 20px 36px}
+  .s-body{padding-left:19px}
+  .steps::before{left:12px}
 }
 @media print{
-  .subnav,.controls{display:none}
-  .scenario{break-inside:avoid}
-  .s-body{display:block !important}
+  .subnav,.controls,.hero canvas{display:none}
+  .scenario{break-inside:avoid; box-shadow:none}
+  .s-body{display:block!important}
   .caret{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *{scroll-behavior:auto!important}
+  .call.flash{animation:none}
 }
 </style>
 </head>
 <body>
 
 <header class="hero">
+  <canvas id="topo" aria-hidden="true"></canvas>
   <div class="hero-inner">
-    <div class="kicker">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 13c-1.5-1-2-3-2-5 0-1 .5-2 1-3M17 13c1.5-1 2-3 2-5 0-1-.5-2-1-3M5 5 3.5 3M5 8 3 8M19 5l1.5-2M19 8l2 0M9 13a3 3 0 0 0 6 0M8 17c0 2 1.8 4 4 4s4-2 4-4"/></svg>
-      Cow-Elk Vocalization Playbook
+    <div class="kicker eyebrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 12c-1.6-1-2.4-3-2.4-5.2 0-1.2.4-2.3 1-3.3M16 12c1.6-1 2.4-3 2.4-5.2 0-1.2-.4-2.3-1-3.3M6.6 3.5 5 2M6 6.6 4 6.4M17.4 3.5 19 2M18 6.6 20 6.4M9 12.5a3 3 0 0 0 6 0M8.2 16.5c0 2.1 1.7 3.9 3.8 3.9s3.8-1.8 3.8-3.9"/></svg>
+      A field phrasebook · cow-elk vocalizations
     </div>
-    <h1>Know which call to use, what it means, and what it pairs with.</h1>
-    <p class="lede">A field reference built on the idea that elk calls are words. Learn what each one says, then string them together to tell a bull whatever story the moment calls for.</p>
-    <p class="attribution">Based on the cow-elk vocalization &amp; communication philosophy taught by Chris Rose.</p>
+    <h1>Which call to use, what it means, and what it pairs with.</h1>
+    <p class="lede"><b>Elk calls are words.</b> Learn what each one says, then string them together to tell a bull whatever story the moment calls for. No sound-alike descriptions here — just meaning, and how the words combine.</p>
+    <p class="credit">Built on the cow-elk vocalization &amp; communication philosophy taught by Chris Rose.</p>
   </div>
 </header>
 
 <nav class="subnav">
   <div class="subnav-inner">
-    <a href="#principles">Principles</a>
-    <a href="#calls">The Calls</a>
-    <a href="#scenarios">Scenarios</a>
+    <a href="#principles"><span class="n">01</span>Principles</a>
+    <a href="#calls"><span class="n">02</span>The Calls</a>
+    <a href="#scenarios"><span class="n">03</span>Scenarios</a>
   </div>
 </nav>
 
@@ -249,21 +242,21 @@ footer{
   <section id="principles">
     <div class="section-head">
       <div class="eyebrow">Start here</div>
-      <h2>The philosophy in eight ideas</h2>
-      <p>Every scenario below is just these principles applied. Understand the words, and there isn&rsquo;t a vocal scenario you can&rsquo;t create.</p>
+      <h2>The philosophy, in eight ideas</h2>
+      <p class="sub">Every scenario below is just these ideas applied. <b>Understand the words, and there isn&rsquo;t a vocal scenario you can&rsquo;t create.</b></p>
     </div>
     <div class="principles" id="principleGrid"></div>
   </section>
 
   <section id="calls">
     <div class="section-head">
-      <div class="eyebrow">The vocabulary</div>
+      <div class="eyebrow">The lexicon</div>
       <h2>The calls &amp; what they mean</h2>
-      <p>Each call is a word. Tap a <b>pairs&nbsp;with</b> tag to jump to the call it commonly leads into. Colors group calls by their job.</p>
+      <p class="sub">Each call is a word. Tap a <b>pairs&nbsp;with</b> tag to jump to the call it commonly leads into. The colored key groups calls by the job they do.</p>
     </div>
     <div class="controls">
       <label class="search">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
         <input id="callFilter" type="search" placeholder="Search calls or meanings&hellip;" autocomplete="off" aria-label="Search calls">
       </label>
       <div class="legend" id="legend"></div>
@@ -276,7 +269,7 @@ footer{
     <div class="section-head">
       <div class="eyebrow">Put it together</div>
       <h2>Scenarios &amp; the sequence to run</h2>
-      <p>Real situations, and the order to say the words in. These are examples &mdash; once the pattern clicks, you can build a sequence for any situation you&rsquo;re in.</p>
+      <p class="sub">Real situations, and the order to say the words in. These are examples &mdash; once the pattern clicks, you can build a sequence for <b>any</b> situation you&rsquo;re in.</p>
     </div>
     <div class="scenarios" id="scenarioList"></div>
   </section>
@@ -284,14 +277,14 @@ footer{
 
 <footer>
   <div class="footer-inner">
-    <p><b>About this reference.</b> Distilled from the &ldquo;Understanding Cow-Elk Vocalizations &amp; Communication&rdquo; series &mdash; specifically the closing &ldquo;putting it all together&rdquo; video. A few foundational calls (marked <span class="foundation">from videos&nbsp;1&ndash;9</span>) are defined more fully in the earlier videos in that series.</p>
-    <p>This is a living reference &mdash; calls and scenarios are easy to add as more material is worked in.</p>
+    <p><b>About this reference.</b> Distilled from the &ldquo;Understanding Cow-Elk Vocalizations &amp; Communication&rdquo; series &mdash; specifically the closing &ldquo;putting it all together&rdquo; video. A few foundational calls, marked <span class="foundation">videos 1&ndash;9</span>, are defined more fully in the earlier videos of that series and aren&rsquo;t yet reflected in full here.</p>
+    <p>A living reference &mdash; calls and scenarios are easy to add as more of the series is worked in.</p>
   </div>
 </footer>
 
 <script>
 /* =========================================================================
-   DATA  — edit here to add or refine calls, scenarios, and principles.
+   DATA — edit here to add or refine calls, scenarios, and principles.
    role: locate | direct | emotion | cue | combo   (drives color + grouping)
    ========================================================================= */
 const ROLES = {
@@ -420,8 +413,9 @@ const el = (tag, cls, html) => { const n = document.createElement(tag); if(cls) 
 
 /* Principles */
 const pGrid = document.getElementById("principleGrid");
-PRINCIPLES.forEach(p => {
+PRINCIPLES.forEach((p, i) => {
   const c = el("div","principle");
+  c.appendChild(el("div","pn", String(i+1).padStart(2,"0")));
   c.appendChild(el("h3", null, p.t));
   c.appendChild(el("p", null, p.d));
   pGrid.appendChild(c);
@@ -432,6 +426,7 @@ const legend = document.getElementById("legend");
 let activeRole = null;
 Object.entries(ROLES).forEach(([role, meta]) => {
   const b = el("button","chip-btn");
+  b.type = "button";
   b.style.setProperty("--c", `var(${meta.var})`);
   b.setAttribute("aria-pressed","false");
   b.dataset.role = role;
@@ -455,8 +450,7 @@ CALLS.forEach(c => {
   card.dataset.text = (c.name + " " + c.meaning).toLowerCase();
 
   const top = el("div","call-top");
-  const h = el("h3", null, c.name + (c.foundation ? ' <span class="foundation">from videos 1&ndash;9</span>' : ''));
-  top.appendChild(h);
+  top.appendChild(el("h3", null, c.name + (c.foundation ? ' <span class="foundation">videos 1&ndash;9</span>' : '')));
   top.appendChild(el("span","badge", ROLES[c.role].label));
   card.appendChild(top);
 
@@ -468,6 +462,7 @@ CALLS.forEach(c => {
     c.pairs.forEach(pid => {
       const t = byId[pid]; if(!t) return;
       const chip = el("button","pair");
+      chip.type = "button";
       chip.style.setProperty("--c", `var(${cvar(t.role)})`);
       chip.dataset.target = pid;
       chip.innerHTML = `<span class="dot"></span>${t.name}`;
@@ -480,7 +475,6 @@ CALLS.forEach(c => {
 });
 
 function focusCall(id){
-  // clear filters so the target is guaranteed visible
   document.getElementById("callFilter").value = "";
   activeRole = null;
   [...legend.children].forEach(x => x.setAttribute("aria-pressed","false"));
@@ -515,9 +509,9 @@ SCENARIOS.forEach((s, i) => {
   if(i === 0) d.open = true;
 
   const sum = el("summary");
-  sum.appendChild(el("span","num", String(i+1)));
+  sum.appendChild(el("span","num", String(i+1).padStart(2,"0")));
   const head = el("div","s-head");
-  head.appendChild(el("span","s-tag", s.tag));
+  head.appendChild(el("span","s-tag label", s.tag));
   head.appendChild(el("h3", null, s.title));
   sum.appendChild(head);
   sum.appendChild(el("span","caret","›"));
@@ -525,8 +519,8 @@ SCENARIOS.forEach((s, i) => {
 
   const body = el("div","s-body");
   body.appendChild(el("p","situation", s.situation));
-  if(s.setup) body.appendChild(el("div","callout", `<b>Set the stage.</b> ${s.setup}`));
-  if(s.cue)   body.appendChild(el("div","callout", `<b>His cue.</b> ${s.cue}`));
+  if(s.setup) body.appendChild(el("div","callout", `<span class="label">Set the stage</span>${s.setup}`));
+  if(s.cue)   body.appendChild(el("div","callout", `<span class="label">His cue</span>${s.cue}`));
 
   const steps = el("ol","steps");
   s.steps.forEach((st, idx) => {
@@ -537,13 +531,14 @@ SCENARIOS.forEach((s, i) => {
     let chip;
     if(st.call === "silence"){
       chip = el("span","call-chip static"); chip.style.setProperty("--c","var(--neutral)");
-      chip.innerHTML = `<span class="dot"></span>Go quiet & set up`;
+      chip.innerHTML = `<span class="dot"></span>Go quiet &amp; set up`;
     } else if(st.call === "tip"){
-      chip = el("span","call-chip static"); chip.style.setProperty("--c","var(--brand-2)");
+      chip = el("span","call-chip static"); chip.style.setProperty("--c","var(--pine)");
       chip.innerHTML = `<span class="dot"></span>Keep it simple`;
     } else {
       const c = byId[st.call];
-      chip = el("button","call-chip"); chip.style.setProperty("--c", `var(${cvar(c.role)})`);
+      chip = el("button","call-chip"); chip.type = "button";
+      chip.style.setProperty("--c", `var(${cvar(c.role)})`);
       chip.innerHTML = `<span class="dot"></span>${c.name}`;
       chip.title = "Jump to this call";
       chip.addEventListener("click", () => { document.getElementById("calls").scrollIntoView({behavior:"smooth"}); setTimeout(()=>focusCall(st.call), 350); });
@@ -555,10 +550,49 @@ SCENARIOS.forEach((s, i) => {
     steps.appendChild(li);
   });
   body.appendChild(steps);
-  body.appendChild(el("div","principle-line", `<b>Takeaway.</b> ${s.principle}`));
+  body.appendChild(el("div","principle-line", `<span class="label">Takeaway</span> ${s.principle}`));
   d.appendChild(body);
   list.appendChild(d);
 });
+
+/* =========================================================================
+   Topographic contour motif — drawn once (static), subject-grounded flourish
+   ========================================================================= */
+(function(){
+  const cv = document.getElementById("topo");
+  if(!cv || !cv.getContext) return;
+  const ctx = cv.getContext("2d");
+  function draw(){
+    const w = cv.clientWidth, h = cv.clientHeight;
+    if(!w || !h) return;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    cv.width = Math.round(w*dpr); cv.height = Math.round(h*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.clearRect(0,0,w,h);
+    const cx = w*0.83, cy = h*0.34;
+    const rings = 11;
+    for(let i=0;i<rings;i++){
+      const base = 34 + i*44;
+      ctx.beginPath();
+      for(let a=0;a<=Math.PI*2+0.001;a+=0.07){
+        const r = base
+          + Math.sin(a*3 + i*0.55)*11
+          + Math.sin(a*5 - i*0.9)*6
+          + Math.cos(a*2 + i*1.3)*9;
+        const x = cx + Math.cos(a)*r*1.18;
+        const y = cy + Math.sin(a)*r;
+        a===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+      }
+      ctx.closePath();
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = (i===4) ? "rgba(216,171,84,0.34)" : "rgba(233,238,224,0.10)";
+      ctx.stroke();
+    }
+  }
+  draw();
+  let raf = null;
+  window.addEventListener("resize", () => { if(raf) cancelAnimationFrame(raf); raf = requestAnimationFrame(draw); });
+})();
 </script>
 </body>
 </html>
