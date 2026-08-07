@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Elk Call Field Card</title>
+<meta name="description" content="A pocket cheat-sheet of elk cow & bull calls: what each means, what it pairs with, and the sequence per scenario.">
+<style>
+:root{
+  --paper:#ffffff; --surface:#f4f6ee; --ink:#1b241d; --muted:#5f6659; --faint:#7c8274;
+  --line:#d3d8ca; --line-2:#c3c9b6; --pine:#23402f; --gold:#8f6b1e;
+  --locate:#3f7a58; --direct:#9c7420; --emotion:#b5622f; --challenge:#9d3535; --cue:#456079; --combo:#6f4d86; --neutral:#6e7566;
+  --serif:"Hoefler Text","Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono","Cascadia Code",Menlo,Consolas,"Liberation Mono",monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#10140f; --surface:#171d15; --ink:#e6ebdd; --muted:#a4ac97; --faint:#868d78;
+    --line:#2a3226; --line-2:#3a4333; --pine:#7fb593; --gold:#d8ab54;
+    --locate:#63b083; --direct:#d6a94f; --emotion:#e08a52; --challenge:#e07071; --cue:#7f9bb4; --combo:#ac8ecb; --neutral:#98a08a;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#10140f; --surface:#171d15; --ink:#e6ebdd; --muted:#a4ac97; --faint:#868d78;
+  --line:#2a3226; --line-2:#3a4333; --pine:#7fb593; --gold:#d8ab54;
+  --locate:#63b083; --direct:#d6a94f; --emotion:#e08a52; --challenge:#e07071; --cue:#7f9bb4; --combo:#ac8ecb; --neutral:#98a08a;
+}
+
+*{box-sizing:border-box}
+body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans); line-height:1.4; font-size:15px; -webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--serif); margin:0; line-height:1.1}
+.mono{font-family:var(--mono)}
+
+.toolbar{position:sticky; top:0; z-index:5; display:flex; align-items:center; gap:12px; flex-wrap:wrap; padding:12px 20px; background:color-mix(in srgb,var(--paper) 90%,transparent); backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
+.toolbar .grow{flex:1}
+.toolbar a,.toolbar button{font-family:var(--mono); font-size:.76rem; letter-spacing:.04em; text-transform:uppercase; text-decoration:none; cursor:pointer; border:1px solid var(--line-2); background:var(--surface); color:var(--ink); padding:8px 14px; border-radius:999px}
+.toolbar .primary{background:var(--pine); color:#eef2e6; border-color:transparent}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .toolbar .primary{color:#0b0f0a}}
+:root[data-theme="dark"] .toolbar .primary{color:#0b0f0a}
+.toolbar a:hover,.toolbar button:hover{border-color:var(--gold)}
+
+.wrap{max-width:1100px; margin:0 auto; padding:20px 20px 60px}
+.doc-head{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; border-bottom:2px solid var(--ink); padding-bottom:8px; margin-bottom:14px}
+.doc-head h1{font-size:1.5rem; letter-spacing:-.01em}
+.doc-head .sub{font-family:var(--mono); font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; color:var(--muted)}
+.doc-head .cred{margin-left:auto; font-size:.72rem; color:var(--faint)}
+
+.sec-title{font-family:var(--mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); margin:16px 0 8px; padding-bottom:3px; border-bottom:1px solid var(--line)}
+.voice-title{font-family:var(--mono); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; color:var(--faint); margin:4px 0 6px}
+
+.calls{columns:2; column-gap:22px}
+@media (min-width:900px){.calls{columns:3}}
+.call{break-inside:avoid; border-left:3px solid var(--c,var(--neutral)); padding:2px 0 2px 9px; margin:0 0 9px}
+.call .nm{font-weight:700}
+.call .jb{font-family:var(--mono); font-size:.58rem; letter-spacing:.06em; text-transform:uppercase; color:var(--c,var(--neutral)); margin-left:5px}
+.call .ms{font-size:.85rem; color:var(--ink)}
+.call .pr{font-size:.76rem; color:var(--muted)}
+.call .pr b{font-family:var(--mono); font-size:.6rem; letter-spacing:.05em; text-transform:uppercase; color:var(--faint); font-weight:600}
+
+.scn{columns:2; column-gap:22px}
+.scenario{break-inside:avoid; margin:0 0 11px; padding-left:9px; border-left:3px solid var(--pine)}
+.scenario .st{font-weight:700; font-size:.95rem}
+.scenario .tg{font-family:var(--mono); font-size:.58rem; letter-spacing:.06em; text-transform:uppercase; color:var(--gold); margin-left:6px}
+.scenario .seq{font-size:.82rem; margin-top:2px}
+.scenario .seq .arrow{color:var(--faint); margin:0 3px}
+.scenario .cue{font-size:.76rem; color:var(--muted); margin-top:1px}
+.scenario .cue b{font-family:var(--mono); font-size:.58rem; letter-spacing:.05em; text-transform:uppercase; color:var(--faint); font-weight:600}
+
+.rules{margin-top:8px; font-size:.82rem; color:var(--muted)}
+.rules b{color:var(--ink)}
+.rules .r{display:inline-block; margin-right:4px}
+.rules .r::after{content:"·"; margin-left:6px; color:var(--faint)}
+.rules .r:last-child::after{content:""}
+
+.foot{margin-top:16px; padding-top:8px; border-top:1px solid var(--line); font-size:.72rem; color:var(--faint)}
+
+@page{margin:12mm}
+@media print{
+  :root{--paper:#fff; --surface:#fff; --ink:#000; --muted:#333; --faint:#555; --line:#bbb; --line-2:#bbb; --pine:#23402f}
+  .toolbar{display:none}
+  .wrap{max-width:none; padding:0}
+  body{font-size:10.5px}
+  .doc-head h1{font-size:16pt}
+  .calls{columns:3; column-gap:14px}
+  .scn{columns:2; column-gap:14px}
+  .call,.scenario{margin-bottom:6px}
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <a href="index.html">&larr; Back to the guide</a>
+  <span class="grow"></span>
+  <button type="button" class="primary" id="printBtn">⎙ Print / Save as PDF</button>
+</div>
+
+<div class="wrap">
+  <div class="doc-head">
+    <h1>Elk Call Field Card</h1>
+    <span class="sub">Cow &amp; bull vocalizations</span>
+    <span class="cred">Chris Roe philosophy</span>
+  </div>
+
+  <div class="sec-title">The calls — what each means &amp; what it pairs with</div>
+  <div id="cheatCalls"></div>
+
+  <div class="sec-title">Scenarios — the sequence to run</div>
+  <div class="scn" id="cheatScenarios"></div>
+
+  <div class="sec-title">The rules</div>
+  <div class="rules" id="cheatRules"></div>
+
+  <div class="foot" id="cheatFoot"></div>
+</div>
+
+<script src="data.js"></script>
+<script src="cheatsheet.js"></script>
+</body>
+</html>

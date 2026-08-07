@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<title>Elk — A Field Phrasebook of Cow Vocalizations</title>
-<meta name="description" content="A backcountry field reference for cow-elk vocalizations: what each call means, what it pairs with, and which sequence to run in each scenario.">
+<title>Elk — A Field Phrasebook of Cow &amp; Bull Vocalizations</title>
+<meta name="description" content="A backcountry field reference for elk vocalizations: what each call means, what it pairs with, and which sequence to run in each scenario.">
 <style>
 /* ============================================================
    TOKENS — three-state theming (light default, system dark, explicit dark)
@@ -22,7 +22,8 @@
   --hero-1:#20402d; --hero-2:#2c5942; --hero-ink:#eef3e7; --hero-dim:#b9c9b7;
 
   /* semantic role hues */
-  --locate:#3f7a58; --direct:#9c7420; --emotion:#a5482f; --cue:#456079; --combo:#6f4d86; --neutral:#6e7566;
+  --locate:#3f7a58; --direct:#9c7420; --emotion:#b5622f; --challenge:#9d3535;
+  --cue:#456079; --combo:#6f4d86; --neutral:#6e7566;
 
   --radius:12px; --radius-sm:8px;
   --shadow:0 1px 2px rgba(22,30,22,.05), 0 14px 34px rgba(22,30,22,.07);
@@ -40,7 +41,8 @@
     --pine:#7fb593; --pine-ink:#eef3e7;
     --gold:#d8ab54; --gold-bright:#e6bd6a;
     --hero-1:#132018; --hero-2:#1d3527; --hero-ink:#eef3e7; --hero-dim:#9fb3a1;
-    --locate:#63b083; --direct:#d6a94f; --emotion:#dd7c60; --cue:#7f9bb4; --combo:#ac8ecb; --neutral:#98a08a;
+    --locate:#63b083; --direct:#d6a94f; --emotion:#e08a52; --challenge:#e07071;
+    --cue:#7f9bb4; --combo:#ac8ecb; --neutral:#98a08a;
     --shadow:0 1px 2px rgba(0,0,0,.5), 0 16px 40px rgba(0,0,0,.4);
     --shadow-sm:0 1px 2px rgba(0,0,0,.5);
   }
@@ -52,7 +54,8 @@
   --pine:#7fb593; --pine-ink:#eef3e7;
   --gold:#d8ab54; --gold-bright:#e6bd6a;
   --hero-1:#132018; --hero-2:#1d3527; --hero-ink:#eef3e7; --hero-dim:#9fb3a1;
-  --locate:#63b083; --direct:#d6a94f; --emotion:#dd7c60; --cue:#7f9bb4; --combo:#ac8ecb; --neutral:#98a08a;
+  --locate:#63b083; --direct:#d6a94f; --emotion:#e08a52; --challenge:#e07071;
+  --cue:#7f9bb4; --combo:#ac8ecb; --neutral:#98a08a;
   --shadow:0 1px 2px rgba(0,0,0,.5), 0 16px 40px rgba(0,0,0,.4);
   --shadow-sm:0 1px 2px rgba(0,0,0,.5);
 }
@@ -70,15 +73,17 @@ body{
 h1,h2,h3{font-family:var(--serif); font-weight:600; line-height:1.14; margin:0; text-wrap:balance}
 p{margin:0}
 
-/* label register — the "field data" voice */
-.label{
-  font-family:var(--mono); font-size:.7rem; letter-spacing:.12em; text-transform:uppercase;
-  font-weight:600;
+.label{font-family:var(--mono); font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; font-weight:600}
+.eyebrow{font-family:var(--sans); font-size:.74rem; letter-spacing:.2em; text-transform:uppercase; font-weight:700; color:var(--gold)}
+
+/* flip text on solid pine backgrounds so it stays legible in both themes */
+.scenario .num, .seg button[aria-pressed="true"]{color:var(--pine-ink)}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .scenario .num,
+  :root:not([data-theme="light"]) .seg button[aria-pressed="true"]{color:#0b0f0a}
 }
-.eyebrow{
-  font-family:var(--sans); font-size:.74rem; letter-spacing:.2em; text-transform:uppercase;
-  font-weight:700; color:var(--gold);
-}
+:root[data-theme="dark"] .scenario .num,
+:root[data-theme="dark"] .seg button[aria-pressed="true"]{color:#0b0f0a}
 
 /* ============================================================
    HERO
@@ -88,7 +93,7 @@ p{margin:0}
 .hero-inner{position:relative; max-width:var(--maxw); margin:0 auto; padding:54px 24px 48px}
 .hero .kicker{display:inline-flex; align-items:center; gap:9px; color:var(--hero-dim); margin-bottom:18px}
 .hero .kicker svg{width:19px; height:19px}
-.hero h1{font-size:clamp(2.05rem,4.8vw,3.15rem); max-width:19ch; letter-spacing:-.015em}
+.hero h1{font-size:clamp(2.05rem,4.8vw,3.15rem); max-width:20ch; letter-spacing:-.015em}
 .hero .lede{margin-top:16px; max-width:56ch; font-size:1.08rem; color:var(--hero-ink); opacity:.94}
 .hero .lede b{color:var(--gold-bright); font-weight:600}
 .hero .credit{margin-top:22px; padding-top:16px; border-top:1px solid rgba(255,255,255,.14); font-size:.85rem; color:var(--hero-dim); max-width:56ch}
@@ -101,13 +106,16 @@ p{margin:0}
 .subnav a{font-family:var(--mono); font-size:.78rem; letter-spacing:.04em; text-decoration:none; color:var(--muted); padding:7px 13px; border-radius:999px; border:1px solid transparent}
 .subnav a:hover{color:var(--ink); background:var(--surface-2); border-color:var(--line)}
 .subnav a .n{color:var(--faint); margin-right:7px}
+.subnav .spacer{flex:1}
+.subnav a.card-link{color:var(--gold); border-color:color-mix(in srgb,var(--gold) 40%,var(--line))}
+.subnav a.card-link:hover{background:color-mix(in srgb,var(--gold) 12%,transparent)}
 
 /* ============================================================
    LAYOUT
    ============================================================ */
 main{max-width:var(--maxw); margin:0 auto; padding:8px 24px 84px}
 section{padding-top:52px; scroll-margin-top:60px}
-.section-head{margin-bottom:22px; max-width:70ch}
+.section-head{margin-bottom:22px; max-width:72ch}
 .section-head h2{font-size:clamp(1.55rem,3.2vw,2.05rem); margin-top:8px; letter-spacing:-.01em}
 .section-head .sub{margin-top:9px; color:var(--muted)}
 .section-head .sub b{color:var(--ink); font-weight:600}
@@ -125,14 +133,17 @@ section{padding-top:52px; scroll-margin-top:60px}
    CONTROLS
    ============================================================ */
 .controls{display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-bottom:20px}
-.search{flex:1 1 240px; min-width:190px; display:flex; align-items:center; gap:9px; background:var(--surface); border:1px solid var(--line-2); border-radius:999px; padding:10px 16px; box-shadow:var(--shadow-sm)}
+.search{flex:1 1 220px; min-width:180px; display:flex; align-items:center; gap:9px; background:var(--surface); border:1px solid var(--line-2); border-radius:999px; padding:10px 16px; box-shadow:var(--shadow-sm)}
 .search input{border:0; outline:0; background:transparent; color:var(--ink); font:inherit; width:100%}
 .search svg{width:16px; height:16px; color:var(--faint); flex:none}
+.seg{display:inline-flex; background:var(--surface); border:1px solid var(--line-2); border-radius:999px; padding:3px}
+.seg button{font-family:var(--mono); font-size:.72rem; letter-spacing:.04em; text-transform:uppercase; border:0; background:transparent; color:var(--muted); padding:6px 13px; border-radius:999px; cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--pine)}
 .legend{display:flex; flex-wrap:wrap; gap:6px}
 .chip-btn{font-family:var(--mono); font-size:.72rem; letter-spacing:.04em; text-transform:uppercase; cursor:pointer; border:1px solid var(--line-2); background:var(--surface); color:var(--muted); padding:7px 11px; border-radius:999px; display:inline-flex; align-items:center; gap:7px}
 .chip-btn .dot{width:9px; height:9px; border-radius:2px; background:var(--c,var(--neutral))}
 .chip-btn[aria-pressed="true"]{color:var(--ink); border-color:var(--c,var(--ink)); background:color-mix(in srgb,var(--c,var(--ink)) 13%,var(--surface))}
-.chip-btn:focus-visible,.pair:focus-visible,.call-chip:focus-visible,.subnav a:focus-visible,.search:focus-within{outline:2px solid var(--gold); outline-offset:2px}
+.chip-btn:focus-visible,.pair:focus-visible,.call-chip:focus-visible,.subnav a:focus-visible,.seg button:focus-visible,.search:focus-within{outline:2px solid var(--gold); outline-offset:2px}
 
 /* ============================================================
    CALLS — the lexicon
@@ -146,7 +157,7 @@ section{padding-top:52px; scroll-margin-top:60px}
 .call-top{display:flex; align-items:baseline; gap:10px; justify-content:space-between; margin-bottom:9px; padding-left:9px}
 .call-top h3{font-size:1.1rem}
 .badge{font-family:var(--mono); font-size:.64rem; letter-spacing:.09em; text-transform:uppercase; padding:4px 8px; border-radius:5px; white-space:nowrap; color:var(--c,var(--neutral)); background:color-mix(in srgb,var(--c,var(--neutral)) 15%,transparent)}
-.foundation{display:inline-block; margin-left:7px; font-family:var(--mono); font-size:.6rem; letter-spacing:.04em; color:var(--faint); border:1px dashed var(--line-2); padding:2px 6px; border-radius:5px; vertical-align:middle; text-transform:uppercase}
+.foundation{display:inline-block; margin-left:7px; font-family:var(--mono); font-size:.6rem; letter-spacing:.04em; color:var(--faint); border:1px dashed var(--line-2); padding:2px 6px; border-radius:5px; vertical-align:middle; text-transform:uppercase; cursor:help}
 .call .meaning{margin:0 0 13px; font-size:.93rem; padding-left:9px}
 .pairs-label{font-family:var(--mono); font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; color:var(--faint); margin-bottom:7px; padding-left:9px}
 .pairs{display:flex; flex-wrap:wrap; gap:6px; padding-left:9px}
@@ -154,6 +165,7 @@ section{padding-top:52px; scroll-margin-top:60px}
 .pair .dot{width:7px; height:7px; border-radius:2px; background:var(--c,var(--neutral))}
 .pair:hover{border-color:var(--c,var(--neutral))}
 .no-results{color:var(--muted); font-style:italic; padding:22px 4px}
+.no-results.hidden{display:none}
 
 /* ============================================================
    SCENARIOS — field dispatches
@@ -162,10 +174,7 @@ section{padding-top:52px; scroll-margin-top:60px}
 .scenario{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow-sm); overflow:hidden}
 .scenario>summary{list-style:none; cursor:pointer; padding:17px 19px; display:flex; align-items:flex-start; gap:15px}
 .scenario>summary::-webkit-details-marker{display:none}
-.scenario .num{flex:none; width:34px; height:34px; border-radius:8px; background:var(--pine); color:var(--pine-ink); display:grid; place-items:center; font-family:var(--mono); font-size:.82rem; font-weight:700; margin-top:2px}
-:root[data-theme="dark"] .scenario .num,
-:root:not([data-theme="light"]) .scenario .num{color:#0b0f0a}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .scenario .num{color:#0b0f0a}}
+.scenario .num{flex:none; width:34px; height:34px; border-radius:8px; background:var(--pine); display:grid; place-items:center; font-family:var(--mono); font-size:.82rem; font-weight:700; margin-top:2px}
 .scenario .s-head{flex:1}
 .scenario .s-tag{color:var(--gold); display:block; margin-bottom:5px}
 .scenario .s-head h3{font-size:1.15rem; letter-spacing:-.005em}
@@ -193,10 +202,11 @@ section{padding-top:52px; scroll-margin-top:60px}
    FOOTER
    ============================================================ */
 footer{border-top:1px solid var(--line); background:var(--paper-2)}
-.footer-inner{max-width:var(--maxw); margin:0 auto; padding:28px 24px; color:var(--muted); font-size:.87rem; max-width:80ch}
+.footer-inner{max-width:80ch; margin:0 auto; padding:28px 24px; color:var(--muted); font-size:.87rem}
 .footer-inner p{margin:0 0 9px}
 .footer-inner b{color:var(--ink)}
-.footer-inner .foundation{margin:0 3px}
+.footer-inner a{color:var(--gold)}
+.footer-inner .foundation{margin:0 3px; cursor:default}
 
 @media (max-width:620px){
   .hero-inner{padding:42px 20px 36px}
@@ -222,11 +232,11 @@ footer{border-top:1px solid var(--line); background:var(--paper-2)}
   <div class="hero-inner">
     <div class="kicker eyebrow">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 12c-1.6-1-2.4-3-2.4-5.2 0-1.2.4-2.3 1-3.3M16 12c1.6-1 2.4-3 2.4-5.2 0-1.2-.4-2.3-1-3.3M6.6 3.5 5 2M6 6.6 4 6.4M17.4 3.5 19 2M18 6.6 20 6.4M9 12.5a3 3 0 0 0 6 0M8.2 16.5c0 2.1 1.7 3.9 3.8 3.9s3.8-1.8 3.8-3.9"/></svg>
-      A field phrasebook · cow-elk vocalizations
+      A field phrasebook · elk vocalizations
     </div>
     <h1>Which call to use, what it means, and what it pairs with.</h1>
     <p class="lede"><b>Elk calls are words.</b> Learn what each one says, then string them together to tell a bull whatever story the moment calls for. No sound-alike descriptions here — just meaning, and how the words combine.</p>
-    <p class="credit">Built on the cow-elk vocalization &amp; communication philosophy taught by Chris Rose.</p>
+    <p class="credit">Built on the elk vocalization &amp; communication philosophy taught by Chris Roe.</p>
   </div>
 </header>
 
@@ -235,6 +245,8 @@ footer{border-top:1px solid var(--line); background:var(--paper-2)}
     <a href="#principles"><span class="n">01</span>Principles</a>
     <a href="#calls"><span class="n">02</span>The Calls</a>
     <a href="#scenarios"><span class="n">03</span>Scenarios</a>
+    <span class="spacer"></span>
+    <a class="card-link" href="cheatsheet.html">⎙ Field card</a>
   </div>
 </nav>
 
@@ -242,7 +254,7 @@ footer{border-top:1px solid var(--line); background:var(--paper-2)}
   <section id="principles">
     <div class="section-head">
       <div class="eyebrow">Start here</div>
-      <h2>The philosophy, in eight ideas</h2>
+      <h2>The philosophy, in nine ideas</h2>
       <p class="sub">Every scenario below is just these ideas applied. <b>Understand the words, and there isn&rsquo;t a vocal scenario you can&rsquo;t create.</b></p>
     </div>
     <div class="principles" id="principleGrid"></div>
@@ -252,17 +264,22 @@ footer{border-top:1px solid var(--line); background:var(--paper-2)}
     <div class="section-head">
       <div class="eyebrow">The lexicon</div>
       <h2>The calls &amp; what they mean</h2>
-      <p class="sub">Each call is a word. Tap a <b>pairs&nbsp;with</b> tag to jump to the call it commonly leads into. The colored key groups calls by the job they do.</p>
+      <p class="sub">Each call is a word. Filter by <b>voice</b> (who makes it) or by <b>job</b> (the colored key), and tap a <b>pairs&nbsp;with</b> tag to jump to the call it leads into.</p>
     </div>
     <div class="controls">
       <label class="search">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
         <input id="callFilter" type="search" placeholder="Search calls or meanings&hellip;" autocomplete="off" aria-label="Search calls">
       </label>
+      <div class="seg" id="voiceSeg" role="group" aria-label="Filter by voice">
+        <button type="button" data-voice="all" aria-pressed="true">All</button>
+        <button type="button" data-voice="cow" aria-pressed="false">Cow</button>
+        <button type="button" data-voice="bull" aria-pressed="false">Bull</button>
+      </div>
       <div class="legend" id="legend"></div>
     </div>
     <div class="call-grid" id="callGrid"></div>
-    <p class="no-results hidden" id="noResults">No calls match that search.</p>
+    <p class="no-results hidden" id="noResults">No calls match those filters.</p>
   </section>
 
   <section id="scenarios">
@@ -277,322 +294,12 @@ footer{border-top:1px solid var(--line); background:var(--paper-2)}
 
 <footer>
   <div class="footer-inner">
-    <p><b>About this reference.</b> Distilled from the &ldquo;Understanding Cow-Elk Vocalizations &amp; Communication&rdquo; series &mdash; specifically the closing &ldquo;putting it all together&rdquo; video. A few foundational calls, marked <span class="foundation">videos 1&ndash;9</span>, are defined more fully in the earlier videos of that series and aren&rsquo;t yet reflected in full here.</p>
-    <p>A living reference &mdash; calls and scenarios are easy to add as more of the series is worked in.</p>
+    <p><b>About this reference.</b> The cow calls are distilled from the &ldquo;Understanding Cow-Elk Vocalizations &amp; Communication&rdquo; series &mdash; specifically the closing &ldquo;putting it all together&rdquo; video. A few cow calls marked <span class="foundation">videos 1&ndash;9</span> are defined more fully in the earlier videos of that series. The bull sounds, marked <span class="foundation">general elk</span>, carry the same &ldquo;calls are words&rdquo; approach over to widely-taught elk behavior and aren&rsquo;t drawn from that cow-only series.</p>
+    <p>A living reference &mdash; calls and scenarios live in <b>data.js</b> and are easy to add to. Looking for the pocket version? <a href="cheatsheet.html">Open the field card &rarr;</a></p>
   </div>
 </footer>
 
-<script>
-/* =========================================================================
-   DATA — edit here to add or refine calls, scenarios, and principles.
-   role: locate | direct | emotion | cue | combo   (drives color + grouping)
-   ========================================================================= */
-const ROLES = {
-  locate:  {label:"Locate",    var:"--locate",  blurb:"Find him & open contact"},
-  direct:  {label:"Direct",    var:"--direct",  blurb:"Bring him in to you"},
-  emotion: {label:"Emotion",   var:"--emotion", blurb:"Add feeling & urgency"},
-  cue:     {label:"His reply", var:"--cue",     blurb:"A bull sound to read, not make"},
-  combo:   {label:"Combo",     var:"--combo",   blurb:"A string of calls"},
-};
-
-const CALLS = [
-  { id:"chirp", name:"Chirp", role:"locate", foundation:true,
-    meaning:"Relaxed, everyday herd talk — “we’re just elk here, all is calm.” An opener you use to start a conversation and get a bull to reveal himself.",
-    pairs:["mew","lostMew"] },
-
-  { id:"mew", name:"Basic mew", role:"locate", foundation:true,
-    meaning:"Casual cow-to-cow contact — a low-key “I’m here.” Used alongside chirps to open a calling scenario.",
-    pairs:["chirp","lostMew"] },
-
-  { id:"lostMew", name:"Lost mew", role:"locate",
-    meaning:"“Where are you?” A locating call. You heard him and want to pin down exactly where he is. It opens a direct, one-on-one line of communication — use it to make contact before you ask for anything.",
-    pairs:["assemblyMew","longMew","aggravatedWhine"] },
-
-  { id:"assemblyMew", name:"Assembly mew", role:"direct",
-    meaning:"“Come to me — this is where I am.” The directing call. Once he’s interested, stop asking where he is and simply tell him to keep coming to you. This is your finishing call.",
-    pairs:["lostMew","frustratedWhine","demandingMew","longMew"] },
-
-  { id:"demandingMew", name:"Demanding mew", role:"direct", foundation:true,
-    meaning:"A more insistent “come here — now.” A stronger, pushier assembly mew for a reluctant bull, and a core ingredient of the hyper-hot combination.",
-    pairs:["assemblyMew","frustratedWhine","aggravatedWhine"] },
-
-  { id:"longMew", name:"Long mew", role:"emotion",
-    meaning:"Lost mew + assembly mew in one breath: “Where are you? I want to be with you — why aren’t you coming?” Adds eagerness and a touch of confusion. Made for a bull who’s lollygagging or drifting off to the side.",
-    pairs:["lostMew","assemblyMew","frustratedWhine"] },
-
-  { id:"frustratedWhine", name:"Frustrated whine", role:"emotion",
-    meaning:"“I really want your company and I’m getting impatient.” Layer it in when a committed bull is taking his sweet time.",
-    pairs:["assemblyMew","demandingMew"] },
-
-  { id:"aggravatedWhine", name:"Aggravated whine", role:"emotion",
-    meaning:"An agitated cow — think of one fed up with a pestering young bull. Adds urgency and agitation to a scene; a key part of the desperate-cow tactic and the hyper-hot combination.",
-    pairs:["lostMew","assemblyMew","demandingMew"] },
-
-  { id:"contactBugle", name:"Contact bugle", role:"cue",
-    meaning:"Not your call — his. A quiet, low-key bugle a bull uses to answer. Learn to hear it: it tells you he’s engaged and it’s time to switch from locating (lost mew) to directing (assembly mew).",
-    pairs:["lostMew","assemblyMew"] },
-
-  { id:"hyperHot", name:"Hyper-hot / hyper-estrous", role:"combo",
-    meaning:"Not a special, unique call — a fast, repeated string of everyday calls (assembly → demanding mew → frustrated whine → assembly → demanding mew → aggravated whine → assembly) that together say “I need a bull in my location right now.” A last resort when bulls answer but won’t commit.",
-    pairs:["assemblyMew","demandingMew","frustratedWhine","aggravatedWhine"] },
-];
-
-const SCENARIOS = [
-  {
-    title:"An interested bull, and no protective cows", tag:"Invite him over",
-    situation:"You’re working a bull with chirps and basic mews and he answers. He seems to be by himself — or at least not locked down with protective cows — and you’d like to invite him in.",
-    steps:[
-      { call:"lostMew", action:"Answer his bugle with a lost mew or two.", note:"You heard him — now open a direct, one-on-one line and find out exactly where he is." },
-      { call:"assemblyMew", action:"If he sounds interested and might be coming, switch to assembly mews.", note:"Stop asking where he is. Just tell him where you are and to keep coming to you." },
-      { call:"tip", action:"Keep the same call the whole way through.", note:"One caller = one cow. Mixing calls paints a picture of several animals and splits his focus." },
-      { call:"silence", action:"When he’s close enough to have your location pinned, go quiet and get ready.", note:"With a correct setup, he’ll keep coming on his own." },
-    ],
-    principle:"Establish contact, then direct. A correct setup lets a couple of calls finish the job."
-  },
-  {
-    title:"A bull that lollygags or drifts off to the side", tag:"Re-commit him",
-    situation:"He answered and started in, but now he’s dragging his feet or angling off to the side instead of coming straight to you.",
-    steps:[
-      { call:"longMew", action:"Switch to the long mew (lost + assembly).", note:"Adds eagerness and a little confusion — “Where are you? I want to be with you. Why aren’t you coming?” It pulls him back and adds feeling." },
-      { call:"assemblyMew", action:"As soon as he commits and starts closing, go back to assembly mews to finish him." },
-      { call:"frustratedWhine", action:"If he still takes his time, throw in a few frustrated whines.", note:"Let him know you really want his company and you’re getting impatient." },
-    ],
-    principle:"Add emotion to the sequence when a bull needs a little extra convincing."
-  },
-  {
-    title:"Pulling a bull from his bed", tag:"Located & set up close",
-    situation:"You know where a bull is bedded, you’ve read that he’s looking for cows, and you’ve slipped in close (around 250 yards) with the wind in your favor.",
-    cue:"A bull gets up out of his bed and gives a weak bugle.",
-    steps:[
-      { call:"lostMew", action:"On that weak bugle, send a clear series of lost mews.", note:"It gets them up on their feet and looking your way." },
-      { call:"assemblyMew", action:"The moment he bugles again, hit him with one clear assembly mew." },
-      { call:"assemblyMew", action:"Only add one or two more assembly mews if he stops on the way in (say, to rake a tree)." },
-    ],
-    principle:"Proper setup plus one or two strategic calls can walk a bull from 250 yards to a few steps."
-  },
-  {
-    title:"A pressured bull tucked in a hidey-hole", tag:"Desperate-cow tactic",
-    situation:"A pressured bull sits tight in a spot with no clean way in, and calling from a distance won’t budge him. You need him to come out to you.",
-    setup:"Pick a route elk use but that no hunter ever would — steep, thick, noisy — and use the terrain and noise as part of the act. Set up about 30 minutes before dark, above his hole, where that trail drops into the timber.",
-    steps:[
-      { call:"aggravatedWhine", action:"Open with a couple of aggravated whines, then crash down the trail — breaking twigs, rolling rocks, kicking dirt.", note:"Sound like a cow fleeing a pesky young bull." },
-      { call:"lostMew", action:"As you move, mix in a few lost mews.", note:"The cow is also looking for another elk to run to." },
-      { call:"contactBugle", action:"Listen for his answer — a quiet contact bugle.", note:"That’s your cue that he’s engaged." },
-      { call:"assemblyMew", action:"The instant he answers, switch from lost mews to assembly mews and hammer him — keep the noisy movement coming toward him." },
-      { call:"silence", action:"When you see him coming, stop, give one more assembly mew to lock his direction, and get ready." },
-    ],
-    principle:"Realism and plausibility beat volume. Do something no other hunter in the area would do."
-  },
-  {
-    title:"Bulls answer but won’t commit", tag:"Last resort",
-    situation:"Bulls are there and will answer once or twice, but nothing brings them in. Everything else has failed.",
-    steps:[
-      { call:"hyperHot", action:"Run the hyper-hot combination fast and back-to-back: assembly → demanding mew → frustrated whine → assembly → demanding mew → aggravated whine → assembly — then repeat.", note:"Strung together, they say “I need a bull in my location right now.”" },
-    ],
-    principle:"It isn’t a magic call — it’s the everyday words strung together with urgency. Save it for when nothing else works."
-  },
-];
-
-const PRINCIPLES = [
-  { t:"Learn the words", d:"Once you know what each call means, you can combine them to say almost anything a cow can say." },
-  { t:"One caller, one cow", d:"Keep the same call and voice through a sequence so the bull focuses on a single animal. Multiple calls paint multiple animals." },
-  { t:"Locate, then direct", d:"Start with a lost mew to open contact, then switch to assembly mews to bring him in." },
-  { t:"Call strategically, not constantly", d:"A couple of well-placed calls beat a lot of noise. When he’s committed, go quiet and get ready." },
-  { t:"Add emotion when needed", d:"Long mews and frustrated or aggravated whines add feeling for a bull who won’t commit." },
-  { t:"Make it realistic", d:"Pair calls with terrain, movement, sound, timing, and wind so the whole scene is believable." },
-  { t:"Read his replies", d:"A weak or quiet contact bugle is your cue to stop locating and start assembling." },
-  { t:"Setup is everything", d:"The right wind and position let your calls do their job." },
-];
-
-/* =========================================================================
-   RENDER
-   ========================================================================= */
-const byId = Object.fromEntries(CALLS.map(c => [c.id, c]));
-const cvar = role => (ROLES[role] ? ROLES[role].var : "--neutral");
-const el = (tag, cls, html) => { const n = document.createElement(tag); if(cls) n.className = cls; if(html != null) n.innerHTML = html; return n; };
-
-/* Principles */
-const pGrid = document.getElementById("principleGrid");
-PRINCIPLES.forEach((p, i) => {
-  const c = el("div","principle");
-  c.appendChild(el("div","pn", String(i+1).padStart(2,"0")));
-  c.appendChild(el("h3", null, p.t));
-  c.appendChild(el("p", null, p.d));
-  pGrid.appendChild(c);
-});
-
-/* Legend / filters */
-const legend = document.getElementById("legend");
-let activeRole = null;
-Object.entries(ROLES).forEach(([role, meta]) => {
-  const b = el("button","chip-btn");
-  b.type = "button";
-  b.style.setProperty("--c", `var(${meta.var})`);
-  b.setAttribute("aria-pressed","false");
-  b.dataset.role = role;
-  b.title = meta.blurb;
-  b.innerHTML = `<span class="dot"></span>${meta.label}`;
-  b.addEventListener("click", () => {
-    activeRole = (activeRole === role) ? null : role;
-    [...legend.children].forEach(x => x.setAttribute("aria-pressed", String(x.dataset.role === activeRole)));
-    applyFilter();
-  });
-  legend.appendChild(b);
-});
-
-/* Calls */
-const callGrid = document.getElementById("callGrid");
-CALLS.forEach(c => {
-  const card = el("article","call");
-  card.id = "call-" + c.id;
-  card.style.setProperty("--c", `var(${cvar(c.role)})`);
-  card.dataset.role = c.role;
-  card.dataset.text = (c.name + " " + c.meaning).toLowerCase();
-
-  const top = el("div","call-top");
-  top.appendChild(el("h3", null, c.name + (c.foundation ? ' <span class="foundation">videos 1&ndash;9</span>' : '')));
-  top.appendChild(el("span","badge", ROLES[c.role].label));
-  card.appendChild(top);
-
-  card.appendChild(el("p","meaning", c.meaning));
-
-  if (c.pairs && c.pairs.length){
-    card.appendChild(el("div","pairs-label","Pairs with"));
-    const wrap = el("div","pairs");
-    c.pairs.forEach(pid => {
-      const t = byId[pid]; if(!t) return;
-      const chip = el("button","pair");
-      chip.type = "button";
-      chip.style.setProperty("--c", `var(${cvar(t.role)})`);
-      chip.dataset.target = pid;
-      chip.innerHTML = `<span class="dot"></span>${t.name}`;
-      chip.addEventListener("click", () => focusCall(pid));
-      wrap.appendChild(chip);
-    });
-    card.appendChild(wrap);
-  }
-  callGrid.appendChild(card);
-});
-
-function focusCall(id){
-  document.getElementById("callFilter").value = "";
-  activeRole = null;
-  [...legend.children].forEach(x => x.setAttribute("aria-pressed","false"));
-  applyFilter();
-  const node = document.getElementById("call-" + id);
-  if(!node) return;
-  node.scrollIntoView({behavior:"smooth", block:"center"});
-  node.classList.remove("flash"); void node.offsetWidth; node.classList.add("flash");
-}
-
-/* Filtering */
-const filterInput = document.getElementById("callFilter");
-const noResults = document.getElementById("noResults");
-function applyFilter(){
-  const q = filterInput.value.trim().toLowerCase();
-  let shown = 0;
-  [...callGrid.children].forEach(card => {
-    const okText = !q || card.dataset.text.includes(q);
-    const okRole = !activeRole || card.dataset.role === activeRole;
-    const show = okText && okRole;
-    card.classList.toggle("hidden", !show);
-    if(show) shown++;
-  });
-  noResults.classList.toggle("hidden", shown !== 0);
-}
-filterInput.addEventListener("input", applyFilter);
-
-/* Scenarios */
-const list = document.getElementById("scenarioList");
-SCENARIOS.forEach((s, i) => {
-  const d = el("details","scenario");
-  if(i === 0) d.open = true;
-
-  const sum = el("summary");
-  sum.appendChild(el("span","num", String(i+1).padStart(2,"0")));
-  const head = el("div","s-head");
-  head.appendChild(el("span","s-tag label", s.tag));
-  head.appendChild(el("h3", null, s.title));
-  sum.appendChild(head);
-  sum.appendChild(el("span","caret","›"));
-  d.appendChild(sum);
-
-  const body = el("div","s-body");
-  body.appendChild(el("p","situation", s.situation));
-  if(s.setup) body.appendChild(el("div","callout", `<span class="label">Set the stage</span>${s.setup}`));
-  if(s.cue)   body.appendChild(el("div","callout", `<span class="label">His cue</span>${s.cue}`));
-
-  const steps = el("ol","steps");
-  s.steps.forEach((st, idx) => {
-    const li = el("li","step");
-    li.appendChild(el("span","stepnum", String(idx+1)));
-    const main = el("div","step-main");
-
-    let chip;
-    if(st.call === "silence"){
-      chip = el("span","call-chip static"); chip.style.setProperty("--c","var(--neutral)");
-      chip.innerHTML = `<span class="dot"></span>Go quiet &amp; set up`;
-    } else if(st.call === "tip"){
-      chip = el("span","call-chip static"); chip.style.setProperty("--c","var(--pine)");
-      chip.innerHTML = `<span class="dot"></span>Keep it simple`;
-    } else {
-      const c = byId[st.call];
-      chip = el("button","call-chip"); chip.type = "button";
-      chip.style.setProperty("--c", `var(${cvar(c.role)})`);
-      chip.innerHTML = `<span class="dot"></span>${c.name}`;
-      chip.title = "Jump to this call";
-      chip.addEventListener("click", () => { document.getElementById("calls").scrollIntoView({behavior:"smooth"}); setTimeout(()=>focusCall(st.call), 350); });
-    }
-    main.appendChild(chip);
-    main.appendChild(el("p","action", st.action));
-    if(st.note) main.appendChild(el("p","note", st.note));
-    li.appendChild(main);
-    steps.appendChild(li);
-  });
-  body.appendChild(steps);
-  body.appendChild(el("div","principle-line", `<span class="label">Takeaway</span> ${s.principle}`));
-  d.appendChild(body);
-  list.appendChild(d);
-});
-
-/* =========================================================================
-   Topographic contour motif — drawn once (static), subject-grounded flourish
-   ========================================================================= */
-(function(){
-  const cv = document.getElementById("topo");
-  if(!cv || !cv.getContext) return;
-  const ctx = cv.getContext("2d");
-  function draw(){
-    const w = cv.clientWidth, h = cv.clientHeight;
-    if(!w || !h) return;
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    cv.width = Math.round(w*dpr); cv.height = Math.round(h*dpr);
-    ctx.setTransform(dpr,0,0,dpr,0,0);
-    ctx.clearRect(0,0,w,h);
-    const cx = w*0.83, cy = h*0.34;
-    const rings = 11;
-    for(let i=0;i<rings;i++){
-      const base = 34 + i*44;
-      ctx.beginPath();
-      for(let a=0;a<=Math.PI*2+0.001;a+=0.07){
-        const r = base
-          + Math.sin(a*3 + i*0.55)*11
-          + Math.sin(a*5 - i*0.9)*6
-          + Math.cos(a*2 + i*1.3)*9;
-        const x = cx + Math.cos(a)*r*1.18;
-        const y = cy + Math.sin(a)*r;
-        a===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
-      }
-      ctx.closePath();
-      ctx.lineWidth = 1;
-      ctx.strokeStyle = (i===4) ? "rgba(216,171,84,0.34)" : "rgba(233,238,224,0.10)";
-      ctx.stroke();
-    }
-  }
-  draw();
-  let raf = null;
-  window.addEventListener("resize", () => { if(raf) cancelAnimationFrame(raf); raf = requestAnimationFrame(draw); });
-})();
-</script>
+<script src="data.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
