@@ -175,6 +175,7 @@
   const mBadges    = document.getElementById("modalBadges");
   const mMedia     = document.getElementById("modalVideo");
   const mMeaning   = document.getElementById("modalMeaning");
+  const mLesson    = document.getElementById("modalLesson");
   const mPairsWrap = document.getElementById("modalPairsWrap");
   const mPairs     = document.getElementById("modalPairs");
   let lastFocus = null;
@@ -226,6 +227,22 @@
     }
 
     mMeaning.innerHTML = c.meaning;
+
+    // Full breakdown (distilled lesson), collapsed by default
+    mLesson.innerHTML = "";
+    if(c.lesson && c.lesson.length){
+      const det = el("details","lesson");
+      det.appendChild(el("summary", null, 'Full breakdown <span class="hint">Chris Roe&rsquo;s lesson</span>'));
+      const lbody = el("div","lesson-body");
+      c.lesson.forEach(sec => {
+        const s = document.createElement("section");
+        s.appendChild(el("h4", null, sec.h));
+        s.appendChild(el("div", null, sec.body));
+        lbody.appendChild(s);
+      });
+      det.appendChild(lbody);
+      mLesson.appendChild(det);
+    }
 
     mPairs.innerHTML = "";
     if(c.pairs && c.pairs.length){

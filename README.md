@@ -14,8 +14,8 @@ can string them together to tell a bull whatever story the moment calls for.
 
 - **The Calls** — a searchable lexicon. Filter by **voice** (Cow / Bull) or by
   **job** (a color key: locate / direct / emotion / challenge / his-reply /
-  combo). **Tap any call name to play its demo clip**, read its meaning, and see
-  what it pairs with.
+  combo). **Tap any call name** to play its demo clip, read its meaning, open
+  Chris Roe's **full breakdown** of that call, and see what it pairs with.
 - **Scenarios** — real situations with a numbered, step-by-step calling
   sequence, including two that mix cow and bull calling.
 - **Field card** (`cheatsheet.html`) — a compact, print-first pocket reference.
@@ -33,6 +33,7 @@ Plain static site — no build step, no dependencies.
 | `app.js` | Renders the guide from `data.js` |
 | `cheatsheet.js` | Renders the field card from `data.js` |
 | `assets/media/` | Call demo clips (`.mp4` video or `.mp3` audio), one per call |
+| `transcripts/` | Word-for-word lesson transcripts (reference; not shown in the site UI) |
 
 - **Locally:** open `index.html` in any browser.
 - **Live (one-time setup):** on GitHub, go to **Settings → Pages → Build and
@@ -46,10 +47,13 @@ Plain static site — no build step, no dependencies.
 All content lives in **`data.js`** — add an entry and it renders in both the
 guide and the field card automatically.
 
-- `CALLS` — `{ id, name, role, voice, short, meaning, pairs:[ids], flag?, clip? }`
+- `CALLS` — `{ id, name, role, voice, short, meaning, pairs:[ids], flag?, clip?, lesson? }`
   - `clip` *(optional)*: path to an audio (`.mp3`) or video (`.mp4`) clip in
     `assets/media/` (e.g. `assets/media/chirp.mp4`). Tapping the call name plays
     it — `.mp4` shows a video player, `.mp3` shows an audio player.
+  - `lesson` *(optional)*: an array of `{ h, body }` sections — the distilled,
+    reworded lesson shown as a collapsible **Full breakdown** when you open the
+    call. `body` may contain simple HTML (`<b>`, `<ul>`/`<li>`, `<br>`).
   - `role`: `locate | direct | emotion | challenge | cue | combo` (sets its color).
   - `voice`: `"cow" | "bull"` (powers the Cow/Bull toggle).
   - `short`: the one-line version used on the field card.

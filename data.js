@@ -23,10 +23,17 @@ const FLAG_TITLES = {
 
 const CALLS = [
   /* ---------------------- COW ---------------------- */
-  { id:"chirp", name:"Chirp", role:"locate", voice:"cow", flag:"videos 1–9",
+  { id:"chirp", name:"Chirp", role:"locate", voice:"cow",
     clip:"assets/media/chirp.mp4",
-    short:"Calm herd contact; a conversation opener.",
-    meaning:"Relaxed, everyday herd talk — “we’re just elk here, all is calm.” An opener you use to start a conversation and get a bull to reveal himself.",
+    short:"Basic “checking-in” contact between close companions; asks for a response, not action.",
+    meaning:"The most basic contact call — a content, relaxed animal checking in with another elk in its own group (classically a cow to her calf). It asks for a response, not an action: the reply is what tells her whether all is well or something’s wrong.",
+    lesson:[
+      { h:"The three keys", body:"Get these right and it reads as a chirp:<ul><li><b>Short</b> — about a quarter-second.</li><li><b>Smooth, even slide</b> from the high note straight down to the low (a straight line, high→low).</li><li><b>Even emphasis</b> on both notes — neither is stressed.</li></ul>Changing the transition or the emphasis is what turns it into a different call, so keep it short and even." },
+      { h:"What it means", body:"A chirp comes from a <b>content, relaxed</b> animal — grazing, bedded, chewing cud — and it’s aimed at another elk <b>inside its own group</b> (classically a cow to her calf), never at an outside elk. Most important: it asks for a <b>response, not an action</b>. Chris’s picture: a parent on the couch calling “Kids!” just to hear “Yeah, Dad!” A calm answer and she goes back to what she was doing; any other answer and she’s instantly alert. <b>The reply dictates her next move.</b>" },
+      { h:"How Chris uses it", body:"<b>1) Suggest a couple of relaxed cows nearby.</b> Deadly on midday hunts once you’ve slipped within ~100 yards of a bedding area undetected. Elk bed and nap/chew ~3–4 hours, then rise to stretch, nibble, or water. Note the last time you heard them move into the bed, give ~30–45 min to settle, then be set up beside the bed no more than ~3 hours later — don’t crowd in too early or wind and movement bust you. Once set, <b>chirp and answer every 5–15 minutes</b>: you’re only suggesting a couple of unbothered cows are hanging out, and a bull will sometimes leave his cows to come look. Works on cows too — and don’t over-call.<br><br><b>2) Coax a hung-up elk a step or two.</b> Keep a diaphragm ready so you don’t move. Watch the ears and eyes: coming in, both point the same way; as it searches, the ears swivel. Just as a nervous or bored elk <b>starts to shift its gaze away</b>, hit it with a soft chirp — mid-shift its brain can’t pin the source, so it often snaps back and steps toward you. Timing is everything." },
+      { h:"Making the sound", body:"On a diaphragm or open reed, use a <b>short puff from the throat/tongue</b>, not the diaphragm — pushing from the diaphragm carries it too long and turns it into a mew. Start high, quick puff, immediately drop to the low note. <b>Calf</b> = the highest-pitched chirp (out on the tip of an open reed); <b>cow</b> = high-medium to low (mid-reed). Chris favors a quality open reed (a Hyperlip Single with a tone converter, which mimics an elk calling with its mouth closed — quieter, slightly altered tone). Can’t keep it short? A mechanical call like a Hoochie Mama helps: press the bulb until you just feel the plunger, then a short, sharp push." },
+      { h:"Takeaways", body:"<ul><li>The most basic contact call in the elk language.</li><li>Very short; smooth high→low; even emphasis.</li><li>Between closely-associated animals, within the group — not to outside elk.</li><li>Asks for a <b>response</b>, not an action.</li></ul>" }
+    ],
     pairs:["mew","lostMew"] },
 
   { id:"mew", name:"Basic mew", role:"locate", voice:"cow", flag:"videos 1–9",
