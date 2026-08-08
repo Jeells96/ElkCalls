@@ -30,9 +30,16 @@ in `../data.js`). This folder is the raw source of record.
 | — | Long mew *(later update video)* | [long-mew.md](long-mew.md) |
 | — | Estrus calls *(they don't exist)* | [estrus-calls.md](estrus-calls.md) |
 
+## Bull vocalizations
+
+| Call | Transcript |
+|------|-----------|
+| Contact bugle | [contact-bugle.md](contact-bugle.md) |
+| Chuckle | [chuckle.md](chuckle.md) |
+
 That's the cow series complete, in Roe's own progression: general contact
 (chirp → mew) → specific contact (lost mew) → asking for action (assembly mew)
 → punctuation (demanding mew) → emotion (whines, selfish mew, long mew) →
 sentences built from all of it (the "hyper-hot").
 
-_Still to come: the bull lessons (contact bugle, dominant bugle, chuckle, glunk)._
+_Still to come: the dominant bugle (and the glunk)._

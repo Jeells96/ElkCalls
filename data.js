@@ -155,15 +155,22 @@ const CALLS = [
   /* ---------------------- BULL --------------------- */
   /* Chris Roe's bull system: Contact & Dominant bugles graded by intensity
      (Level 1–3), plus the chuckle. Definitions pending his bull lesson. */
-  { id:"contactBugle", name:"Contact bugle", role:"locate", voice:"bull", flag:"pending",
+  { id:"contactBugle", name:"Contact bugle", role:"locate", voice:"bull",
     clips:[
       { label:"Level 1", src:"assets/media/bull-contact-1.mp3" },
       { label:"Level 2", src:"assets/media/bull-contact-2.mp3" },
       { label:"Level 3", src:"assets/media/bull-contact-3.mp3" }
     ],
-    short:"A bull’s contact bugle, graded by intensity (Level 1 → 3). Definition coming.",
-    meaning:"A bull’s contact bugle, graded by intensity from Level 1 (lowest-key) up to Level 3. Chris Roe’s exact definition is being added from his bull lesson — for now, use the Level buttons above to hear how the three intensities differ.",
-    pairs:["dominantBugle","chuckle"] },
+    short:"The bull’s question: “Who’s out there?” Levels 1–3 are the same question asked harder. Up close it means “show yourself.”",
+    meaning:"A bull asking a question — “who’s out there, give me a response.” It’s the bull-side twin of the lost mew: it asks for a <b>response</b>, usually vocal, but sometimes physical, with a bull coming in to make visual contact. The three <b>Levels</b> aren’t different calls — they’re the same question asked with more insistence, and Level 3 is a Level 2 with chuckles added.",
+    lesson:[
+      { h:"What the Levels mean", body:"Same question, rising insistence — exactly how people talk. Chris’s picture: you want to know what’s in his hand. First you ask politely (<b>Level 1</b>). Ignored, you ask again more firmly (<b>Level 2</b>). Ignored again, you grab his shoulder and spin him around (<b>Level 3</b>). Bulls do the same thing: a low-key opener, then more intensity if they believe someone should be there and aren’t getting an answer. Level 1 is high-pitched falling to a lower note — put a little <i>voice</i> on the end for realism, not a growl. To go from Level 2 to Level 3, you <b>add chuckles</b>." },
+      { h:"Locating a bull", body:"Open with a <b>Level 1</b> and then <b>wait</b> — a bull may take 10, 15, 30 seconds, even a couple of minutes, depending on how interested or cautious he is. That pause is information: 30 seconds means he picked his head up, listened, and thought hard about whether to answer. Two rules follow:<ul><li><b>Wait at least as long as he did</b> before you call again.</li><li><b>Read the level he answers at.</b></li></ul>No answer at Level 1? Go to Level 2, then Level 3. Once you find the level he requires, stay around it as you work in. And if his answer pins him — you know the bench he’s standing on — <b>stop bugling and go</b>. Don’t keep chatting just to keep tabs." },
+      { h:"Stay just under him", body:"If he answers at Level 1, come back at Level 1 — the line is open, so keep it low-key. If he answers at Level 2 or 3, he’s wound up, so answer <b>just below</b> him (a Level 1) to keep him talking without pushing him or putting him on edge. And once he’s finally answered after an escalation, drop back down — same as a conversation: once someone acknowledges you, you don’t keep shouting." },
+      { h:"Using it to call him in", body:"Up close the meaning shifts. At distance a contact bugle asks for a vocal answer; inside ~80–100 yards it reads as “<b>show yourself — step out where I can see you</b>.” But don’t walk straight at him. Angle off and <b>swing downwind</b>. Practically it keeps the wind in your face; behaviorally it’s the giveaway that sells it — a confident bull beelines, while an unsure bull circles downwind to size up the situation first. A direct approach can push a timid bull away; a cautious one tells him <b>he’s</b> in the driver’s seat, which is exactly what makes him step out to assert himself — and into your shooting lane." },
+      { h:"Takeaways", body:"<ul><li>Asks for a <b>response</b> — usually vocal, sometimes him showing up.</li><li>Levels 1–3 = the same question, asked harder. Level 3 = Level 2 + chuckles.</li><li>Start low, wait longer than he did, and answer <b>just under</b> his level.</li><li>Pinned his location? Stop calling and move in.</li><li>Close range = “show yourself.” Swing <b>downwind</b>, never straight in.</li></ul>" }
+    ],
+    pairs:["chuckle","dominantBugle","lostMew","assemblyMew"] },
 
   { id:"dominantBugle", name:"Dominant bugle", role:"challenge", voice:"bull", flag:"pending",
     clips:[
@@ -171,17 +178,24 @@ const CALLS = [
       { label:"Level 2", src:"assets/media/bull-dominant-2.mp3" },
       { label:"Level 3", src:"assets/media/bull-dominant-3.mp3" }
     ],
-    short:"A bull’s dominance bugle, graded by intensity (Level 1 → 3). Definition coming.",
-    meaning:"A bull’s dominance bugle, graded by intensity from Level 1 up to Level 3. Chris Roe’s exact definition is being added from his bull lesson — use the Level buttons above to hear the escalation.",
+    short:"Where the contact bugle asks a question, this one makes a statement. Levels 1–3 as before; full write-up still to come.",
+    meaning:"The bull’s statement call — where a contact bugle <i>asks</i> a question, a dominant bugle <b>makes a statement</b>. Graded the same way, Level 1 → 3, with Level 3 being Level 2 plus chuckles (pair it with <b>excited</b> chuckles). That much comes straight from Chris Roe’s chuckle lesson; his full dominant-bugle write-up is still to come, so the detail here is deliberately thin rather than guessed at.",
     pairs:["contactBugle","chuckle"] },
 
-  { id:"chuckle", name:"Chuckle", role:"challenge", voice:"bull", flag:"pending",
+  { id:"chuckle", name:"Chuckle", role:"emotion", voice:"bull",
     clips:[
-      { label:"High-pitched", src:"assets/media/bull-chuckle-highpitched.mp3" },
+      { label:"High-pitched (fast-paced)", src:"assets/media/bull-chuckle-highpitched.mp3" },
       { label:"Excited", src:"assets/media/bull-chuckle-excited.mp3" }
     ],
-    short:"The guttural stutter a bull tags onto a bugle. Definition coming.",
-    meaning:"The guttural stutter a bull tacks onto a bugle. Chris Roe’s exact definition is being added from his bull lesson — two versions are here (high-pitched fast-paced, and excited); play them with the buttons above.",
+    short:"The bull’s volume knob — tack it on a bugle to raise the intensity. Match the type: high-pitched with contact, excited with dominant. Deadly on its own.",
+    meaning:"The intensity dial for bull talk. Tacked on the end of a bugle it raises whatever that bugle was asking or stating — adding chuckles is literally what turns a Level 2 into a Level 3. <b>High-pitched, fast-paced</b> chuckles say curiosity and interest; <b>excited</b> chuckles say heightened intensity and eagerness. On their own they’re quietly lethal: they show interest while giving a bull almost nothing to judge you by.",
+    lesson:[
+      { h:"Tacking them on a bugle", body:"The common use, and a legitimate one — it’s how bulls use them. Chuckles <b>raise the intensity</b> of whatever the bugle said; going from a Level 2 to a Level 3 <i>is</i> adding chuckles. Match the type to the bugle so the meanings complement:<ul><li><b>Contact bugle → high-pitched, fast-paced chuckles.</b> Contact asks for a response; these express curiosity and interest.</li><li><b>Dominant bugle → excited chuckles.</b> Dominant makes a statement; these relay heightened intensity and eagerness.</li></ul>" },
+      { h:"Dialing the intensity", body:"Three knobs, either way you use them: <b>how long</b> the string is, <b>how loud</b> it is, and <b>how much you emphasize</b> the high squeals and accentuate the low breathy notes. Short, quiet, unemphasized = low intensity. Long, loud, and accentuated = high. Pick the string that matches the picture you’re painting." },
+      { h:"On their own — early season", body:"Working a bull with bull sounds and needing to call again — to pull his location once more, or just to answer — <b>send a string of high-pitched, fast-paced chuckles instead of a full contact bugle</b>. You say “I’m curious, interested, maybe eager to find you” without sounding excited or aggressive, so you don’t worry him into keeping his distance. The clever part: it gives him <b>very little to judge you by</b>. If he wants to know who this new bull is, his only options are to bugle again hoping you reveal more — or to come look." },
+      { h:"On their own — late, on a herded-up bull", body:"Later in September, or any bull already holding cows, once you’ve worked in as close as you can: if he seems timid, worried about other bulls, or could grab his cows and run (or step into the open to watch an approach from safety), <b>don’t challenge him with a dominant bugle</b>. Send <b>excited chuckles</b> instead. You read as a bull who’s close to his cows and very interested in <b>them</b> — not as a bull challenging <b>him</b>. Because you aren’t threatening him and you’ve given him little to evaluate, he’ll often come in to intimidate the newcomer crowding his ladies." },
+      { h:"Takeaways", body:"<ul><li>Tacked on a bugle, chuckles <b>raise the intensity</b> — Level 2 + chuckles = Level 3.</li><li><b>High-pitched/fast-paced</b> = curiosity &amp; interest (pair with contact bugles).</li><li><b>Excited</b> = intensity &amp; eagerness (pair with dominant bugles).</li><li>Intensity = length + loudness + how hard you hit the high and low notes.</li><li>Used <b>alone</b>, they show interest while revealing almost nothing — often the nudge that makes a bull come look.</li></ul>" }
+    ],
     pairs:["contactBugle","dominantBugle"] },
 ];
 
@@ -262,14 +276,28 @@ const SCENARIOS = [
     principle:"Cows will come to a calf in trouble. Five minutes might do it — or an hour; keep at it."
   },
   {
-    title:"Locating a bull at first light", tag:"Find him first",
-    situation:"Dark timber, cold morning, and you don’t yet know where the bull is or what kind of mood he’s in.",
+    title:"Locating a bull with bugles", tag:"Find him first",
+    situation:"You’re on a ridge and you believe there’s a bull down in there, but you don’t know where — or what kind of mood he’s in.",
     steps:[
-      { call:"contactBugle", action:"Throw a contact bugle to prompt an answer.", note:"You’re announcing yourself and asking who’s out there — not picking a fight yet." },
-      { call:"contactBugle", action:"Read his reply.", note:"His answering bugle tells you where he is and how fired up he is." },
-      { call:"tip", action:"Now pick your voice.", note:"Lone or satellite bull → switch to cow calls (lost mew → assembly mew) to bring him in. Fired-up herd bull → switch to a challenge." },
+      { call:"contactBugle", action:"Send one Level 1 contact bugle — low-key.", note:"You’re asking a polite question: “who’s out there?” Don’t open loud." },
+      { call:"tip", action:"Wait. Really wait — up to a couple of minutes.", note:"A bull may take 10, 15, 30 seconds or more to decide whether to answer. Time how long he takes; that’s your clock from here on." },
+      { call:"contactBugle", action:"No answer? Step up to Level 2, then Level 3.", note:"Same question, asked harder. Level 3 is a Level 2 with chuckles on the end." },
+      { call:"contactBugle", action:"When he answers, read his level and come back just under it.", note:"He answers Level 1 → answer Level 1. He answers hot at 2 or 3 → still answer at 1, staying below him so you keep him talking without pushing him. And wait at least as long as he waited." },
+      { call:"silence", action:"The moment his answer pins him, stop calling and go.", note:"Don’t keep bugling just to keep tabs — close the distance and decide up close whether to work him with cow or bull sounds." },
     ],
-    principle:"Locate first, then choose the cow or bull voice that fits the bull you’ve actually got."
+    principle:"Start quiet, wait longer than he does, and stay one notch below his intensity. Once you know where he is, stop talking and move."
+  },
+  {
+    title:"Calling a bull in with bull talk", tag:"Swing downwind",
+    situation:"You’ve located him and worked in close (roughly 80–100 yards), and you want to finish him with bull sounds rather than cow calls.",
+    setup:"Inside this range a contact bugle stops meaning “answer me” and starts meaning “show yourself.” The approach you take is what sells it.",
+    steps:[
+      { call:"tip", action:"Don’t walk straight at him — angle off and swing downwind.", note:"Wind in your face, yes. But mainly: a confident bull beelines, an unsure bull circles downwind to size things up first." },
+      { call:"contactBugle", action:"Bugle as you swing around him.", note:"Up close this reads as “step out where I can see you.” Coming from a cautious, circling bull, it tells him he holds the advantage." },
+      { call:"chuckle", action:"If he’s timid or holding cows, try a string of chuckles instead of a full bugle.", note:"High-pitched for curiosity; excited if you want to sound like a bull crowding his cows. Either way you give him almost nothing to judge you by — so he has to come look." },
+      { call:"silence", action:"When he commits to stepping out, stop and get ready.", note:"He’s coming to assert himself over a bull he thinks is nervous." },
+    ],
+    principle:"Sound like the less confident bull. Put him in the driver’s seat and he’ll step out to prove it."
   },
   {
     title:"Prying a herd bull off his cows", tag:"Challenge him",
