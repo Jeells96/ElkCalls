@@ -528,7 +528,7 @@ const SCENARIOS = [
 const BEHAVIOR = [
   {
     id:"see-you-first",
-    tag:"Behavior series · principle 1",
+    tag:"Principle 1",
     title:"See you first, hear you second, smell you third",
     summary:"Elk communicate visually before anything else. When you call, you’re promising a set of eyes — so set up where they’ll naturally come looking, and take the downwind option away from them.",
     sections:[
@@ -542,7 +542,7 @@ const BEHAVIOR = [
   },
   {
     id:"the-doorway",
-    tag:"Behavior series · principle 2",
+    tag:"Principle 2",
     title:"The doorway",
     summary:"Elk walk their country the way you walk your house. Coming to a sound, they stop in the doorway of the room they heard it in and look before they enter. Almost every elk that hangs up “just out of range” is standing in a doorway you didn’t set up on.",
     sections:[
@@ -561,7 +561,7 @@ const BEHAVIOR = [
   },
   {
     id:"decoys",
-    tag:"Behavior · doorway follow-up",
+    tag:"Follow-up to the doorway",
     title:"Decoys — and when they cost you",
     summary:"The obvious idea: if he comes to the doorway expecting to see an elk, give him one. But a decoy he can make eye contact with, standing dead still, is doing the one thing a real elk only does when it has detected danger. Roe almost never uses one, and the setup is why.",
     sections:[
@@ -581,7 +581,7 @@ const BEHAVIOR = [
   },
   {
     id:"elk-psychology",
-    tag:"Behavior · the psychology seminar",
+    tag:"Seminar",
     title:"Who are you actually calling to?",
     summary:"Elk are not interchangeable. Instinct, environment and individual personality spread them across a wide range, and the screaming, come-looking-for-a-fight bull everyone pictures is a thin sliver at one end. Pick a calling strategy that reaches the most of them — which means starting at the bedrock every elk has known since birth.",
     sections:[

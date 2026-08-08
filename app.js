@@ -671,10 +671,8 @@
   SCENARIOS.forEach((s, i) => {
     const d = el("details","scenario");
     d.id = "scn-" + i;
-    if(i === 0) d.open = true;
 
     const sum = el("summary");
-    sum.appendChild(el("span","num", String(i+1).padStart(2,"0")));
     const head = el("div","s-head");
     head.appendChild(el("span","s-tag", s.tag));
     head.appendChild(el("h3", null, s.title));
@@ -758,9 +756,7 @@
     BEHAVIOR.forEach((b, i) => {
       const d = el("details","scenario");
       d.id = "beh-" + i;
-      if(i === 0) d.open = true;
       const sum = el("summary");
-      sum.appendChild(el("span","num", String(i+1).padStart(2,"0")));
       const head = el("div","s-head");
       head.appendChild(el("span","s-tag", b.tag));
       head.appendChild(el("h3", null, b.title));
@@ -771,6 +767,19 @@
       const body = el("div","s-body");
       body.appendChild(el("p","situation", b.summary));
       const inner = el("div","more-body");
+      if(b.sections.length > 5){
+        const jump = el("div","jump");
+        b.sections.forEach((sec, n) => {
+          const a = el("button","jump-chip", sec.h);
+          a.type = "button";
+          a.addEventListener("click", () => {
+            const t = inner.querySelectorAll("section")[n];
+            if(t){ t.scrollIntoView({block:"start"}); window.scrollBy(0, -110); }
+          });
+          jump.appendChild(a);
+        });
+        inner.appendChild(jump);
+      }
       b.sections.forEach(sec => {
         const s = document.createElement("section");
         s.appendChild(el("h4", null, sec.h));
