@@ -66,6 +66,28 @@ guide and the field card automatically.
   the special values `"silence"` (go quiet) / `"tip"` (a note, no call).
 - `PRINCIPLES` — the idea cards.
 
+## Recordings still needed
+
+Sounds Chris Roe demonstrates in the lessons that aren't on the site yet. Drop a
+file into `assets/media/` using the **exact** name below and it appears on its
+call automatically — the site probes for each one at load time, so no code
+change is needed. The Sounds tab lists the same thing and ticks each one off as
+it arrives.
+
+| Filename (in `assets/media/`) | For | What it should be |
+|---|---|---|
+| `bull-check-1.mp3` | Check bugle | Starts, stops, then picks up near the end |
+| `bull-check-2.mp3` | Check bugle | Stutters the whole way through |
+| `bull-glunk.mp3` | Glunk | Chris's demo — single and double note, in a string |
+| `alarm-bark.mp3` | Alarm bark | Chris's demo — the normal bark |
+| `alarm-bark-quiet.mp3` | Alarm bark | The quiet, under-the-breath version |
+| `alarm-bark-chuckle.mp3` | Alarm bark | Bark buried inside excited chuckles — the cover-up |
+| `selfish-scream.mp3` | Selfish mew | The "selfish scream" — same call, louder and raspier |
+
+The **check bugle** is the only call with no recording at all. The **glunk** and
+**alarm bark** currently borrow real wild-elk clips from the public-domain
+library, which the cards say plainly; a Roe demonstration would be better.
+
 ## Source & attribution
 
 Every call in the guide — all 16, cow and bull — is drawn from Chris Roe's own

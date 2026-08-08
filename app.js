@@ -9,6 +9,17 @@
   const firstClip = c => { const l = clipsOf(c); return l.length ? l[0].src : null; };
   const isVideo = src => /\.(mp4|mov|webm)$/i.test(src || "");
 
+  /* Does this media file actually exist yet? Resolves true/false, never rejects.
+     Lets you drop a recording into assets/media/ and have it light up with no code change. */
+  const probeCache = {};
+  function probe(src){
+    if(probeCache[src]) return probeCache[src];
+    // HEAD request: a missing file is a quiet 404, not a console error the way <audio> is
+    return probeCache[src] = fetch(src, { method:"HEAD" })
+      .then(r => r.ok)
+      .catch(() => false);
+  }
+
   /* =====================================================================
      AUDIO — one shared player; clicking any control plays at once
      ===================================================================== */
@@ -137,6 +148,32 @@
       card.appendChild(list);
     }
 
+    /* a borrowed clip says so */
+    if(c.clipNote) card.appendChild(el("p","clip-note", c.clipNote));
+
+    /* recordings not uploaded yet — each becomes a real play button the moment the file lands */
+    if(c.wanted && c.wanted.length){
+      const box = el("div","wanted");
+      box.appendChild(el("div","wanted-label","Recordings still to come"));
+      c.wanted.forEach(w => {
+        const row = el("div","wanted-row");
+        const name = w.file.split("/").pop();
+        row.innerHTML = `<code>${name}</code><span class="wl">${w.label}</span>`;
+        box.appendChild(row);
+        probe(w.file).then(ok => {
+          if(!ok) return;
+          const btn = el("button","variant-btn");
+          btn.type = "button";
+          btn.innerHTML = `<span class="disc">${PLAY_SVG}</span><span class="vlabel">${w.label}</span>`;
+          btn.addEventListener("click", () => playClip(w.file, btn));
+          box.replaceChild(btn, row);
+          box.classList.add("has-some");
+          if(!box.querySelector(".wanted-row")) box.querySelector(".wanted-label").textContent = "Also hear";
+        });
+      });
+      card.appendChild(box);
+    }
+
     /* meta row */
     const meta = el("div","call-meta");
     meta.appendChild(el("span","badge", ROLES[c.role].label));
@@ -239,6 +276,28 @@
   }
   filterInput.addEventListener("input", applyFilter);
   applyFilter();
+
+  /* =====================================================================
+     SOUNDS STILL NEEDED — one list, in the Sounds tab
+     ===================================================================== */
+  (function(){
+    const box = document.getElementById("neededBox");
+    const host = document.getElementById("neededList");
+    if(!box || !host) return;
+    const rows = [];
+    CALLS.forEach(c => (c.wanted || []).forEach(w => rows.push({ call:c, w })));
+    if(!rows.length) return;
+    box.hidden = false;
+    rows.forEach(({call, w}) => {
+      const r = el("div","need-row");
+      r.innerHTML =
+        `<span class="nf">${w.file}</span>` +
+        `<span class="nfor">for the ${call.name}</span>` +
+        `<span class="nd">${w.label}</span>`;
+      host.appendChild(r);
+      probe(w.file).then(ok => { if(ok) r.classList.add("done"); });
+    });
+  })();
 
   /* =====================================================================
      TREE — the conversation, top to bottom

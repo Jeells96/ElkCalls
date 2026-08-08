@@ -146,6 +146,9 @@ const CALLS = [
 
   { id:"selfishMew", name:"Selfish mew", role:"locate", voice:"cow",
     clip:"assets/media/selfish-mew.mp3",
+    wanted:[
+      { file:"assets/media/selfish-scream.mp3", label:"The \u201cselfish scream\u201d \u2014 same call, louder and raspier" }
+    ],
     flag:"updated",
     plain:"“Where are you — <i>answer</i> me.” A lost mew with a growl, at full volume.",
     use:["Your lost mews are only getting a half-hearted answer", "You need to cut through a lot of noise and activity", "Run it <b>with</b> your lost mews, before you switch to assembly mews"],
@@ -256,6 +259,10 @@ const CALLS = [
     pairs:["contactBugle","dominantBugle"] },
 
   { id:"checkBugle", name:"Check bugle", role:"emotion", voice:"bull",
+    wanted:[
+      { file:"assets/media/bull-check-1.mp3", label:"Starts, stops, then picks up near the end" },
+      { file:"assets/media/bull-check-2.mp3", label:"Stutters the whole way through" }
+    ],
     plain:"A bugle that stops halfway — a bull second-guessing himself.",
     use:["Your bugling isn't drawing any response", "You want to sound frustrated, or unsure of yourself", "Adding realism that nobody else on the mountain is using"],
     short:"A bugle that starts, stops short, then quits or restarts — broken instead of smooth. Mix it into contact or dominant bugles to add realism, or to sound frustrated and unsure.",
@@ -275,6 +282,10 @@ const CALLS = [
 
   { id:"glunk", name:"Glunk", role:"control", voice:"bull",
     clip:"assets/sounds/glunk-glug.mp3",
+    clipNote:"Real wild elk (public domain) — a Chris Roe demonstration would be better here.",
+    wanted:[
+      { file:"assets/media/bull-glunk.mp3", label:"Chris\u2019s demonstration \u2014 single and double note, in a string" }
+    ],
     plain:"“Stay put.” And it's aimed at his cows, not at him.",
     use:["A herd bull who will never answer a challenge", "Threatening his cows instead of his ego", "Pressured elk — it's quiet, short-range and not aggressive"],
     short:"One word, and it’s aimed at cows, not bulls: “stay.” Don’t move off, don’t leave, stay with the group. Which is exactly why using it rattles a herd bull.",
@@ -300,6 +311,12 @@ const CALLS = [
   /* ------------------- COW OR BULL ------------------ */
   { id:"alarmBark", name:"Alarm bark", role:"alarm", voice:"both",
     clip:"assets/sounds/alarm-bark.mp3",
+    clipNote:"Real wild elk, Rocky Mountain National Park (public domain) \u2014 not a demonstration.",
+    wanted:[
+      { file:"assets/media/alarm-bark.mp3", label:"Chris\u2019s demonstration \u2014 the normal bark" },
+      { file:"assets/media/alarm-bark-quiet.mp3", label:"The quiet, under-the-breath version" },
+      { file:"assets/media/alarm-bark-chuckle.mp3", label:"Bark buried inside excited chuckles \u2014 the cover-up move" }
+    ],
     plain:"“Something <i>might</i> be wrong.” Might, not is. So it isn't over.",
     use:["You got busted and need to salvage it", "Barked at — bark back, and match the volume", "In front of a bugle, to demand he show himself"],
     short:"“Something might be wrong.” Usually uncertainty, not certainty — so it isn’t game over. Bark back, match his volume, then wind it down.",
