@@ -37,6 +37,7 @@ in `../data.js`). This folder is the raw source of record.
 | Contact bugle | [contact-bugle.md](contact-bugle.md) |
 | Dominant bugle | [dominant-bugle.md](dominant-bugle.md) |
 | Chuckle | [chuckle.md](chuckle.md) |
+| Check bugle | [check-bugle.md](check-bugle.md) |
 
 ## Behavior series
 

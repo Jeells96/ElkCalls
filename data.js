@@ -14,6 +14,7 @@ const ROLES = {
   challenge: { label:"Challenge", var:"--challenge", blurb:"Bull aggression & dominance" },
   contact:   { label:"Contact",   var:"--contact",   blurb:"Everyday check-ins inside the group" },
   combo:     { label:"Combo",     var:"--combo",     blurb:"A string of calls" },
+  read:      { label:"Read it",    var:"--neutral",   blurb:"A sound to recognize, not make" },
 };
 
 const FLAG_TITLES = {
@@ -222,6 +223,18 @@ const CALLS = [
       { h:"Takeaways", body:"<ul><li>Chuckles say how a bull <b>feels</b> — one continuous scale, split in two for practical use.</li><li>Tacked on a bugle, chuckles <b>raise the intensity</b> — Level 2 + chuckles = Level 3.</li><li><b>High-pitched/fast-paced</b> = curiosity &amp; interest (pair with contact bugles).</li><li><b>Excited</b> = intensity &amp; eagerness (pair with dominant bugles).</li><li>Intensity = length + loudness + how hard you hit the high and low notes.</li><li>Used <b>alone</b>, they show interest while revealing almost nothing — often the nudge that makes a bull come look.</li></ul>" }
     ],
     pairs:["contactBugle","dominantBugle"] },
+
+  { id:"checkBugle", name:"Check bugle", role:"read", voice:"bull",
+    short:"A bugle that starts, stops short, and either quits or restarts — so it comes out broken instead of smooth. Read it from context; it isn’t one you set out to make.",
+    meaning:"Any bugle where the bull <b>checks himself</b> partway through: it starts, stops short somewhere early or in the middle, then either ends right there or picks up again later — so the whole thing sounds <b>broken</b> rather than smooth and continuous. Chris lumps them all under one name for simplicity. There’s no fixed meaning: a check bugle takes its meaning from the bugle he <i>meant</i> to make, and from what he says either side of it.",
+    lesson:[
+      { h:"What it is", body:"The bugle you’ve heard that starts, stops, and starts again — or just starts and never finishes, or finishes in some squirrely way. A bull begins a bugle and <b>checks himself</b> partway through, so instead of one smooth call you get a broken one.<br><br>In human terms: starting to say something, stopping, thinking better of it — then either dropping it entirely, or pausing and rephrasing. There are probably a thousand variations; Chris keeps one label so there’s something to point at." },
+      { h:"Why the meaning is slippery", body:"Every check bugle sounds a bit different, and you don’t hear them constantly, so it’s hard to say definitively what one means. What Chris will say is that they nearly always trace back to one of the two <b>root</b> bugles — you could reasonably call them <b>contact check bugles</b> or <b>dominant check bugles</b>.<br><br>So the meaning comes from the bugle he <b>intended</b> to make, and from <b>what he was saying before it, or ends up saying after it</b>. On its own, out of context, it doesn’t tell you much." },
+      { h:"How to read one", body:"Context is the whole game. Use the other calls he makes around it, and — far better — <b>watch him</b>: his body language and the situation he’s in usually give it away. This is where observation earns its keep.<br><br>Can’t see him, or he isn’t talking enough to give you context? Then listen for the same two tells you’d use on any bull call:<ul><li><b>Any raspy growl</b> anywhere in it — that leans <b>dominant</b>.</li><li><b>What kind of chuckles</b> he tags on the end, if any — high-pitched, fast-paced leans <b>contact</b>; excited leans <b>dominant</b>.</li></ul>Tease those out and you can often work out what he meant. Sometimes." },
+      { h:"The two you’ll actually see", body:"<b>Distraction.</b> Watch one and it often looks like he simply <b>lost focus</b> mid-bugle — saw something, heard something, and his concentration broke. Rather than finish the call as intended, he stops or stutters through it.<br><br><b>Frustration.</b> Other times he’s in the middle of something and clearly fed up with how it’s going, or with what he’s hearing. Instead of a full bugle he throws his head back, fires off a brief check bugle, and carries straight on with whatever he was doing — hunting for another elk, chasing and courting cows, or trying to run a rival off." },
+      { h:"Takeaways", body:"<ul><li>A bugle that <b>starts, stops short, and either quits or restarts</b> — broken, not smooth.</li><li>Nearly always a <b>contact</b> or <b>dominant</b> bugle underneath.</li><li>Its meaning comes from <b>context</b>: the intended call, and what he says either side of it.</li><li>No context? Listen for <b>growl</b> (dominant) and <b>which chuckles</b> he uses (fast-paced = contact, excited = dominant).</li><li>Most often it’s <b>distraction</b> or <b>frustration</b> — not a message aimed at you.</li></ul>" }
+    ],
+    pairs:["contactBugle","dominantBugle","chuckle"] },
 ];
 
 const SCENARIOS = [

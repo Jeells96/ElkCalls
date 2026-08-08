@@ -107,7 +107,7 @@
       play.innerHTML =
         `<span class="disc">${PLAY_SVG}</span>` +
         `<span class="txt"><span class="nm">${c.name}</span>` +
-        `<span class="hint">${clips.length ? "Tap to hear it" : "No sound yet"}</span></span>`;
+        `<span class="hint">${clips.length ? "Tap to hear it" : "No recording yet — read below"}</span></span>`;
       if(clips.length) play.addEventListener("click", () => playClip(clips[0].src, play));
       else play.disabled = true;
       card.appendChild(play);
