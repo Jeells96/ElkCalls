@@ -74,7 +74,7 @@
   }
   tabs.forEach(t => t.addEventListener("click", () => showPanel(t.dataset.panel)));
   const startPanel = (location.hash || "").replace("#","");
-  if(["calls","tree","scenarios","behavior"].includes(startPanel)) showPanel(startPanel);
+  if(["calls","tree","scenarios","sounds","behavior"].includes(startPanel)) showPanel(startPanel);
 
   /* =====================================================================
      CALLS
@@ -319,6 +319,35 @@
     d.appendChild(body);
     list.appendChild(d);
   });
+
+  /* =====================================================================
+     SOUND LIBRARY — real elk recordings, independent of the teaching
+     ===================================================================== */
+  const lib = document.getElementById("soundLib");
+  if(lib && typeof SOUND_GROUPS !== "undefined"){
+    SOUND_GROUPS.forEach(g => {
+      const box = el("section","sgroup");
+      box.appendChild(el("h3", null, g.title));
+      box.appendChild(el("p","blurb", g.blurb));
+      const grid = el("div","sound-grid");
+      g.sounds.forEach(s => {
+        const card = el("article","snd");
+        const src = "assets/sounds/" + s.file;
+        const b = el("button","snd-btn");
+        b.type = "button";
+        b.innerHTML = `<span class="disc">${PLAY_SVG}</span><span class="txt">` +
+                      `<span class="snm">${s.name}</span>` +
+                      `<span class="slen">${s.secs}s &middot; tap to play</span></span>`;
+        b.addEventListener("click", () => playClip(src, b));
+        card.appendChild(b);
+        card.appendChild(el("p","snd-about", s.about));
+        card.appendChild(el("p","snd-where", s.where));
+        grid.appendChild(card);
+      });
+      box.appendChild(grid);
+      lib.appendChild(box);
+    });
+  }
 
   /* =====================================================================
      BEHAVIOR — the principles under the calling

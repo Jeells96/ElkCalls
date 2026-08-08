@@ -34,6 +34,8 @@ Plain static site — no build step, no dependencies.
 | `cheatsheet.js` | Renders the field card from `data.js` |
 | `assets/media/` | Call demo clips (`.mp4` video or `.mp3` audio), one per call |
 | `transcripts/` | Word-for-word lesson transcripts (reference; not shown in the site UI) |
+| `sounds.js` | The independent sound library (see below) |
+| `assets/sounds/` | Public-domain field recordings of real elk |
 
 - **Locally:** open `index.html` in any browser.
 - **Live (one-time setup):** on GitHub, go to **Settings → Pages → Build and
@@ -66,10 +68,32 @@ guide and the field card automatically.
 
 ## Source & attribution
 
-The **cow calls** are distilled from the *"Understanding Cow-Elk Vocalizations &
-Communication"* series — specifically the closing *"putting it all together"*
-video. A few cow calls marked **videos 1–9** are defined more fully in the
-earlier videos of that series. The **bull sounds**, marked **general elk**,
-carry the same "calls are words" approach over to widely-taught elk behavior and
-are not drawn from that cow-only series — they can be pinned to a specific Chris
-Roe bull-calling source if one is provided.
+Every call in the guide — all 13, cow and bull — is drawn from Chris Roe's own
+lesson on that call, plus the "putting it all together" video for the calling
+sequences and the behavior series for the **Behavior** tab. Verbatim transcripts
+live in `transcripts/`.
+
+Still to come, based on lessons Roe references but that aren't captured here yet:
+the **glunk**, the **alarm bark**, **cow bugling**, and the rest of the behavior
+series (the next one is *"The Doorway"* — choosing your setups).
+
+
+## The sound library (separate from the Roe material)
+
+The **Sounds** tab is a standalone library of real elk recorded in the wild —
+17 clips covering bugles, glunks, cow mews, a calf, the alarm bark, and longer
+herd/rut soundscapes. It is deliberately kept apart from the teaching material:
+nothing in it comes from Chris Roe, and none of it is instruction.
+
+Every recording is **public domain**:
+
+- **U.S. National Park Service** field recordings (works of the US federal
+  government) — Yellowstone, Rocky Mountain, and Great Sand Dunes.
+- **Wikimedia Commons** public-domain files.
+
+The park or recordist is credited on each clip in the UI. Long recordings were
+trimmed to their liveliest ~75 seconds (picked by scanning for the highest-energy
+window) and loudness-normalized to a consistent level; nothing else was altered.
+
+Content lives in `sounds.js` — add a `{ name, file, secs, about, where }` entry
+to a group and it renders automatically.
