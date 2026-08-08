@@ -44,7 +44,7 @@ in `../data.js`). This folder is the raw source of record.
 
 | Call | Transcript |
 |------|-----------|
-| Alarm bark | [alarm-bark.md](alarm-bark.md) |
+| Alarm bark *(2 videos — original + expanded)* | [alarm-bark.md](alarm-bark.md) |
 
 ## Behavior series
 
@@ -53,6 +53,13 @@ The groundwork the calling sits on — shown in the app under the **Behavior** t
 | Principle | Transcript |
 |-----------|-----------|
 | 1 · See you first, hear you second, smell you third | [see-you-first.md](see-you-first.md) |
+
+**Two videos on one call.** The **alarm bark** has both an original series
+lesson and a later expanded one. Only the original covers how to physically
+make the bark and how grunt-tube choice changes its meaning; only the expanded
+one covers reading the herd's reaction, de-escalating, and using a bark on
+purpose in front of a bugle. Both are in `alarm-bark.md` and the card merges
+them.
 
 **Revisions.** Roe put out an update video on the **selfish mew** in which he
 changes his own read of it — from an extension of the demanding mew to an

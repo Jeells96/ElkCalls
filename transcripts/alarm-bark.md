@@ -2,23 +2,257 @@
 
 > Source: Chris Roe's elk vocalization & communication series — the alarm bark
 > (cow **and** bull; every elk in the woods has one).
-> Raw auto-generated transcript kept for reference (the app shows a distilled
+> Raw auto-generated transcripts kept for reference (the app shows a distilled
 > breakdown instead).
 >
-> Transcriber mis-hears in this one: **"hammering the bejibis autumn"** =
-> hammering the bejeebies out of them · **"muzzle over hunters"** =
-> muzzleloader hunters · **"this can be the time to flack them"** = whack them
-> (take the shot) · **"grab your grunt too"** = grab your grunt **tube** ·
-> **"if you know she's got your peg"** = got you **pegged** · **"pot ential"** =
-> potential · and the second sentence — *"Two, a vocalization so loud..."* —
-> should read *"...**to** a vocalization so loud..."*, finishing the range that
-> the sentence before it starts.
+> **Two videos on the same call.** Part 1 is the original series lesson —
+> it's the only one that covers **how to physically make the bark** and how
+> your **grunt tube** changes what you're saying. Part 2 is a later, expanded
+> treatment: more on how the herd reads a bark, reading which half of the call
+> is emphasized, de-escalating by stepping your answers down, and using a bark
+> deliberately in front of a bugle. The app card merges both.
 >
-> One video, delivered in one pass: what the bark is and what it really means,
-> how the rest of the herd reads it, then the field tactics — avoiding it,
-> salvaging it, barking back, and using it on purpose.
+> Where the two disagree on wording, Part 2 is the more precise: it says
+> **"excited chuckle"** (his own chuckle taxonomy) where Part 1 says
+> "aggressive bull chuckle," and it puts the certainty figure at 99% rather
+> than 99.9%. The card follows Part 2.
+>
+> Transcriber mis-hears — **Part 1:** "Understanding **Calico** Vocalizations"
+> = Understanding **Cow Elk** Vocalizations · "Chris **Rowe**" = Chris **Roe** ·
+> "muzzle-**loaner**" = muzzleloader · "if you're **a** full draw" = at full
+> draw. **Part 2:** "hammering the **bejibis autumn**" = hammering the
+> bejeebies out of them · "**muzzle over** hunters" = muzzleloader hunters ·
+> "time to **flack** them" = **whack** them (Part 1 says it correctly) ·
+> "grab your grunt **too**" = grunt **tube** · "she's got your **peg**" = got
+> you **pegged** (again, Part 1 has it right) · "**pot ential**" = potential ·
+> and *"Two, a vocalization so loud..."* should read *"**to** a vocalization
+> so loud..."* — Part 1 has that sentence intact.
 
 ---
+
+## Part 1 — the original series lesson
+
+Hi, I'm Chris Rowe, and welcome back to "Understanding Calico Vocalizations and Communication."
+
+In this video, we'll cover the vocalization that all of us are probably all too familiar with: the alarm bark.
+
+Now, most of you probably know that the bark is used by an elk to announce danger, but what many don't know is that there are a couple of ways you can work to avoid getting barked at in the first place, and there are ways a hunter can work to disarm a bark once it's given.
+
+In this video, we'll talk about the bark, how to correctly reproduce it, and go over some examples of how it can actually be used in the field.
+
+The alarm bark is exactly what it sounds like: a bark that sounds the alarm to every elk within earshot of the animal that made it.
+
+Now, a bark can be very quiet and almost an involuntary vocalization by an elk not quite sure what's going on, and if he or she should be worried.
+
+To a vocalization so loud, you can hear it echo off of canyon walls and carry seemingly for miles.
+
+Some barks can be so loud you almost expect to have your hat blown off and to see the trees bending over from the sound.
+
+The best way to describe the bark is to let you hear it.
+
+Once you hear it, especially in the field, you'll never forget it.
+
+In general, it's a very short vocalization, roughly about half a second in length.
+
+It starts out high and immediately drops to a low, guttural barking sound, like this.
+
+Like I said, some barks are very quiet, almost uttered under an elk's breath, like this.
+
+And some are so loud that a hunter would be hard-pressed to try and even come close.
+
+While most understand that the alarm bark is a way for one elk to notify other elk in the area that there's danger nearby, there are a couple of points of clarification I think are worth talking about.
+
+First: in most areas, most alarm barks indicate that there might be danger nearby, not necessarily that there is danger.
+
+Now, folks hunt in areas with wolves and grizzlies; that "most" probably turns into a "some," but anyway.
+
+Most of the time, if an elk sees something that it knows is danger—and for this video, let's just focus on human-related danger as opposed to coyotes or wolves or bears, etc.—if an elk sees something that it knows is danger, they typically just turn and run off.
+
+If they think they see something, however, or they think they hear something that might be danger, that's when they usually bark.
+
+Just because you hear a bark, don't give up and think the game's over.
+
+It might not be.
+
+A bark, by structural design, grabs the attention of other elk in the area and gets them up and looking around, looking for the potential danger that the other animal thinks exists.
+
+Now, in some cases, if real danger is encountered fairly frequently—or, say, heavy hunter pressure, for instance—the sound of a bark can be enough to get the whole herd moving out.
+
+In those situations, it's often better for the animals to just err on the side of caution and just beat it.
+
+However, in some areas, in areas that don't see a lot of real danger or elk that haven't been bothered too much, it's not uncommon for other animals to stand looking around, waiting to see either what the barking elk is looking at, or if the barking animal simply takes off in an alarm posture, meaning their heads are up, their chins are in their air as they prance off or trot off.
+
+There are even times when other elk respond to an alarm bark by actually walking up to the barking individual to help them assess the situation.
+
+Again, just because you hear a bark doesn't necessarily mean the game's over.
+
+Which brings me to the second point of clarification: not all alarm barks are created equal.
+
+The volume of a bark can give you insight as to the level of danger the animal perceives, or the level of uneasiness the animal is feeling.
+
+Relatively quiet barks can oftentimes be given by animals that, while they're still uneasy about a situation, are almost more curious about that unknown blob hiding behind that tree or that suspicious snap it just heard.
+
+Quiet barks—those that sound like they're almost being made unconsciously under an animal's breath—may get other animals to pick their heads up for a moment, but a lot of times they'll just go back to feeding or doing whatever it is they were doing.
+
+They'll look up, and if they don't see anybody running, they settle back down.
+
+If the animal keeps on barking quietly, that's when you'll see another animal or two walk over to them to see what's going on.
+
+Now, really loud barks—the ones that you can almost feel in your chest when they launch those puppies out—tell the world that the animal is really not happy about whatever it is he or she thinks they saw or thinks they heard, and stresses to everyone within the sound of their voice that they are 99.
+
+9% sure that there is something really bad right over there.
+
+If you pay attention to how loud a bark is, you might be able to get an indication on just how spooked an elk might be and judge your reaction accordingly.
+
+In just a bit, we'll talk about how to avoid getting barked at in the first place, beyond just not getting busted.
+
+But if you do get barked at, sometimes the best thing you can do is bark back.
+
+So, let's talk about how to make a bark.
+
+The best, and pretty much only, call to make an alarm bark with is a mouth diaphragm.
+
+To really do it right, you also need a good grunt tube.
+
+Now, different grunt tubes, or even plastic baseball bats or other horns or sound chambers like that, will have different effects on the sound and the volume of the bark you make, so choose your tool accordingly.
+
+We'll talk about that here in a second.
+
+Okay, for a bark, you're going to be using both a mouth call and your own voice to make the vocalization.
+
+You're going to want to push up air from your diaphragm, and as you blow out, you want your tongue to engage the reed very briefly and in a way that'll give you a sharp, high-pitched note.
+
+And as soon as you get that high note, immediately drop your tongue off the reed, and with your voice, follow it up with a "huh."
+
+So, the first part is going to be "huh," with the second part being a "huh" with your voice.
+
+Put together, if you're a grunt tube, it should sound something like this.
+
+Now, like I said, the type of tube you blow through is going to have an effect on the sound and volume coming out.
+
+You'll hear some guys and gals out there using baseball bats and other grunt tubes with large sound chambers blowing the alarm bark, and it does sound great and really loud.
+
+But think back to what we just talked about a second ago: really loud barks oftentimes indicate a really boogered elk.
+
+If you like the sound of large tubes and baseball bats, that's fine.
+
+Just remember, if you take those into the woods and you need to do a bark for some reason, you're going to be sounding like an elk that's really boogered.
+
+At the other end of the spectrum, there are folks that like to carry around really small, compact grunt tubes.
+
+These will work as well, but in this case, because of the physics of how sound travels through the skinny, short tube, you'll essentially be restricting yourself to the medium and high-pitched barks.
+
+They're relatively sharp and clear.
+
+Sharp and clear sounds are often easier to locate and pinpoint than deeper, rougher sounds.
+
+Which leaves us with the grunt tubes that are right there in the center of the spectrum, what I consider your average grunt tube, the one that probably most of us use each fall.
+
+These are the tubes I personally like for making an alarm bark.
+
+I can be loud if I need, but quiet if I want, and the larger tube diameter and longer length of the tube allows for deeper, rougher tones that can make the vocalization a little bit more difficult to pinpoint.
+
+That just gives me more flexibility should the need arise for me to use a bark.
+
+Before we talk about how to use the bark, let's talk a little bit about how we can avoid getting barked at in the first place, beyond the obvious of just not getting busted.
+
+So, what if you do get busted?
+
+We all know it's going to happen to us at some point.
+
+As I said in the beginning, most alarm barks are directed towards things an elk "thinks" represents danger.
+
+When they know there's danger, a lot of times they just turn and run without saying anything.
+
+So, if you get busted, and all of a sudden you look up and there's an elk standing there staring at you, ears locked on, you're staring a hole right through your skull, quickly assess the situation.
+
+If it's the animal you're going after, then you're probably going to want to try to salvage the situation right there, so get ready to be creative.
+
+If it's not an animal that you're going after, say it's a cow and you're moving in on a bull.
+
+Quite honestly, one of the best things you can do if you know she's got you pegged is simply stand up or step out to where she can actually see exactly what you are.
+
+If you can clearly show her you're a human, and especially if you can do that without spooking any other animals around you, oftentimes she'll just turn and run away and not say anything.
+
+If you can get her to simply leave and cover up her departure with maybe a few calls pertaining to the situation you're in, or whatever calls have got you to that point in the first place, the other elk may not even have a clue that anything out of the ordinary just happened.
+
+Sometimes the best thing that you can do when you get busted is to actually spook the animal out of there.
+
+Now, if the animal that's staring you down is the animal you're going after, you'll need to be ready.
+
+If the animal for some reason does settle down or steps out for a better look, you may need to get ready for a shot, or may need to be ready with the right vocalization to get them in position for a shot, or to help them settle down even further.
+
+But what if you're too late?
+
+What if you're moving along and all of a sudden you hear an elk bark at you?
+
+Again, quickly assess the situation.
+
+If it's a quiet, half-hearted bark, you may be able to just simply freeze, figure out where the animal is, and if they aren't really that spooked, either let them settle back down—if it's an elk that you're after—or you think you'll be able to work around that animal once it has, or if you can get away with it and it's not the elk that you're after, simply show yourself and kick them out of there.
+
+If it does happen to be the animal you're after, or if for some reason you can't really move to show yourself and you need to try and salvage the situation, then sometimes the best thing to do is try to confuse them by hitting them with an alarm bark back.
+
+If you can respond quickly, you can sometimes keep an elk around you for quite some time if you want to try to get a shot at him, or even call in other elk into you if you're hoping for a shot at a different animal by barking back every time the animal barks at you.
+
+Typically, I've had the best success with this tactic by imitating the intensity or volume of the bark that I received.
+
+A quiet, half-hearted bark gets a quiet, half-hearted bark back.
+
+A loud bark gets a loud bark in response.
+
+Now, keep in mind, the animal barking and any that come in curious to check out the situation are likely going to be on pins and needles, so they're going to be able to pick up the slightest movement and the slightest sound that just isn't right.
+
+So if you're bow-hunting, getting your bow drawn back might be tricky, and they may jump the string, so aim accordingly.
+
+If the elk does spook as you draw, be ready.
+
+Sometimes they'll simply bound off a few steps, maybe 10, 20, 30 yards, then stop, turn, and look back at you.
+
+If you're a full draw and you're good at yardage estimation, this is time to whack them.
+
+Rifle and muzzle-loaner hunters, sometimes all you need is for that animal just to step out just another step to get that shot.
+
+By barking back at the one that's barking at you, a lot of times they'll take that step or two that you need as they try to figure out what the heck you are.
+
+Now, there's one more thing you can do in response to a bark.
+
+If you're ready—and I mean ready—and you hear a bark close by, you can sometimes cover it up by turning it into a bull chuckle.
+
+If you think about it, the alarm bark can sound an awful lot like the first note in an aggressive bull chuckle.
+
+By jumping right into an aggressive chuckle, you might just blend it effectively enough to diffuse the situation.
+
+So, you hear a bark, try to jump on it right away, and follow it with a chuckle.
+
+Hopefully you can make the whole thing sound something like this.
+
+If you're working your way to a bull and suddenly another elk busts you and barks before you can show them what you are and kick them out of there, covering up with a chuckle might just keep that bull doing what he's doing and not worried about potential danger.
+
+Now, obviously, you need to judge what the effects of doing an aggressive chuckle might be on the bull, but depending on the situation, having the bull hear an aggressive chuckle might be a lot better than having him hear an alarm bark.
+
+So, what are the take-home points regarding the alarm bark?
+
+The alarm bark is a short, very abrupt vocalization that indicates that an elk thinks there might be danger in a particular area.
+
+Alarm barks can range from very, very quiet to very loud, and the volume can oftentimes indicate just how uneasy an elk is in a situation.
+
+Quiet barks can often be made by elk that are more curious than anything else, with really loud barks indicating that an elk really believes the danger is right there.
+
+Sometimes the best way to avoid an alarm bark, besides not getting busted, is to simply show yourself to the animal and let them know that you represent danger, so they just turn and run and not say anything.
+
+If you do get barked at and you want to try and salvage the situation, sometimes barking back at the animal can be enough to keep them around long enough for a shot, or be enough to get another elk to come in and see what's going on, hopefully bringing the animal in that you do want to get a shot at.
+
+When making the alarm bark, the type of tube you bark through can and will change the tonal quality and the volume of your bark, so choose the tube you use based on your likely calling needs.
+
+Thanks for joining me in this video, and I hope it helps in your efforts this fall.
+
+Good luck, and I look forward to hearing about how you do with this and all the material you get through our hunting resources.
+
+As always, we'll be here to help you make the right call.
+
+---
+
+## Part 2 — the later, expanded lesson
 
 In a general sense, the alarm bark is made up of two parts: a very brief high-pitched squeal and a lower, guttural "bark" sounding note that some folks refer to as a grunt.
 
