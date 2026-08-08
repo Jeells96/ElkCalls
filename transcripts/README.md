@@ -57,6 +57,15 @@ The groundwork the calling sits on — shown in the app under the **Behavior** t
 | 2b · Decoys & the doorway *(follow-up Q&A)* | [decoys.md](decoys.md) |
 | Elk psychology — who are you actually calling to? *(seminar)* | [elk-psychology.md](elk-psychology.md) |
 
+**Audited.** Every transcript here has been re-read against `../data.js` to
+check the site actually carries what Roe teaches. That pass found one real
+error — the site had the **seen/unseen** distinction between the lost mew and
+the assembly mew backwards — plus a handful of teaching points that were
+genuinely missing. Both are fixed. The correction is worth knowing if you
+learned it from the old version: a **lost mew** is only ever asked of an animal
+you *can't* see; what makes the **assembly mew** different is that it works on
+one you *can* see as well.
+
 **Two videos on one call.** The **alarm bark** has both an original series
 lesson and a later expanded one. Only the original covers how to physically
 make the bark and how grunt-tube choice changes its meaning; only the expanded

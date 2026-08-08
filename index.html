@@ -430,9 +430,16 @@ footer{border-top:1px solid var(--line); background:var(--paper-2)}
   .tab svg{display:none}
 }
 @media print{
-  .tabs,.controls,.hero canvas,.play-btn,.levels,.watch{display:none}
+  .tabs,.controls,.hero canvas,.play-btn,.levels,.watch,
+  .gsearch-wrap,.mode-pick,.study-bar,.jump,.wanted,.variant-btn,.pairs,.pairs-label,
+  #panel-study,.flash-actions,.qz-choices{display:none}
   .panel[hidden]{display:block!important}
+  .more-body{display:block!important}
+  .more>summary{display:none}
+  .vwhen>summary{display:none}
   .scenario,.call,.tier{break-inside:avoid; box-shadow:none}
+  .call{border:1px solid #999; padding:10px; margin-bottom:10px}
+  a[href]::after{content:""}
 }
 @media (prefers-reduced-motion:reduce){
   *{scroll-behavior:auto!important; animation:none!important; transition:none!important}
