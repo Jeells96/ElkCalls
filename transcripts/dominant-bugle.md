@@ -10,8 +10,165 @@
 > "radio coward of them" = radio collared them · "betting area" = bedding area ·
 > "free levels" = three levels · "pinion juniper" = pinyon juniper ·
 > "we eks" = weeks · "elkhunter strategy app" = ElkHunter Strategy app.
+>
+> Two parts, in order: **Part 1 — what it is and the three levels**, then
+> **Part 2 — cautions and how to use it in the field**.
 
 ---
+
+## Part 1 — what it is, and the three levels
+
+As summer starts transitioning into fall and testosterone levels start to peak in a bull's body, bulls start getting serious about cows and gathering their harems, and a lot less tolerant of other bulls nearby.
+
+In order for a bull to successfully gather and maintain a harem of cows that he can breed, two things have to happen: first, he needs to attract and be desirable to a group of cows; and second, he needs to protect that group from efforts by other bulls to steal those cows or sneak in and breed them when they start to come into season.
+
+While there are a number of physical ways that a bull can go about accomplishing, or trying to accomplish, these things, vocally he does this in large part by using dominant bugles.
+
+While bulls will actively herd cows and break small groups of cows out of larger ones in an effort to secure a harem, ultimately it's the cow, in most cases, that determines whether or not that she'll stay with a particular bull.
+
+A large component in a cow's decision-making process of whether or not to stay with a particular bull is the bull's level of maturity, confidence, and dominance within the overall herd within the area that the cow is in.
+
+For a cow, these things are important for two primary reasons.
+
+Number one, cows prefer not to be run around, chased, and harassed by immature or inexperienced bulls; they like to be left alone.
+
+Mature bulls leave cows alone.
+
+And confident, dominant, mature bulls not only leave cows alone, they protect cows from the harassment of aggressive, immature, and/or inexperienced bulls.
+
+Number two, cows prefer to be bred on their first estrus cycle and courted appropriately.
+
+Mature bulls are typically experienced in breeding and are more likely to quickly and efficiently impregnate a cow on her first cycle without harassing her.
+
+Given both of those things, the older, more mature, confident, and dominant a bull is, the more likely a cow is to stay with that bull.
+
+And while it's the bull's physical characteristics, his individual attributes, and his perceived status within the herd—at least as the cow perceives it—that provides the bulk of the cow's evaluation, it's the bull's mannerisms and his voice that she begins to identify with and, essentially, stay attracted to.
+
+If a bull acts mature as well as sounds mature, then he'll likely maintain the cows that he's with and attract those cows outside of his group that are looking for that type of bull.
+
+This is where the dominant bugle comes in.
+
+A dominant bugle relays, or at least tries to relay, a sense of maturity, confidence, and/or potential dominance by the animal giving the vocalization; hence why I refer to them as dominant bugles.
+
+Because of this, I classify dominant bugles as information-sending type vocalizations.
+
+They're making a statement to another animal, rather than gathering information or soliciting a response.
+
+With regard to other bulls, in order for a bull to maintain the harem of cows that he's managed to attract and, at least, maintain thus far, he has to fend off other bulls that show indication that they might try and make a play for his cows.
+
+And while there are some bulls that will definitely engage other bulls physically if they have to in order to protect their harems, for the most part, most bulls, if they can repel an attempt on their cows without physical confrontation, they will.
+
+Similar to attracting cows, a bull's physical characteristics, as well as his mannerisms—how he carries himself, how aggressive he behaves, his seeming willingness to engage physically, etc.—all help a bull relay a sense of dominance to another bull, visually.
+
+But it's his voice and his vocalizations that relay those ideas in the absence of visual contact.
+
+Again, this is where the dominant bugle comes in.
+
+If a bull can sound mature, confident, and dominant, and he sounds like he's a bull that at least might be aggressive, sound like a bull that might not want to be messed with, then it might be in another bull's interest to avoid confrontation with that bull that's doing the vocalizing.
+
+Just like with us and our calling in that we'll never be able to make and/or do anything, except maybe run away, and that all we can really do is put in their mind what they ought to do, or what might be in their best interest to do at the time, dominant bugles relay the idea—or at least try to relay the idea—that other bulls ought to stay away, and it's in their best interest of other bulls to not mess with a bull that's doing the vocalizing.
+
+And while some bulls are indeed aggressive, and while some bulls will indeed challenge other bulls for their cows and use gnarly, aggressive-sounding bugles, not all bulls are aggressive.
+
+Not all bulls are interested in challenging another bull when they vocalize with those gnarly, aggressive-sounding bugles.
+
+Just like people, each bull is different, with a different personality than that of maybe another bull.
+
+Some are lovers, and some are fighters, with a whole bunch of variations in between.
+
+But they'll all use the same type of bugles or vocalizations to encourage other bulls to stay away: dominant bugles.
+
+Now, whether it's a bluff or a statement of actual reality doesn't matter when animals are in visual contact with one another.
+
+Dominant bugles sound like they're serious and sound like they're a statement of reality, and that's what matters.
+
+When we step back and observe numerous bulls, across numerous occasions, in a variety of situations and settings, and take a moment to understand that these vocalizations are simultaneously meant to be both attractive to cows and discouraging to other bulls, we see that, really, the only underlying message that is consistent in vocalizations like these isn't aggression per se, isn't a bull that's challenging another bull per se, but rather that it's a bull relaying, or again, trying to relay, a sense of dominance and maybe even a sense of maturity to those that are listening to him.
+
+Hence, again, the reason why I refer to these types of vocalizations as dominant bugles and why I classify them as information-sending type vocalizations: those that are intent on making a clear statement to all those that will hear.
+
+An attractive statement to cows, a discouraging statement to bulls.
+
+Now, just like with contact bugles and most bull vocalizations in general, there can be differing levels of intensity in dominant bugles, depending on the level of interest, or perceived intensity, and/or urgency a bull has or perceives within a particular situation.
+
+Because the different levels of intensity can be brought about by different vocal expressions of the vocalization, I go ahead and split the vocalization into three distinct levels, based on the general differences in those expressions.
+
+Like with contact bugles, for the most part, I split them into three basic levels: levels one, two, and three, ranging from the least intense—level one—to the most intense—level three.
+
+Now, obviously, there are gradations in the intensity and expression, even within those three levels that I split out, but the three levels are a little easier to keep track of and identify when you're out in the field.
+
+And keep them clear as to their level of progression should you want to use them and allow yourself a little room to adjust the level of intensity you might want to portray in your calling sequences.
+
+In all cases, however, the key to the dominant bugle is the presence and, oftentimes, emphasis on the growly or gravelly tonal quality within, and sometimes throughout, the vocalization.
+
+Where the contact bugle is generally clear, maybe breathy in its delivery, the dominant bugle is harsh and contains some level of strained or emphasized growl within it.
+
+The level one dominant bugle, again, is the mildest or least intense form of dominant bugle.
+
+Like the level one contact bugle, it starts high with a long, drawn-out high note and then tapers off or falls off to a lower note.
+
+For the dominant bugle, rather than being clear and breathy, it'll be gravelly or growly, either during the high note, as the vocalization tapers off to the low note, or throughout both of those portions of the vocalization.
+
+In general, it's going to sound something like this.
+
+Now, as I said a moment ago, dominant bugles are simultaneously attractive to cows and discouraging to other bulls, so very little changes in the way of a vocalization's meaning when it's either initiated by a bull or used in response to another elk.
+
+However, in some cases, when a bull initiates a dominant bugle, it can be to provide a mechanism by which to reaffirm his position or worthiness as the herd bull to the cows that he's with, and to imprint his voice onto them so that they'll recognize him and stay with him should he be out of visual contact for some reason and other bulls are vocalizing nearby.
+
+Understanding that, the level one dominant bugle relays a sense of dominance but not very intensely.
+
+Oftentimes, you'll hear a bull make this vocalization when he's essentially content with his harem and, seemingly, doesn't perceive himself or his cows to be in any sort of real danger from other bulls.
+
+It's almost as though it's a way of reconnecting with his cows and maintaining his vocal imprint on them, while mildly offering an invitation to other cows that might be nearby, and a way to cast a seed of concern in the mind of other bulls just in case one might be around.
+
+The level two dominant bugle is the next step up in the intensity level.
+
+Like the level two contact bugle, it starts at a low pitch, rises to a long, drawn-out high pitch that is held momentarily, and then either ends there with the high note ending as the animal cuts the vocalization off mid-breath, or by falling off to a lower pitch again that may or may not be as low as where the vocalization started.
+
+For the dominant bugle, rather than being clear and breathy, it'll be gravelly or growly, either somewhere during the vocalization or throughout the entire vocalization.
+
+In general, it'll sound something like this.
+
+Like the level one, the level two dominant bugle relays a sense of dominance, but in this case a bit more intensely, or in more earnest.
+
+This is probably the most common level of dominant bugle that you'll hear a bull vocalize.
+
+Like with the level one dominant bugle, it's not only used to imprint his voice on his cows and reaffirm his dominance and his worthiness, if you will, to his ladies and to attract other cows, but to maintain the imagery and the thought or idea that he's a dominant bull so other bulls get the clear idea that it very well might be in their best interest to stay away.
+
+The level three dominant bugle is the most intense vocalization of the three.
+
+Like the level two, starts at a low pitch, rises to a long, drawn-out high pitch that is held momentarily, with the bugle portion of that vocalization either ending there with the high note just being cut off as the animal cuts the vocalization off in mid-breath, or by falling off to that low pitch again that may or may not be as low as where the vocalization started.
+
+But for the level three dominant bugle, after the bugle portion, chuckles—and typically excited chuckles—are added to express a higher level of intensity, interest, or earnestness in the imagery that the bull is trying to portray.
+
+In general, it'll sound something like this.
+
+Now, depending on the bull and the intended level of intensity, for the level three dominant bugle, either the high note of the vocalization is what is drawn out the longest and/or emphasized the most, the high notes of the chuckles are emphasized the most, or both the high notes of the bugle and chuckles are emphasized.
+
+Like with the level two, the level three dominant bugle is used to both attract and imprint on cows, while at the same time discourage other bulls from engaging the herd bull or his group, but in this case it essentially puts an exclamation point behind it.
+
+Most of the time, you'll hear a level three dominant bugle in response to another bull, especially if the bull doing the vocalizing perceives the other bull has ignored his previous warnings and is getting a little too close.
+
+Essentially, it steps up the intensity of the vocal imagery so that the approaching—or simply encroaching—bull gets the impression that the bull doing the vocalizing is serious about defending his cows, is willing to, and has the ability to, step up the intensity level of any potential engagement, and that things could get serious and not be in the approaching bull's best interest of safety and ultimate well-being.
+
+Now again, whether these vocalizations are a bluff or not isn't something that can be determined vocally, but that's the point: develop the perception that the herd bull means business, that he's mature enough, that he's confident enough, and possibly dominant enough, and therefore has the ability to defend his harem and elevate the potential engagement if necessary, hopefully providing the final discouragement that sends the other bull on his way, or at least safely around the group at a safe distance.
+
+Now, while I've focused on a herd bull interacting with his cows and defending his harem so far, keep in mind that single bulls—bulls that are, as of yet, on their own—that are looking for their own cows, or that are interested in or intent on taking another bull's cows—will use the same vocalizations for the same purpose.
+
+If a lone bull is out prospecting for cows with the intent of attracting them and hopefully gathering them into a harem, most of the time he'll be using dominant bugles.
+
+Dominant bugles, again, are attractive to cows.
+
+If he finds a group of elk that he's interested in but isn't sure if the group has a bull in it already, or if there is, he isn't sure of the relative dominance status of the bull, again, he's going to be most likely vocalizing with dominant bugles to be attractive to the cows and hopefully intimidating to the other bull.
+
+If he knows that there's a bull in the group that he's interested in and is intent on trying to take the cows from the other bull, he's going to be using dominant bugles.
+
+If he can get the cows to start thinking about and growing interested in him and his approach, and put the fear of God in the bull that's already there, he's going to be way ahead of the game and put himself at least at a slight advantage once he strolls up to that group.
+
+The beauty and challenge of the dominant bugle is that it pulls double duty every time that it's used.
+
+---
+
+## Part 2 — cautions, and using it in the field
 
 Like with most vocalizations, there can be a variety of ways that they can be used, but for this video I'll cover just a couple of the most common ways dominant bugles are typically used in the field.
 
