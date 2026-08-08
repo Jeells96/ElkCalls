@@ -29,6 +29,8 @@ const CALLS = [
   /* ---------------------- COW ---------------------- */
   { id:"chirp", name:"Chirp", role:"contact", voice:"cow",
     clip:"assets/media/chirp.mp3",
+    plain:"“You there?” Quiet check-in between animals already together.",
+    use:["You're in close and want to sound like ordinary, unbothered elk", "Reassuring a bull or a group that nothing is wrong", "You want a <b>reply</b> — not for him to come. That's a different call."],
     short:"Basic “checking-in” contact between close companions; asks for a response, not action.",
     meaning:"The most basic contact call — a content, relaxed animal checking in with another elk in its own group (classically a cow to her calf). It asks for a response, not an action: the reply is what tells her whether all is well or something’s wrong.",
     lesson:[
@@ -42,6 +44,8 @@ const CALLS = [
 
   { id:"mew", name:"Basic mew", role:"contact", voice:"cow",
     clip:"assets/media/mew.mp3",
+    plain:"“Still here, still moving.” The everyday keeping-in-touch call.",
+    use:["Normal contact inside a group that's on the move", "Sounding like real elk going about their day", "You want a <b>reply</b>, not an action"],
     short:"Everyday “staying in touch” contact within the group; implies movement. Asks for a response, not an action.",
     meaning:"The everyday contact call cows use to <b>stay</b> in touch — a step up from the chirp. It says “Are you still there?” / “I’m right here,” between animals in the same group (not to outside elk), and it asks for or gives a response, not an action. The key: elk mew when they can’t keep visual track of each other — so a mew implies the group is up and moving, doing something.",
     lesson:[
@@ -55,6 +59,8 @@ const CALLS = [
 
   { id:"lostMew", name:"Lost mew", role:"locate", voice:"cow",
     clip:"assets/media/lost-mew.mp3",
+    plain:"“Where are you?” — and quietly, “…so I can come to you.”",
+    use:["You need him to answer so you can pin down where he is", "Opening a one-on-one conversation with a single animal", "Remember: this asks him to <b>answer</b>, not to come"],
     short:"“Where are you?” — with the implied “…so I can come to you.” Asks for a response, not an action. Hold or punch the high note.",
     meaning:"“Where are you?” — asked by an elk looking for an unseen animal, inside or outside its group. The catch is the implied second half: <b>“…so that I can come to you.”</b> It asks for a <b>response, not an action</b> — which is exactly why a bull will answer every call and never take a step. It’s not only a separated cow or calf; it’s any elk seeking a response from one it can’t see.",
     lesson:[
@@ -68,6 +74,8 @@ const CALLS = [
 
   { id:"assemblyMew", name:"Assembly mew", role:"direct", voice:"cow",
     clip:"assets/media/assembly-mew.mp3", video:"assets/media/assembly-mew.mp4",
+    plain:"“Come to me.” The one that asks for an action, not an answer.",
+    use:["He's answered you and now you want him moving", "Switching from finding him to bringing him in", "When in doubt — it's the most universal call there is"],
     short:"“Come to me — join me here.” Asks for an action, not a reply; often answers a lost mew. The most universal call.",
     meaning:"“I want you to come to me.” The directing call: it asks another animal for an action — join me in my location — not a vocal reply, and it’s often the answer to a lost mew. Cows use it to call calves in to nurse and to regroup the herd, so every elk has known it from birth. Almost always an adult, so it’s made at a medium-to-low pitch — and it’s the most universal call you have.",
     lesson:[
@@ -80,6 +88,8 @@ const CALLS = [
 
   { id:"demandingMew", name:"Demanding mew", role:"emotion", voice:"cow",
     clip:"assets/media/demanding-mew.mp3", video:"assets/media/demanding-mew.mp4",
+    plain:"“…now.” An exclamation point stuck on the end of another call.",
+    use:["He's answering but dragging his feet", "Adding urgency without changing what you're saying", "Always tag it onto a lost or assembly mew — never on its own"],
     short:"The exclamation point — “now.” Tagged onto a lost or assembly mew when they’re too slow.",
     meaning:"A mew that tags an exclamation point — the word “now” — onto the call before it. It never stands alone: it rides on the back of a lost mew (“Where are you? Answer me — now.”) or an assembly mew (“Come here — now.”). Any age uses it when a request isn’t answered in the timeframe they wanted.",
     lesson:[
@@ -92,6 +102,8 @@ const CALLS = [
 
   { id:"longMew", name:"Long mew", role:"emotion", voice:"cow",
     clip:"assets/media/long-mew.mp3",
+    plain:"“Where are you? I want to be with you.” Two calls in one, with feeling.",
+    use:["He's lollygagging, or drifting off to the side", "You want to pull him back and add eagerness", "Mid-sequence — before you reach for anything louder"],
     short:"A drawn-out “where are you — I want to be with you”: a lost mew crammed against an assembly mew, with eagerness. Adds emotion mid-sequence.",
     meaning:"A long, drawn-out “Where are you? I want to be with you,” — essentially a lost mew crammed up against an assembly mew. It’s the sound of an eager cow seeking someone out, and it’s Chris’s honest answer to the vague advice to “add emotion / sound pleading”: the emotion just rides on the underlying ask (where are you + come to me).",
     lesson:[
@@ -105,6 +117,8 @@ const CALLS = [
 
   { id:"frustratedWhine", name:"Frustrated whine", role:"emotion", voice:"cow",
     clip:"assets/media/frustrated-whine.mp3",
+    plain:"“Come on — hurry up.” Impatience, layered onto a mew.",
+    use:["He's slow, or he's stopped answering", "You want him to know you really want his company", "Layer it on a lost or assembly mew"],
     short:"Layered on a lost/assembly mew to say “come on, hurry up.” Ends soft — the air just runs out.",
     meaning:"The sound of an elk getting impatient. A drawn-out whine (¾ second up to 2–3) layered onto a lost mew or an assembly mew when the response or action isn’t coming fast enough — “come on, hurry up.” The tell is a soft ending: the sound simply runs out, no harsh finish.",
     lesson:[
@@ -117,6 +131,8 @@ const CALLS = [
 
   { id:"aggravatedWhine", name:"Aggravated whine", role:"emotion", voice:"cow",
     clip:"assets/media/aggravated-whine.mp3", video:"assets/media/aggravated-whine.mp4",
+    plain:"“Leave me alone.” A cow fed up with a pushy young bull.",
+    use:["You want a mature bull to come in and play protector", "Selling the story that a young bull is pestering a cow", "Pressured elk, where a normal invitation isn't working"],
     short:"A cow fed up with a pushy young bull — “leave me alone.” Draws a mature bull in to play protector. Harsh, raspy ending.",
     meaning:"A standalone whine that paints one vivid picture: a cow fed up with a pushy young bull hooking and shoving her — “knock it off, leave me alone.” A mature bull that hears a lady being harassed will often come step in and play protector (and pick up a cow for it). The tell is a loud, raspy, aggressive ending.",
     lesson:[
@@ -131,6 +147,8 @@ const CALLS = [
   { id:"selfishMew", name:"Selfish mew", role:"locate", voice:"cow",
     clip:"assets/media/selfish-mew.mp3",
     flag:"updated",
+    plain:"“Where are you — <i>answer</i> me.” A lost mew with a growl, at full volume.",
+    use:["Your lost mews are only getting a half-hearted answer", "You need to cut through a lot of noise and activity", "Run it <b>with</b> your lost mews, before you switch to assembly mews"],
     short:"A lost mew with a growl on it, at full intensity — “where are you? ANSWER me.” Run it alongside your lost mews, before you switch to assembly mews. Not an estrus call.",
     meaning:"A loud, raspy, growled cow call. Chris originally taught it as an extension of the <b>demanding mew</b> — a demanding mew on steroids. <b>He has since revised that.</b> After a lot more time watching and re-watching footage, he’s increasingly convinced it isn’t a standalone vocalization at all, but the <b>top of the lost mew’s intensity ladder</b>: same structure, same held-and-falling high note, with a <b>growl</b> laid over the whole thing. The meaning is still selfish — “pay attention to <i>me</i>, answer me” — but the practical change is <b>where you reach for it</b>: alongside your lost mews, before you transition into assembly mews, rather than as a last resort. And it is still <b>not</b> an estrus call.",
     lesson:[
@@ -147,6 +165,8 @@ const CALLS = [
 
   { id:"hyperHot", name:"Hyper-hot / “estrus” calls", role:"combo", voice:"cow",
     clip:"assets/media/hyper-hot.mp3",
+    plain:"Not a call — a sentence. And there is no such thing as an estrus call.",
+    use:["You want maximum urgency out of ordinary calls", "Understanding what other people mean by “estrus call”", "Any time of year — it has nothing to do with breeding"],
     short:"A sentence, not a call — and per Roe, a cow-elk estrus call doesn’t exist. Everyday calls strung together: “where are you / I want you here / now.”",
     meaning:"Chris Roe’s position is blunt: <b>a cow-elk estrus call doesn’t exist.</b> The “hyper-hot” isn’t a unique vocalization — it’s a <b>sentence</b> built from everyday calls run back-to-back (assembly → demanding mew → frustrated whine → assembly → demanding mew → aggravated whine → assembly), saying “where are you, I want you here, now.” Useful, but nothing to do with estrus — and that matters, because it means you can use these sounds any time of year, on bulls or cows.",
     lesson:[
@@ -170,6 +190,8 @@ const CALLS = [
       { label:"Level 3 — demand an answer", src:"assets/media/bull-contact-3.mp3",
         when:"<b>Sounds like:</b> a Level 2 with chuckles added after the bugle — high-pitched fast-paced, or excited. The emphasis can sit on the bugle’s high note, the chuckles’ high notes, or both.<br><b>Use it:</b> when Level 2 still gets nothing. The highest interest and urgency you can put in the question. If it takes a Level 3 to get him talking, that’s his level — stay near it as you work in." }
     ],
+    plain:"“Who's out there?” The bull's version of a lost mew.",
+    use:["Finding out where bulls are before you commit to anything", "He answers with one — that's <b>interest</b>, not a challenge", "Start at Level 1 and only go up if he ignores you"],
     short:"“The bugling equivalent of a lost mew.” Asks a question when you start it; shows interest when he answers with it. Levels 1–3 = the same question asked harder.",
     meaning:"A bull gathering information — “who’s out there, and where are you?” Chris calls it <b>the bugling equivalent of a lost mew</b>, and the giveaway is the same: the <b>clear high note</b> is held and emphasized. It cuts both ways — <b>started</b> by a bull it asks for a response; <b>given as a reply</b> it expresses curiosity and interest in whatever he just heard. The three <b>Levels</b> aren’t different calls, just the same question with more insistence, and Level 3 is a Level 2 with chuckles added.",
     lesson:[
@@ -192,6 +214,8 @@ const CALLS = [
       { label:"Level 3 — the exclamation point", src:"assets/media/bull-dominant-3.mp3",
         when:"<b>Sounds like:</b> a Level 2 with chuckles added — typically <b>excited</b> chuckles.<br><b>What it means:</b> the same message with an exclamation point. You mostly hear it <b>in reply to another bull</b> who’s ignored the earlier warnings and is crowding in: I’m serious about these cows, I can escalate, and this could go badly for you. Keep it in reserve when you call, so you always have somewhere left to go." }
     ],
+    plain:"“I'm mature, I'm confident, these are my cows.” A statement, not a question.",
+    use:["You've found a herd bull and you want to move him", "Attractive to cows and discouraging to bulls — every time", "Roe's <b>last resort</b>: it drives plenty of bulls clean away"],
     short:"A statement, not a question: “I’m mature, confident, dominant.” Attractive to cows and discouraging to bulls at the same time — it pulls double duty every time it’s used.",
     meaning:"The bull’s <b>statement</b>, where a contact bugle asks a question. It broadcasts <b>maturity, confidence and dominance</b> — and it does two jobs at once: <b>attractive to cows, discouraging to other bulls</b>. The tell is the <b>growl</b>: where a contact bugle is clear and breathy, this one is harsh and gravelly. It’s the loudest tool in the box and the easiest to misuse — plenty of bulls are lovers rather than fighters and will quietly leave rather than answer it.",
     lesson:[
@@ -215,6 +239,8 @@ const CALLS = [
       { label:"Excited — fired up", src:"assets/media/bull-chuckle-excited.mp3",
         when:"<b>The intense end.</b> Each note is a high squeal or <b>scream</b>, cut off or falling to a lower note — <b>½ to 1 second</b> each, slower at <b>1–2 per second</b>, in shorter strings of <b>3–10 notes</b> (5–7 typical).<br><b>Says:</b> strong interest, eagerness, earnestness. Tack it on <b>dominant bugles</b> — both make a statement. Mostly heard <b>in and around the rut</b>, from mature bulls or bulls that reckon they’re dominant. <b>On its own, on a timid or herded-up bull:</b> you read as a bull close to his cows and interested in <b>them</b>, not challenging <b>him</b> — often enough to bring him in." }
     ],
+    plain:"How he feels about what he just heard, or just said.",
+    use:["Adding intensity to a bugle — that's what makes a Level 3", "On its own, to show interest while giving him nothing to judge", "Match the type: contact bugle → fast-paced, dominant → excited"],
     short:"How a bull feels — his attitude about what he just heard or said. One continuous intensity scale, split in two: high-pitched/fast-paced at the mild end, excited at the hot end.",
     meaning:"Chuckles say how a bull <b>feels</b> — his attitude and disposition about what he heard, what he just said, or what’s going on around him. They run on one continuous scale from nearly passive to flat-out intense, which Chris splits in two for practical use: <b>high-pitched, fast-paced</b> at the mild end (curiosity, interest) and <b>excited</b> at the hot end (eagerness, earnestness). Tacked on a bugle they raise its intensity — that’s literally what turns a Level 2 into a Level 3. On their own they’re quietly lethal: they show interest while giving a bull almost nothing to judge you by.",
     lesson:[
@@ -230,6 +256,8 @@ const CALLS = [
     pairs:["contactBugle","dominantBugle"] },
 
   { id:"checkBugle", name:"Check bugle", role:"emotion", voice:"bull",
+    plain:"A bugle that stops halfway — a bull second-guessing himself.",
+    use:["Your bugling isn't drawing any response", "You want to sound frustrated, or unsure of yourself", "Adding realism that nobody else on the mountain is using"],
     short:"A bugle that starts, stops short, then quits or restarts — broken instead of smooth. Mix it into contact or dominant bugles to add realism, or to sound frustrated and unsure.",
     meaning:"Any bugle where the bull <b>checks himself</b> partway through: it starts, stops short early or mid-call, then either ends there or picks up again — so it sounds <b>broken</b> rather than smooth. It has no fixed meaning of its own; it takes it from the bugle he <i>meant</i> to make and what he says either side. As a tool it does two jobs: it makes your bugling sound <b>real</b>, and it lets you sound <b>frustrated or unsure of yourself</b> — which is often exactly what tips a stubborn bull into coming.",
     lesson:[
@@ -247,6 +275,8 @@ const CALLS = [
 
   { id:"glunk", name:"Glunk", role:"control", voice:"bull",
     clip:"assets/sounds/glunk-glug.mp3",
+    plain:"“Stay put.” And it's aimed at his cows, not at him.",
+    use:["A herd bull who will never answer a challenge", "Threatening his cows instead of his ego", "Pressured elk — it's quiet, short-range and not aggressive"],
     short:"One word, and it’s aimed at cows, not bulls: “stay.” Don’t move off, don’t leave, stay with the group. Which is exactly why using it rattles a herd bull.",
     meaning:"A guttural popping made low in a bull’s throat — <b>glunk</b> — sometimes a single note, sometimes a double, alone or in strings, from nearly inaudible to loud. Strip away everything inconsistent about it and one meaning is left: <b>stay</b>. Stay put, don’t move off, don’t leave the group. And it’s always aimed at <b>cows</b> — ones he can see, ones he knows are there, or ones he only believes are there. That’s what makes it a weapon: glunk at a herd bull’s cows and you’re threatening <i>them</i>, not <i>him</i>, so it works on bulls that would never answer a challenge.",
     lesson:[
@@ -270,6 +300,8 @@ const CALLS = [
   /* ------------------- COW OR BULL ------------------ */
   { id:"alarmBark", name:"Alarm bark", role:"alarm", voice:"both",
     clip:"assets/sounds/alarm-bark.mp3",
+    plain:"“Something <i>might</i> be wrong.” Might, not is. So it isn't over.",
+    use:["You got busted and need to salvage it", "Barked at — bark back, and match the volume", "In front of a bugle, to demand he show himself"],
     short:"“Something might be wrong.” Usually uncertainty, not certainty — so it isn’t game over. Bark back, match his volume, then wind it down.",
     meaning:"A brief high squeal dropping straight into a low, guttural bark — the lower part on its own is often called a <b>grunt</b>. About half a second long, and anywhere from a near-involuntary mutter to a blast that echoes off canyon walls. Crucially it usually means an elk thinks something <b>might</b> be wrong, not that it knows: an elk that <i>sees</i> danger normally just turns and runs without a word. So being barked at is not the end of the hunt.",
     lesson:[

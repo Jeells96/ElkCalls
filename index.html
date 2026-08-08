@@ -148,6 +148,20 @@ main{max-width:var(--maxw); margin:0 auto; padding:22px 22px 80px}
 .foundation{font-family:var(--mono); font-size:.62rem; letter-spacing:.05em; color:var(--faint); border:1px dashed var(--line-2); padding:3px 8px; border-radius:6px; text-transform:uppercase; cursor:help}
 .meaning{font-size:1rem; margin-bottom:12px}
 
+/* answer-first: the one-liner and the "use it when" list */
+.plain{font-size:1.12rem; line-height:1.45; font-weight:600; margin:0 0 14px; color:var(--ink)}
+.use-label{font-family:var(--mono); font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; color:var(--faint); font-weight:700; margin-bottom:6px}
+ul.use{margin:0 0 14px; padding:0; list-style:none; display:flex; flex-direction:column; gap:6px}
+ul.use li{position:relative; padding-left:20px; font-size:.96rem; color:var(--muted); line-height:1.45}
+ul.use li b{color:var(--ink)}
+ul.use li::before{content:""; position:absolute; left:4px; top:.62em; width:7px; height:7px; border-radius:50%; background:var(--c,var(--neutral))}
+
+/* jump bar inside long lessons */
+.jump{display:flex; flex-wrap:wrap; gap:6px; padding:0 0 4px}
+.jump-chip{font-size:.8rem; font-weight:700; cursor:pointer; border:1px solid var(--line-2); background:var(--surface-2); color:var(--muted); padding:7px 12px; border-radius:999px; min-height:36px; line-height:1.2}
+.jump-chip:hover{border-color:var(--c,var(--neutral)); color:var(--ink)}
+.more>summary .cnt{font-family:var(--mono); font-size:.66rem; letter-spacing:.06em; text-transform:uppercase; color:var(--faint); font-weight:700; border:1px solid var(--line-2); border-radius:5px; padding:2px 6px; margin-left:2px}
+
 /* multi-version calls: each version named, playable and explained */
 .multi-head{padding:4px 2px 2px}
 .multi-head .nm{font-family:var(--serif); font-size:1.22rem; font-weight:600; display:block; line-height:1.2}
@@ -168,7 +182,12 @@ main{max-width:var(--maxw); margin:0 auto; padding:22px 22px 80px}
 .variant-btn .vlabel{font-weight:700; font-size:.98rem; line-height:1.25}
 .variant-btn.playing{background:color-mix(in srgb,var(--c,var(--neutral)) 24%,var(--surface)); border-color:var(--c,var(--neutral))}
 .variant-btn.playing .disc{animation:pulse 1s ease-in-out infinite}
-.variant-when{font-size:.93rem; color:var(--muted); margin-top:7px}
+.vwhen{margin-top:6px}
+.vwhen>summary{list-style:none; cursor:pointer; display:flex; align-items:center; gap:7px; min-height:36px; font-size:.84rem; font-weight:700; color:var(--gold)}
+.vwhen>summary::-webkit-details-marker{display:none}
+.vwhen>summary::before{content:"›"; font-size:1.15rem; line-height:1; transition:transform .2s}
+.vwhen[open]>summary::before{transform:rotate(90deg)}
+.variant-when{font-size:.93rem; color:var(--muted); margin:2px 0 6px}
 .variant-when b{color:var(--ink)}
 .levels{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
 .lvl{font-size:.92rem; font-weight:700; cursor:pointer; border:2px solid var(--line-2); background:var(--surface); color:var(--ink); padding:10px 16px; border-radius:999px; min-height:44px; display:inline-flex; align-items:center; gap:8px}

@@ -96,7 +96,8 @@
     card.id = "call-" + c.id;
     card.style.setProperty("--c", `var(${cvar(c.role)})`);
     card.dataset.voice = c.voice;
-    card.dataset.text = (c.name + " " + c.meaning).toLowerCase();
+    card.dataset.text = (c.name + " " + c.plain + " " + (c.use||[]).join(" ") + " " + c.meaning + " " +
+                         (c.lesson||[]).map(l => l.h).join(" ")).replace(/<[^>]+>/g,"").toLowerCase();
 
     const multi = clips.length > 1;
 
@@ -125,7 +126,12 @@
         b.innerHTML = `<span class="disc">${PLAY_SVG}</span><span class="vlabel">${cl.label}</span>`;
         b.addEventListener("click", () => playClip(cl.src, b));
         row.appendChild(b);
-        if(cl.when) row.appendChild(el("p","variant-when", cl.when));
+        if(cl.when){
+          const d = el("details","vwhen");
+          d.appendChild(el("summary", null, "What it means &amp; when to use it"));
+          d.appendChild(el("p","variant-when", cl.when));
+          row.appendChild(d);
+        }
         list.appendChild(row);
       });
       card.appendChild(list);
@@ -141,7 +147,16 @@
     }
     card.appendChild(meta);
 
-    card.appendChild(el("p","meaning", c.meaning));
+    /* the one-line answer */
+    card.appendChild(el("p","plain", c.plain || c.short));
+
+    /* use it when — the short actionable list */
+    if(c.use && c.use.length){
+      card.appendChild(el("div","use-label","Use it when"));
+      const ul = el("ul","use");
+      c.use.forEach(u => ul.appendChild(el("li", null, u)));
+      card.appendChild(ul);
+    }
 
     /* pairs — these play too */
     if(c.pairs && c.pairs.length){
@@ -163,7 +178,7 @@
     /* full lesson + video, tucked away */
     if((c.lesson && c.lesson.length) || c.video){
       const det = el("details","more");
-      det.appendChild(el("summary", null, "Show the full lesson"));
+      det.appendChild(el("summary", null, "Show the full lesson" + (c.lesson && c.lesson.length ? ' <span class="cnt">' + (c.lesson.length + 1) + " parts</span>" : "")));
       const body = el("div","more-body");
       if(c.video){
         const w = el("div","watch");
@@ -179,7 +194,24 @@
         w.appendChild(wb);
         body.appendChild(w);
       }
-      (c.lesson || []).forEach(sec => {
+      const secs = [{ h:"The full meaning", body:c.meaning }].concat(c.lesson || []);
+
+      /* long lessons get a jump bar so nobody has to scroll blind */
+      if(secs.length > 6){
+        const jump = el("div","jump");
+        secs.forEach((sec, n) => {
+          const a = el("button","jump-chip", sec.h);
+          a.type = "button";
+          a.addEventListener("click", () => {
+            const t = body.querySelectorAll("section")[n];
+            if(t) t.scrollIntoView({block:"start"});
+          });
+          jump.appendChild(a);
+        });
+        body.appendChild(jump);
+      }
+
+      secs.forEach(sec => {
         const s = document.createElement("section");
         s.appendChild(el("h4", null, sec.h));
         s.appendChild(el("div", null, sec.body));
