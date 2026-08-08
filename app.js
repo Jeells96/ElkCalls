@@ -1,139 +1,250 @@
-/* Renders the main guide from the shared data in data.js. */
+/* Renders the guide from the shared data in data.js.
+   Core rule: anything with a play triangle plays the sound IMMEDIATELY. */
 (function(){
   const byId = Object.fromEntries(CALLS.map(c => [c.id, c]));
   const cvar = role => (ROLES[role] ? ROLES[role].var : "--neutral");
   const el = (tag, cls, html) => { const n = document.createElement(tag); if(cls) n.className = cls; if(html != null) n.innerHTML = html; return n; };
-  const PLAY = '<svg class="play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
-  const WAVE = '<svg class="wave" viewBox="0 0 88 30" aria-hidden="true">'
-    + '<rect x="2" y="11" width="4" height="8" rx="2"/><rect x="10" y="7" width="4" height="16" rx="2"/>'
-    + '<rect x="18" y="3" width="4" height="24" rx="2"/><rect x="26" y="9" width="4" height="12" rx="2"/>'
-    + '<rect x="34" y="1" width="4" height="28" rx="2"/><rect x="42" y="6" width="4" height="18" rx="2"/>'
-    + '<rect x="50" y="2" width="4" height="26" rx="2"/><rect x="58" y="10" width="4" height="10" rx="2"/>'
-    + '<rect x="66" y="5" width="4" height="20" rx="2"/><rect x="74" y="8" width="4" height="14" rx="2"/>'
-    + '<rect x="82" y="11" width="4" height="8" rx="2"/></svg>';
-  const isAudio = path => /\.(mp3|m4a|aac|wav|ogg)$/i.test(path || "");
-  const hasClip = c => !!(c && (c.clip || (c.clips && c.clips.length)));
+  const PLAY_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+  const clipsOf = c => c.clips ? c.clips : (c.clip ? [{label:"", src:c.clip}] : []);
+  const firstClip = c => { const l = clipsOf(c); return l.length ? l[0].src : null; };
+  const isVideo = src => /\.(mp4|mov|webm)$/i.test(src || "");
 
-  // Build an <audio> or <video> player element for one source; reveal `fb` on error.
-  function buildPlayer(src, fb){
-    if(isAudio(src)){
-      const box = el("div","clip-audio", WAVE);
-      const a = document.createElement("audio");
-      a.controls = true; a.preload = "metadata"; a.src = src;
-      a.addEventListener("error", () => { box.style.display = "none"; fb.style.display = "block"; });
-      box.appendChild(a);
-      return box;
+  /* =====================================================================
+     AUDIO — one shared player; clicking any control plays at once
+     ===================================================================== */
+  let audio = null, playingBtn = null;
+
+  function clearPlayingUI(){
+    document.querySelectorAll(".playing").forEach(n => n.classList.remove("playing"));
+    const tree = document.getElementById("tree");
+    if(tree){
+      tree.classList.remove("focusing");
+      tree.querySelectorAll(".linked").forEach(n => n.classList.remove("linked"));
     }
-    const box = el("div","clip-video");
-    const v = document.createElement("video");
-    v.controls = true; v.playsInline = true; v.preload = "metadata"; v.setAttribute("controlslist","nodownload");
-    const s = document.createElement("source"); s.src = src; s.type = "video/mp4"; v.appendChild(s);
-    const onErr = () => { box.style.display = "none"; fb.style.display = "block"; };
-    v.addEventListener("error", onErr); s.addEventListener("error", onErr);
-    box.appendChild(v);
-    return box;
+    playingBtn = null;
   }
 
-  /* ---- State ---- */
-  let activeRole = null;
-  let activeVoice = "all";
+  function stopAudio(){
+    if(audio){ try{ audio.pause(); }catch(e){} }
+    clearPlayingUI();
+  }
 
-  /* ---- Voice segmented control ---- */
+  function playClip(src, btn){
+    if(!src) return;
+    // tapping the same control again stops it
+    if(btn && btn === playingBtn){ stopAudio(); return; }
+    stopAudio();
+    if(!audio){
+      audio = new Audio();
+      audio.addEventListener("ended", clearPlayingUI);
+      audio.addEventListener("error", clearPlayingUI);
+    }
+    audio.src = src;
+    audio.currentTime = 0;
+    const p = audio.play();
+    if(p && p.catch) p.catch(() => clearPlayingUI());
+    if(btn){
+      btn.classList.add("playing");
+      playingBtn = btn;
+      // in the tree, light up the calls this one works with
+      const id = btn.dataset.id;
+      const tree = document.getElementById("tree");
+      if(id && tree && tree.contains(btn)){
+        const c = byId[id];
+        tree.classList.add("focusing");
+        (c.pairs || []).forEach(pid => {
+          tree.querySelectorAll('.node[data-id="' + pid + '"]').forEach(n => n.classList.add("linked"));
+        });
+      }
+    }
+  }
+
+  /* =====================================================================
+     TABS
+     ===================================================================== */
+  const tabs = [...document.querySelectorAll(".tab")];
+  function showPanel(name){
+    tabs.forEach(t => {
+      const on = t.dataset.panel === name;
+      t.setAttribute("aria-selected", String(on));
+      document.getElementById("panel-" + t.dataset.panel).hidden = !on;
+    });
+    stopAudio();
+    if(history.replaceState) history.replaceState(null, "", "#" + name);
+  }
+  tabs.forEach(t => t.addEventListener("click", () => showPanel(t.dataset.panel)));
+  const startPanel = (location.hash || "").replace("#","");
+  if(["calls","tree","scenarios"].includes(startPanel)) showPanel(startPanel);
+
+  /* =====================================================================
+     CALLS
+     ===================================================================== */
+  let activeVoice = "all";
   const seg = document.getElementById("voiceSeg");
-  seg.addEventListener("click", (e) => {
+  seg.addEventListener("click", e => {
     const btn = e.target.closest("button"); if(!btn) return;
     activeVoice = btn.dataset.voice;
     [...seg.children].forEach(x => x.setAttribute("aria-pressed", String(x === btn)));
     applyFilter();
   });
 
-  /* ---- Legend / role filters ---- */
-  const legend = document.getElementById("legend");
-  Object.entries(ROLES).forEach(([role, meta]) => {
-    const b = el("button","chip-btn");
-    b.type = "button";
-    b.style.setProperty("--c", `var(${meta.var})`);
-    b.setAttribute("aria-pressed","false");
-    b.dataset.role = role;
-    b.title = meta.blurb;
-    b.innerHTML = `<span class="dot"></span>${meta.label}`;
-    b.addEventListener("click", () => {
-      activeRole = (activeRole === role) ? null : role;
-      [...legend.children].forEach(x => x.setAttribute("aria-pressed", String(x.dataset.role === activeRole)));
-      applyFilter();
-    });
-    legend.appendChild(b);
-  });
-
-  /* ---- A clickable call pill (used for "pairs with" everywhere) ---- */
-  function pairPill(pid){
-    const t = byId[pid]; if(!t) return null;
-    const chip = el("button","pair");
-    chip.type = "button";
-    chip.style.setProperty("--c", `var(${cvar(t.role)})`);
-    chip.dataset.target = pid;
-    chip.innerHTML = `<span class="dot"></span>${t.name}${hasClip(t) ? PLAY : ""}`;
-    chip.addEventListener("click", () => openCall(pid));
-    return chip;
-  }
-
-  /* ---- Calls (the lexicon) ---- */
   const callGrid = document.getElementById("callGrid");
+
   CALLS.forEach(c => {
+    const clips = clipsOf(c);
     const card = el("article","call");
     card.id = "call-" + c.id;
     card.style.setProperty("--c", `var(${cvar(c.role)})`);
-    card.dataset.role = c.role;
     card.dataset.voice = c.voice;
     card.dataset.text = (c.name + " " + c.meaning).toLowerCase();
 
-    const top = el("div","call-top");
-    const nameBtn = el("button", "callname" + (hasClip(c) ? " has-clip" : ""));
-    nameBtn.type = "button";
-    nameBtn.dataset.id = c.id;
-    nameBtn.innerHTML = `<span>${c.name}</span>${hasClip(c) ? PLAY : ""}`;
-    nameBtn.title = hasClip(c) ? "Play this call" : "Open this call";
-    nameBtn.addEventListener("click", () => openCall(c.id));
-    const nameWrap = el("h3");
-    nameWrap.appendChild(nameBtn);
+    /* big play button */
+    const play = el("button","play-btn");
+    play.type = "button";
+    const single = clips.length === 1;
+    play.innerHTML =
+      `<span class="disc">${PLAY_SVG}</span>` +
+      `<span class="txt"><span class="nm">${c.name}</span>` +
+      `<span class="hint">${clips.length ? (single ? "Tap to hear it" : "Tap to hear " + clips[0].label) : "No sound yet"}</span></span>`;
+    if(clips.length) play.addEventListener("click", () => playClip(clips[0].src, play));
+    else play.disabled = true;
+    card.appendChild(play);
+
+    /* extra levels / variants */
+    if(clips.length > 1){
+      const lv = el("div","levels");
+      clips.forEach((cl, i) => {
+        if(i === 0) return; // first one is the big button
+        const b = el("button","lvl", `<span class="mini"></span>${cl.label}`);
+        b.type = "button";
+        b.addEventListener("click", () => playClip(cl.src, b));
+        lv.appendChild(b);
+      });
+      card.appendChild(lv);
+    }
+
+    /* meta row */
+    const meta = el("div","call-meta");
+    meta.appendChild(el("span","badge", ROLES[c.role].label));
+    meta.appendChild(el("span","voice-pill", c.voice === "bull" ? "Bull" : "Cow"));
     if(c.flag){
       const t = (FLAG_TITLES[c.flag] || "").replace(/"/g,"&quot;");
-      nameWrap.insertAdjacentHTML("beforeend", ` <span class="foundation" title="${t}">${c.flag}</span>`);
+      meta.insertAdjacentHTML("beforeend", `<span class="foundation" title="${t}">${c.flag}</span>`);
     }
-    top.appendChild(nameWrap);
-    top.appendChild(el("span","badge", ROLES[c.role].label));
-    card.appendChild(top);
+    card.appendChild(meta);
 
     card.appendChild(el("p","meaning", c.meaning));
 
-    if (c.pairs && c.pairs.length){
-      card.appendChild(el("div","pairs-label","Pairs with"));
+    /* pairs — these play too */
+    if(c.pairs && c.pairs.length){
+      card.appendChild(el("div","pairs-label","Use it with"));
       const wrap = el("div","pairs");
-      c.pairs.forEach(pid => { const p = pairPill(pid); if(p) wrap.appendChild(p); });
+      c.pairs.forEach(pid => {
+        const t = byId[pid]; if(!t) return;
+        const b = el("button","pair", `<span class="mini"></span>${t.name}`);
+        b.type = "button";
+        b.style.setProperty("--c", `var(${cvar(t.role)})`);
+        b.title = "Hear the " + t.name;
+        const src = firstClip(t);
+        if(src) b.addEventListener("click", () => playClip(src, b));
+        wrap.appendChild(b);
+      });
       card.appendChild(wrap);
     }
+
+    /* full lesson + video, tucked away */
+    const vid = clips.filter(x => isVideo(x.src));
+    if((c.lesson && c.lesson.length) || vid.length){
+      const det = el("details","more");
+      det.appendChild(el("summary", null, "Show the full lesson"));
+      const body = el("div","more-body");
+      if(vid.length){
+        const w = el("div","watch");
+        const wb = el("button","watch-btn", "▶ Watch Chris demonstrate it");
+        wb.type = "button";
+        wb.addEventListener("click", () => {
+          stopAudio();
+          const v = document.createElement("video");
+          v.controls = true; v.playsInline = true; v.preload = "metadata"; v.src = vid[0].src;
+          w.replaceChildren(v);
+          v.play().catch(()=>{});
+        });
+        w.appendChild(wb);
+        body.appendChild(w);
+      }
+      (c.lesson || []).forEach(sec => {
+        const s = document.createElement("section");
+        s.appendChild(el("h4", null, sec.h));
+        s.appendChild(el("div", null, sec.body));
+        body.appendChild(s);
+      });
+      det.appendChild(body);
+      card.appendChild(det);
+    }
+
     callGrid.appendChild(card);
   });
 
-  /* ---- Filtering ---- */
   const filterInput = document.getElementById("callFilter");
   const noResults = document.getElementById("noResults");
   function applyFilter(){
     const q = filterInput.value.trim().toLowerCase();
     let shown = 0;
     [...callGrid.children].forEach(card => {
-      const okText  = !q || card.dataset.text.includes(q);
-      const okRole  = !activeRole || card.dataset.role === activeRole;
-      const okVoice = activeVoice === "all" || card.dataset.voice === activeVoice;
-      const show = okText && okRole && okVoice;
+      const show = (!q || card.dataset.text.includes(q)) &&
+                   (activeVoice === "all" || card.dataset.voice === activeVoice);
       card.classList.toggle("hidden", !show);
       if(show) shown++;
     });
     noResults.classList.toggle("hidden", shown !== 0);
   }
   filterInput.addEventListener("input", applyFilter);
+  applyFilter();
 
-  /* ---- Scenarios ---- */
+  /* =====================================================================
+     TREE — the conversation, top to bottom
+     ===================================================================== */
+  const TIERS = [
+    { n:"1", title:"Open the conversation", say:"“All is calm — anyone around?”", ids:["chirp","mew"] },
+    { n:"2", title:"Find him", say:"“Where are you?” — he answers, but expects you to come to him.", ids:["lostMew"] },
+    { n:"3", title:"Bring him in", say:"“Come to me.” This is the one that asks him to move.", ids:["assemblyMew"] },
+    { n:"4", title:"If he stalls, add feeling", say:"Push the same message harder.", ids:["demandingMew","frustratedWhine","longMew"] },
+    { n:"5", title:"Last resort — make him look", say:"Loud and hard to ignore. Save these for when nothing else works.", ids:["selfishMew","aggravatedWhine","hyperHot"] },
+    { n:"B", title:"Bull talk", say:"Use his own language — to locate him, or to pick a fight.", ids:["contactBugle","dominantBugle","chuckle"] },
+  ];
+
+  const tree = document.getElementById("tree");
+  TIERS.forEach((t, i) => {
+    if(i > 0){
+      const br = el("div","branch", i === TIERS.length - 1 ? "<span>or switch to</span>" : "<span>then</span>");
+      tree.appendChild(br);
+    }
+    const box = el("div","tier");
+    const head = el("div","tier-head");
+    head.appendChild(el("span","tier-num", t.n));
+    head.appendChild(el("h3", null, t.title));
+    head.appendChild(el("span","say", t.say));
+    box.appendChild(head);
+
+    const nodes = el("div","tier-nodes");
+    t.ids.forEach(id => {
+      const c = byId[id]; if(!c) return;
+      const b = el("button","node", `<span class="disc">${PLAY_SVG}</span>${c.name}`);
+      b.type = "button";
+      b.dataset.id = id;
+      b.style.setProperty("--c", `var(${cvar(c.role)})`);
+      b.title = "Hear the " + c.name;
+      const src = firstClip(c);
+      if(src) b.addEventListener("click", () => playClip(src, b));
+      nodes.appendChild(b);
+    });
+    box.appendChild(nodes);
+    tree.appendChild(box);
+  });
+
+  /* =====================================================================
+     SCENARIOS
+     ===================================================================== */
   const list = document.getElementById("scenarioList");
   SCENARIOS.forEach((s, i) => {
     const d = el("details","scenario");
@@ -142,7 +253,7 @@
     const sum = el("summary");
     sum.appendChild(el("span","num", String(i+1).padStart(2,"0")));
     const head = el("div","s-head");
-    head.appendChild(el("span","s-tag label", s.tag));
+    head.appendChild(el("span","s-tag", s.tag));
     head.appendChild(el("h3", null, s.title));
     sum.appendChild(head);
     sum.appendChild(el("span","caret","›"));
@@ -161,18 +272,19 @@
 
       let chip;
       if(st.call === "silence"){
-        chip = el("span","call-chip static"); chip.style.setProperty("--c","var(--neutral)");
-        chip.innerHTML = `<span class="dot"></span>Go quiet &amp; set up`;
+        chip = el("span","call-chip static", "Go quiet &amp; get ready");
+        chip.style.setProperty("--c","var(--neutral)");
       } else if(st.call === "tip"){
-        chip = el("span","call-chip static"); chip.style.setProperty("--c","var(--pine)");
-        chip.innerHTML = `<span class="dot"></span>Keep it simple`;
+        chip = el("span","call-chip static", "Remember");
+        chip.style.setProperty("--c","var(--pine)");
       } else {
         const c = byId[st.call];
-        chip = el("button","call-chip"); chip.type = "button";
+        chip = el("button","call-chip", `<span class="mini"></span>${c.name}`);
+        chip.type = "button";
         chip.style.setProperty("--c", `var(${cvar(c.role)})`);
-        chip.innerHTML = `<span class="dot"></span>${c.name}${hasClip(c) ? PLAY : ""}`;
-        chip.title = hasClip(c) ? "Play this call" : "Open this call";
-        chip.addEventListener("click", () => openCall(st.call));
+        chip.title = "Hear the " + c.name;
+        const src = firstClip(c);
+        if(src) chip.addEventListener("click", () => playClip(src, chip));
       }
       main.appendChild(chip);
       main.appendChild(el("p","action", st.action));
@@ -186,122 +298,12 @@
     list.appendChild(d);
   });
 
-  applyFilter();
+  /* stop audio with Escape */
+  document.addEventListener("keydown", e => { if(e.key === "Escape") stopAudio(); });
 
-  /* =======================================================================
-     CALL MODAL — click any call name to see its clip(s), meaning, breakdown
-     ======================================================================= */
-  const modal      = document.getElementById("callModal");
-  const mName      = document.getElementById("modalName");
-  const mBadges    = document.getElementById("modalBadges");
-  const mMedia     = document.getElementById("modalVideo");
-  const mMeaning   = document.getElementById("modalMeaning");
-  const mLesson    = document.getElementById("modalLesson");
-  const mPairsWrap = document.getElementById("modalPairsWrap");
-  const mPairs     = document.getElementById("modalPairs");
-  let lastFocus = null;
-
-  const FALLBACK = "This clip plays on the live site (and from the repo) &mdash; the preview can&rsquo;t load media files.";
-
-  function openCall(id){
-    const c = byId[id]; if(!c || !modal) return;
-    lastFocus = document.activeElement;
-
-    mName.textContent = c.name;
-    modal.style.setProperty("--c", `var(${cvar(c.role)})`);
-
-    mBadges.innerHTML = "";
-    const rb = el("span","badge", ROLES[c.role].label);
-    rb.style.setProperty("--c", `var(${cvar(c.role)})`);
-    mBadges.appendChild(rb);
-    mBadges.appendChild(el("span","voice-pill", c.voice === "bull" ? "Bull" : "Cow"));
-    if(c.flag){
-      const t = (FLAG_TITLES[c.flag] || "").replace(/"/g,"&quot;");
-      mBadges.insertAdjacentHTML("beforeend", ` <span class="foundation" title="${t}">${c.flag}</span>`);
-    }
-
-    // Media: multi-clip (level/variant selector), single clip, or a placeholder
-    mMedia.innerHTML = "";
-    if(c.clips && c.clips.length){
-      const fb = el("div","vid-note", FALLBACK); fb.style.display = "none";
-      const outer = el("div","clip-multi");
-      const sel = el("div","clip-levels");
-      const area = el("div","clip-area");
-      c.clips.forEach((cl, idx) => {
-        const b = el("button","clip-lvl"); b.type = "button";
-        b.textContent = cl.label;
-        b.setAttribute("aria-pressed", String(idx === 0));
-        b.addEventListener("click", () => {
-          [...sel.children].forEach(x => x.setAttribute("aria-pressed","false"));
-          b.setAttribute("aria-pressed","true");
-          area.querySelectorAll("video,audio").forEach(m => { try { m.pause(); } catch(e){} });
-          area.innerHTML = ""; fb.style.display = "none";
-          area.appendChild(buildPlayer(cl.src, fb));
-        });
-        sel.appendChild(b);
-      });
-      outer.appendChild(sel);
-      outer.appendChild(area);
-      mMedia.appendChild(outer);
-      mMedia.appendChild(fb);
-      area.appendChild(buildPlayer(c.clips[0].src, fb));
-    } else if(c.clip){
-      const fb = el("div","vid-note", FALLBACK); fb.style.display = "none";
-      mMedia.appendChild(buildPlayer(c.clip, fb));
-      mMedia.appendChild(fb);
-    } else {
-      mMedia.appendChild(el("div","vid-empty", `${PLAY}<span>Clip coming soon &mdash; being uploaded.</span>`));
-    }
-
-    mMeaning.innerHTML = c.meaning;
-
-    // Full breakdown (distilled lesson), collapsed by default
-    mLesson.innerHTML = "";
-    if(c.lesson && c.lesson.length){
-      const det = el("details","lesson");
-      det.appendChild(el("summary", null, 'Full breakdown <span class="hint">Chris Roe&rsquo;s lesson</span>'));
-      const lbody = el("div","lesson-body");
-      c.lesson.forEach(sec => {
-        const s = document.createElement("section");
-        s.appendChild(el("h4", null, sec.h));
-        s.appendChild(el("div", null, sec.body));
-        lbody.appendChild(s);
-      });
-      det.appendChild(lbody);
-      mLesson.appendChild(det);
-    }
-
-    mPairs.innerHTML = "";
-    if(c.pairs && c.pairs.length){
-      c.pairs.forEach(pid => { const p = pairPill(pid); if(p) mPairs.appendChild(p); });
-      mPairsWrap.style.display = "";
-    } else {
-      mPairsWrap.style.display = "none";
-    }
-
-    modal.hidden = false;
-    requestAnimationFrame(() => modal.classList.add("open"));
-    document.body.style.overflow = "hidden";
-    const closeBtn = modal.querySelector(".modal-close");
-    if(closeBtn) closeBtn.focus();
-  }
-
-  function closeModal(){
-    if(!modal || modal.hidden) return;
-    mMedia.querySelectorAll("video,audio").forEach(m => { try { m.pause(); } catch(e){} });
-    modal.classList.remove("open");
-    modal.hidden = true;
-    mMedia.innerHTML = "";
-    document.body.style.overflow = "";
-    if(lastFocus && lastFocus.focus) lastFocus.focus();
-  }
-
-  if(modal){
-    modal.addEventListener("click", (e) => { if(e.target.hasAttribute("data-close")) closeModal(); });
-    document.addEventListener("keydown", (e) => { if(e.key === "Escape") closeModal(); });
-  }
-
-  /* ---- Topographic contour motif — drawn once (static) ---- */
+  /* =====================================================================
+     Topographic motif in the hero — drawn once
+     ===================================================================== */
   const cv = document.getElementById("topo");
   if(cv && cv.getContext){
     const ctx = cv.getContext("2d");
@@ -312,18 +314,18 @@
       cv.width = Math.round(w*dpr); cv.height = Math.round(h*dpr);
       ctx.setTransform(dpr,0,0,dpr,0,0);
       ctx.clearRect(0,0,w,h);
-      const cx = w*0.83, cy = h*0.34, rings = 11;
+      const cx = w*0.86, cy = h*0.4, rings = 9;
       for(let i=0;i<rings;i++){
-        const base = 34 + i*44;
+        const base = 30 + i*40;
         ctx.beginPath();
         for(let a=0;a<=Math.PI*2+0.001;a+=0.07){
-          const r = base + Math.sin(a*3 + i*0.55)*11 + Math.sin(a*5 - i*0.9)*6 + Math.cos(a*2 + i*1.3)*9;
-          const x = cx + Math.cos(a)*r*1.18, y = cy + Math.sin(a)*r;
+          const r = base + Math.sin(a*3 + i*0.55)*10 + Math.sin(a*5 - i*0.9)*6 + Math.cos(a*2 + i*1.3)*8;
+          const x = cx + Math.cos(a)*r*1.2, y = cy + Math.sin(a)*r;
           a===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
         }
         ctx.closePath();
         ctx.lineWidth = 1;
-        ctx.strokeStyle = (i===4) ? "rgba(216,171,84,0.34)" : "rgba(233,238,224,0.10)";
+        ctx.strokeStyle = (i===4) ? "rgba(216,171,84,0.30)" : "rgba(233,238,224,0.09)";
         ctx.stroke();
       }
     }

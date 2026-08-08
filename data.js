@@ -25,7 +25,7 @@ const FLAG_TITLES = {
 const CALLS = [
   /* ---------------------- COW ---------------------- */
   { id:"chirp", name:"Chirp", role:"contact", voice:"cow",
-    clip:"assets/media/chirp.mp4",
+    clip:"assets/media/chirp.mp3",
     short:"Basic “checking-in” contact between close companions; asks for a response, not action.",
     meaning:"The most basic contact call — a content, relaxed animal checking in with another elk in its own group (classically a cow to her calf). It asks for a response, not an action: the reply is what tells her whether all is well or something’s wrong.",
     lesson:[
@@ -40,7 +40,7 @@ const CALLS = [
   { id:"mew", name:"Basic mew", role:"contact", voice:"cow",
     clip:"assets/media/mew.mp3",
     short:"Everyday “staying in touch” contact within the group; implies movement. Asks for a response, not an action.",
-    meaning:"The everyday contact call cows use to *stay* in touch — a step up from the chirp. It says “Are you still there?” / “I’m right here,” between animals in the same group (not to outside elk), and it asks for or gives a response, not an action. The key: elk mew when they can’t keep visual track of each other — so a mew implies the group is up and moving, doing something.",
+    meaning:"The everyday contact call cows use to <b>stay</b> in touch — a step up from the chirp. It says “Are you still there?” / “I’m right here,” between animals in the same group (not to outside elk), and it asks for or gives a response, not an action. The key: elk mew when they can’t keep visual track of each other — so a mew implies the group is up and moving, doing something.",
     lesson:[
       { h:"Structure &amp; the four keys", body:"About <b>½–¾ second</b>, a smooth even slide high→low with even emphasis (structurally, a longer chirp). Four things to understand:<ul><li>Mews happen when <b>something is going on within the group</b>.</li><li>They <b>imply movement and activity</b> — the elk are up on their feet.</li><li>They’re aimed <b>within the group</b>, not at an outside elk.</li><li>They <b>ask for or give a response</b>, not an action.</li></ul>" },
       { h:"Why it means “movement”", body:"Elk trust their eyes first and only lean on their voice when sight isn’t enough. So when elk are mewing back and forth, sight <b>isn’t</b> cutting it — they’re in heavy cover, spread out and moving, or a new animal has joined and they’re sorting it out. Chris’s livestock test: cattle calm in an open pasture are silent; pull the calves or load a trailer and they bawl their heads off. Mewing = something changed and they can’t keep visual contact." },
