@@ -148,6 +148,28 @@ main{max-width:var(--maxw); margin:0 auto; padding:22px 22px 80px}
 .foundation{font-family:var(--mono); font-size:.62rem; letter-spacing:.05em; color:var(--faint); border:1px dashed var(--line-2); padding:3px 8px; border-radius:6px; text-transform:uppercase; cursor:help}
 .meaning{font-size:1rem; margin-bottom:12px}
 
+/* multi-version calls: each version named, playable and explained */
+.multi-head{padding:4px 2px 2px}
+.multi-head .nm{font-family:var(--serif); font-size:1.22rem; font-weight:600; display:block; line-height:1.2}
+.multi-head .hint{font-size:.85rem; color:var(--muted); font-weight:600}
+.variants{display:flex; flex-direction:column; gap:10px; margin-top:11px}
+.variant{border-left:3px solid color-mix(in srgb,var(--c,var(--neutral)) 45%,transparent); padding-left:11px}
+.variant-btn{
+  width:100%; display:flex; align-items:center; gap:11px; text-align:left; cursor:pointer; min-height:48px;
+  background:color-mix(in srgb,var(--c,var(--neutral)) 12%,var(--surface));
+  border:2px solid color-mix(in srgb,var(--c,var(--neutral)) 42%,transparent);
+  color:var(--ink); border-radius:10px; padding:8px 12px;
+}
+.variant-btn:hover{border-color:var(--c,var(--neutral))}
+.variant-btn .disc{flex:none; width:30px; height:30px; border-radius:50%; background:var(--c,var(--neutral)); display:grid; place-items:center}
+.variant-btn .disc svg{width:14px; height:14px; fill:#fff}
+:root[data-theme="dark"] .variant-btn .disc svg{fill:#0b0f0a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .variant-btn .disc svg{fill:#0b0f0a}}
+.variant-btn .vlabel{font-weight:700; font-size:.98rem; line-height:1.25}
+.variant-btn.playing{background:color-mix(in srgb,var(--c,var(--neutral)) 24%,var(--surface)); border-color:var(--c,var(--neutral))}
+.variant-btn.playing .disc{animation:pulse 1s ease-in-out infinite}
+.variant-when{font-size:.93rem; color:var(--muted); margin-top:7px}
+.variant-when b{color:var(--ink)}
 .levels{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
 .lvl{font-size:.92rem; font-weight:700; cursor:pointer; border:2px solid var(--line-2); background:var(--surface); color:var(--ink); padding:10px 16px; border-radius:999px; min-height:44px; display:inline-flex; align-items:center; gap:8px}
 .lvl:hover{border-color:var(--c,var(--neutral))}

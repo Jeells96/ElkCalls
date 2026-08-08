@@ -98,29 +98,37 @@
     card.dataset.voice = c.voice;
     card.dataset.text = (c.name + " " + c.meaning).toLowerCase();
 
-    /* big play button */
-    const play = el("button","play-btn");
-    play.type = "button";
-    const single = clips.length === 1;
-    play.innerHTML =
-      `<span class="disc">${PLAY_SVG}</span>` +
-      `<span class="txt"><span class="nm">${c.name}</span>` +
-      `<span class="hint">${clips.length ? (single ? "Tap to hear it" : "Tap to hear " + clips[0].label) : "No sound yet"}</span></span>`;
-    if(clips.length) play.addEventListener("click", () => playClip(clips[0].src, play));
-    else play.disabled = true;
-    card.appendChild(play);
+    const multi = clips.length > 1;
 
-    /* extra levels / variants */
-    if(clips.length > 1){
-      const lv = el("div","levels");
-      clips.forEach((cl, i) => {
-        if(i === 0) return; // first one is the big button
-        const b = el("button","lvl", `<span class="mini"></span>${cl.label}`);
+    if(!multi){
+      /* one sound — the whole header is the play button */
+      const play = el("button","play-btn");
+      play.type = "button";
+      play.innerHTML =
+        `<span class="disc">${PLAY_SVG}</span>` +
+        `<span class="txt"><span class="nm">${c.name}</span>` +
+        `<span class="hint">${clips.length ? "Tap to hear it" : "No sound yet"}</span></span>`;
+      if(clips.length) play.addEventListener("click", () => playClip(clips[0].src, play));
+      else play.disabled = true;
+      card.appendChild(play);
+    } else {
+      /* several versions — title, then every version listed and taught */
+      const head = el("div","multi-head");
+      head.innerHTML = `<span class="nm">${c.name}</span><span class="hint">${clips.length} versions &mdash; tap any one to hear it</span>`;
+      card.appendChild(head);
+
+      const list = el("div","variants");
+      clips.forEach(cl => {
+        const row = el("div","variant");
+        const b = el("button","variant-btn");
         b.type = "button";
+        b.innerHTML = `<span class="disc">${PLAY_SVG}</span><span class="vlabel">${cl.label}</span>`;
         b.addEventListener("click", () => playClip(cl.src, b));
-        lv.appendChild(b);
+        row.appendChild(b);
+        if(cl.when) row.appendChild(el("p","variant-when", cl.when));
+        list.appendChild(row);
       });
-      card.appendChild(lv);
+      card.appendChild(list);
     }
 
     /* meta row */
@@ -212,9 +220,9 @@
       { n:"5", title:"Last resort", say:"Loud. Hard to ignore.",         ids:["selfishMew","aggravatedWhine","hyperHot"] },
     ]},
     { lane:"Bull talk — his own language", cols:[
-      { n:"1", title:"Ask",         say:"“Who’s out there?”",            ids:["contactBugle"] },
-      { n:"2", title:"State",       say:"Makes a statement, not a question.", ids:["dominantBugle"] },
-      { n:"+", title:"Turn it up",  say:"Tack on to raise the intensity.",    ids:["chuckle"] },
+      { n:"1", title:"Contact bugle", say:"Asks “who’s out there?” — start low, escalate only if ignored.", ids:["contactBugle"], variants:true },
+      { n:"2", title:"Dominant bugle",say:"Makes a statement. Open at Level 2.", ids:["dominantBugle"], variants:true },
+      { n:"+", title:"Chuckle",       say:"Raises the intensity — or works alone.", ids:["chuckle"], variants:true },
     ]},
   ];
 
@@ -235,14 +243,19 @@
       const nodes = el("div","col-nodes");
       t.ids.forEach(id => {
         const c = byId[id]; if(!c) return;
-        const b = el("button","node", `<span class="disc">${PLAY_SVG}</span>${c.name}`);
-        b.type = "button";
-        b.dataset.id = id;
-        b.style.setProperty("--c", `var(${cvar(c.role)})`);
-        b.title = "Hear the " + c.name;
-        const src = firstClip(c);
-        if(src) b.addEventListener("click", () => playClip(src, b));
-        nodes.appendChild(b);
+        // for bull calls, list every version as its own playable node
+        const items = (t.variants && c.clips) ? c.clips.map(cl => ({
+          label: cl.label.split(" — ")[0], src: cl.src, title: c.name + " — " + cl.label
+        })) : [{ label: c.name, src: firstClip(c), title: "Hear the " + c.name }];
+        items.forEach(it => {
+          const b = el("button","node", `<span class="disc">${PLAY_SVG}</span>${it.label}`);
+          b.type = "button";
+          b.dataset.id = id;
+          b.style.setProperty("--c", `var(${cvar(c.role)})`);
+          b.title = it.title;
+          if(it.src) b.addEventListener("click", () => playClip(it.src, b));
+          nodes.appendChild(b);
+        });
       });
       col.appendChild(nodes);
       cols.appendChild(col);

@@ -157,9 +157,12 @@ const CALLS = [
      (Level 1–3), plus the chuckle. Definitions pending his bull lesson. */
   { id:"contactBugle", name:"Contact bugle", role:"locate", voice:"bull",
     clips:[
-      { label:"Level 1", src:"assets/media/bull-contact-1.mp3" },
-      { label:"Level 2", src:"assets/media/bull-contact-2.mp3" },
-      { label:"Level 3", src:"assets/media/bull-contact-3.mp3" }
+      { label:"Level 1 — the opener", src:"assets/media/bull-contact-1.mp3",
+        when:"<b>Start here, every time.</b> Low-key: “who’s out there?” It’s also what you answer with once he’s talking — and what you drop back to after any escalation, staying a notch below him so you don’t push him." },
+      { label:"Level 2 — ask again", src:"assets/media/bull-contact-2.mp3",
+        when:"<b>No answer at Level 1</b>, and you’re confident a bull is in there. Same question, more insistence — like repeating yourself a little firmer after being ignored." },
+      { label:"Level 3 — demand an answer", src:"assets/media/bull-contact-3.mp3",
+        when:"<b>Still nothing at Level 2.</b> The most insistent version — this is a Level 2 with chuckles on the end. If it takes a Level 3 to get him talking, that’s the level he needs; stay near it as you work in." }
     ],
     short:"The bull’s question: “Who’s out there?” Levels 1–3 are the same question asked harder. Up close it means “show yourself.”",
     meaning:"A bull asking a question — “who’s out there, give me a response.” It’s the bull-side twin of the lost mew: it asks for a <b>response</b>, usually vocal, but sometimes physical, with a bull coming in to make visual contact. The three <b>Levels</b> aren’t different calls — they’re the same question asked with more insistence, and Level 3 is a Level 2 with chuckles added.",
@@ -174,9 +177,12 @@ const CALLS = [
 
   { id:"dominantBugle", name:"Dominant bugle", role:"challenge", voice:"bull",
     clips:[
-      { label:"Level 1", src:"assets/media/bull-dominant-1.mp3" },
-      { label:"Level 2", src:"assets/media/bull-dominant-2.mp3" },
-      { label:"Level 3", src:"assets/media/bull-dominant-3.mp3" }
+      { label:"Level 1 — the mildest statement", src:"assets/media/bull-dominant-1.mp3",
+        when:"The least intense statement. Worth knowing and recognising, but note that Chris’s tactical advice <b>starts at Level 2</b> — he doesn’t single out a use for Level 1, and to locate a bull he’d reach for a contact bugle instead." },
+      { label:"Level 2 — your working bugle", src:"assets/media/bull-dominant-2.mp3",
+        when:"<b>This is the one you use.</b> It’s what a real bull uses to attract cows and intimidate rivals, so it’s where you open — big, loud and raspy for a bow setup. It’s also what you throw at cows you accidentally bump, because that’s exactly what a bull does when a cow breaks away from him." },
+      { label:"Level 3 — held in reserve", src:"assets/media/bull-dominant-3.mp3",
+        when:"<b>Only if he ignores Level 2</b> — and give Level 2 a real chance first. Chris deliberately keeps this back so there’s always somewhere left to escalate. Once he’s reacting, drop back down." }
     ],
     short:"A warning to other bulls — attractive to cows, discouraging to bulls. Powerful, but the wrong tool for most pressured bulls. Open at Level 2 and get close.",
     meaning:"The bull’s <b>statement</b>, where a contact bugle asks a question: a warning aimed at other bulls (and attractive to cows). It’s the loudest tool in the box and the easiest one to misuse — plenty of bulls are lovers, not fighters, and will quietly leave rather than answer it. Used on the right bull, close and from the right angle, it can pull a herd bull into your lap.",
@@ -192,8 +198,10 @@ const CALLS = [
 
   { id:"chuckle", name:"Chuckle", role:"emotion", voice:"bull",
     clips:[
-      { label:"High-pitched (fast-paced)", src:"assets/media/bull-chuckle-highpitched.mp3" },
-      { label:"Excited", src:"assets/media/bull-chuckle-excited.mp3" }
+      { label:"High-pitched, fast-paced — curious", src:"assets/media/bull-chuckle-highpitched.mp3",
+        when:"Says <b>curiosity and interest</b>. Tack it on <b>contact bugles</b> (both ask about another animal, so they match). <b>On its own, early season:</b> send a string instead of a full contact bugle — you sound interested without sounding aggressive, and you give him so little to judge that he has to bugle again or come look." },
+      { label:"Excited — fired up", src:"assets/media/bull-chuckle-excited.mp3",
+        when:"Says <b>heightened intensity and eagerness</b>. Tack it on <b>dominant bugles</b> (both make a statement). <b>On its own, on a timid or herded-up bull:</b> instead of challenging him, you read as a bull who’s close to his cows and very interested in <b>them</b> — often enough to bring him in to shove the newcomer off." }
     ],
     short:"The bull’s volume knob — tack it on a bugle to raise the intensity. Match the type: high-pitched with contact, excited with dominant. Deadly on its own.",
     meaning:"The intensity dial for bull talk. Tacked on the end of a bugle it raises whatever that bugle was asking or stating — adding chuckles is literally what turns a Level 2 into a Level 3. <b>High-pitched, fast-paced</b> chuckles say curiosity and interest; <b>excited</b> chuckles say heightened intensity and eagerness. On their own they’re quietly lethal: they show interest while giving a bull almost nothing to judge you by.",
