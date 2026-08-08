@@ -12,14 +12,24 @@ can string them together to tell a bull whatever story the moment calls for.
 
 ## What's inside
 
-- **The Calls** — a searchable lexicon. Filter by **voice** (Cow / Bull) or by
-  **job** (a color key: contact / locate / direct / emotion / challenge /
-  combo / alarm / control). **Tap any call name** to play its demo clip, read its meaning, open
-  Chris Roe's **full breakdown** of that call, and see what it pairs with.
-- **Scenarios** — real situations with a numbered, step-by-step calling
-  sequence, including two that mix cow and bull calling.
+Five tabs. One search box, top of every one of them, that reaches every
+lesson body, situation step, behavior section and library clip.
+
+- **Calls** — every call, answer-first: one plain sentence, a short "use it
+  when" list, what it pairs with, and the full lesson folded away underneath.
+  Tap any name to hear it. Two views: **one at a time** (cards, filterable by
+  Cow / Bull) or **all on one page** (the tree — every call laid out in the
+  order a conversation goes, with the calls each one works with lighting up).
+- **Situations** — pick the one you're in; get the exact order to call.
+- **Study** — flashcards that remember what you've got and drill what you
+  haven't, plus a "name that sound" quiz.
+- **Sounds** — a standalone library of real elk recorded in the wild.
+- **Behavior** — the groundwork the calling sits on.
 - **Field card** (`cheatsheet.html`) — a compact, print-first pocket reference.
   Hit **Print / Save as PDF** for a page you can carry.
+
+Call colors are a job key: contact / locate / direct / emotion / challenge /
+combo / alarm / control.
 
 ## Pages / files
 

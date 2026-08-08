@@ -84,8 +84,33 @@
     if(history.replaceState) history.replaceState(null, "", "#" + name);
   }
   tabs.forEach(t => t.addEventListener("click", () => showPanel(t.dataset.panel)));
-  const startPanel = (location.hash || "").replace("#","");
-  if(["calls","tree","scenarios","study","sounds","behavior"].includes(startPanel)) showPanel(startPanel);
+  /* the tree is a view of the Calls tab, not a tab of its own */
+  const viewSeg   = document.getElementById("viewSeg");
+  const viewCards = document.getElementById("viewCards");
+  const viewTree  = document.getElementById("viewTree");
+  const voiceSegEl= document.getElementById("voiceSeg");
+  function showView(v){
+    const tree = v === "tree";
+    viewCards.hidden = tree;
+    viewTree.hidden  = !tree;
+    voiceSegEl.hidden = tree;          // the tree has its own fixed lanes; the filter would lie
+    [...viewSeg.children].forEach(b => b.setAttribute("aria-pressed", String(b.dataset.view === v)));
+    stopAudio();
+  }
+  viewSeg.addEventListener("click", e => {
+    const b = e.target.closest("button"); if(!b) return;
+    showView(b.dataset.view);
+  });
+
+  function routeFromHash(){
+    const h = (location.hash || "").replace("#","");
+    if(h === "tree"){ showPanel("calls"); showView("tree"); return true; }
+    if(["calls","scenarios","study","sounds","behavior"].includes(h)){ showPanel(h); return true; }
+    return false;
+  }
+  routeFromHash();
+  // old #tree bookmarks still work, and so does pasting a hash into the bar mid-session
+  window.addEventListener("hashchange", routeFromHash);
 
   /* =====================================================================
      CALLS
@@ -375,6 +400,7 @@
 
     function go(h){
       showPanel(h.panel);
+      if(h.panel === "calls") showView("cards");   // results point at cards, not tree nodes
       out.hidden = true;
       q.blur();
       requestAnimationFrame(() => {

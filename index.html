@@ -112,6 +112,8 @@ main{max-width:var(--maxw); margin:0 auto; padding:22px 22px 80px}
 .search input[type=search]::-webkit-search-decoration{-webkit-appearance:none; appearance:none; display:none}
 .search svg{width:18px; height:18px; color:var(--faint); flex:none}
 .seg{display:inline-flex; background:var(--surface); border:2px solid var(--line-2); border-radius:999px; padding:3px}
+.seg[hidden]{display:none}
+#viewSeg button{font-size:.9rem; padding:10px 15px}
 .seg button{font-size:.95rem; font-weight:700; border:0; background:transparent; color:var(--muted); padding:10px 20px; border-radius:999px; cursor:pointer; min-height:44px}
 .seg button[aria-pressed="true"]{background:var(--pine); color:var(--pine-ink)}
 
@@ -468,9 +470,6 @@ footer{border-top:1px solid var(--line); background:var(--paper-2)}
     <button class="tab" role="tab" id="tab-calls" aria-controls="panel-calls" aria-selected="true" data-panel="calls">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 12h3l3-7 4 14 3-7h5"/></svg><span class="lbl">Calls</span>
     </button>
-    <button class="tab" role="tab" id="tab-tree" aria-controls="panel-tree" aria-selected="false" data-panel="tree">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3v5M12 8 6 13v3M12 8l6 5v3M4 16h4M16 16h4M10 3h4"/></svg><span class="lbl">Tree</span>
-    </button>
     <button class="tab" role="tab" id="tab-scenarios" aria-controls="panel-scenarios" aria-selected="false" data-panel="scenarios">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span class="lbl">Situations</span>
     </button>
@@ -502,21 +501,26 @@ footer{border-top:1px solid var(--line); background:var(--paper-2)}
   <section class="panel" id="panel-calls" role="tabpanel" aria-labelledby="tab-calls">
     <p class="intro">Tap any call to hear it.</p>
     <div class="controls">
+      <div class="seg" id="viewSeg" role="group" aria-label="How to show the calls">
+        <button type="button" data-view="cards" aria-pressed="true">One at a time</button>
+        <button type="button" data-view="tree" aria-pressed="false">All on one page</button>
+      </div>
       <div class="seg" id="voiceSeg" role="group" aria-label="Cow or bull">
         <button type="button" data-voice="all" aria-pressed="true">All</button>
         <button type="button" data-voice="cow" aria-pressed="false">Cow</button>
         <button type="button" data-voice="bull" aria-pressed="false">Bull</button>
       </div>
     </div>
-    <div class="call-grid" id="callGrid"></div>
-    <p class="no-results hidden" id="noResults">No calls match that search.</p>
-  </section>
 
-  <!-- ============ TREE ============ -->
-  <section class="panel" id="panel-tree" role="tabpanel" aria-labelledby="tab-tree" hidden>
-    <p class="intro">Every call on one page, in the order a conversation goes. Tap any one to hear it.</p>
-    <div class="tree-legend">Read left to right. You rarely need more than the first three steps &mdash; <b>find him, then tell him to come to you.</b></div>
-    <div class="tree" id="tree"></div>
+    <div id="viewCards">
+      <div class="call-grid" id="callGrid"></div>
+      <p class="no-results hidden" id="noResults">No calls match that search.</p>
+    </div>
+
+    <div id="viewTree" hidden>
+      <div class="tree-legend">Read left to right. You rarely need more than the first three steps &mdash; <b>find him, then tell him to come to you.</b></div>
+      <div class="tree" id="tree"></div>
+    </div>
   </section>
 
   <!-- ============ SCENARIOS ============ -->
