@@ -14,7 +14,6 @@ const ROLES = {
   challenge: { label:"Challenge", var:"--challenge", blurb:"Bull aggression & dominance" },
   contact:   { label:"Contact",   var:"--contact",   blurb:"Everyday check-ins inside the group" },
   combo:     { label:"Combo",     var:"--combo",     blurb:"A string of calls" },
-  read:      { label:"Read it",    var:"--neutral",   blurb:"A sound to recognize, not make" },
 };
 
 const FLAG_TITLES = {
@@ -224,15 +223,19 @@ const CALLS = [
     ],
     pairs:["contactBugle","dominantBugle"] },
 
-  { id:"checkBugle", name:"Check bugle", role:"read", voice:"bull",
-    short:"A bugle that starts, stops short, and either quits or restarts — so it comes out broken instead of smooth. Read it from context; it isn’t one you set out to make.",
-    meaning:"Any bugle where the bull <b>checks himself</b> partway through: it starts, stops short somewhere early or in the middle, then either ends right there or picks up again later — so the whole thing sounds <b>broken</b> rather than smooth and continuous. Chris lumps them all under one name for simplicity. There’s no fixed meaning: a check bugle takes its meaning from the bugle he <i>meant</i> to make, and from what he says either side of it.",
+  { id:"checkBugle", name:"Check bugle", role:"emotion", voice:"bull",
+    short:"A bugle that starts, stops short, then quits or restarts — broken instead of smooth. Mix it into contact or dominant bugles to add realism, or to sound frustrated and unsure.",
+    meaning:"Any bugle where the bull <b>checks himself</b> partway through: it starts, stops short early or mid-call, then either ends there or picks up again — so it sounds <b>broken</b> rather than smooth. It has no fixed meaning of its own; it takes it from the bugle he <i>meant</i> to make and what he says either side. As a tool it does two jobs: it makes your bugling sound <b>real</b>, and it lets you sound <b>frustrated or unsure of yourself</b> — which is often exactly what tips a stubborn bull into coming.",
     lesson:[
       { h:"What it is", body:"The bugle you’ve heard that starts, stops, and starts again — or just starts and never finishes, or finishes in some squirrely way. A bull begins a bugle and <b>checks himself</b> partway through, so instead of one smooth call you get a broken one.<br><br>In human terms: starting to say something, stopping, thinking better of it — then either dropping it entirely, or pausing and rephrasing. There are probably a thousand variations; Chris keeps one label so there’s something to point at." },
       { h:"Why the meaning is slippery", body:"Every check bugle sounds a bit different, and you don’t hear them constantly, so it’s hard to say definitively what one means. What Chris will say is that they nearly always trace back to one of the two <b>root</b> bugles — you could reasonably call them <b>contact check bugles</b> or <b>dominant check bugles</b>.<br><br>So the meaning comes from the bugle he <b>intended</b> to make, and from <b>what he was saying before it, or ends up saying after it</b>. On its own, out of context, it doesn’t tell you much." },
       { h:"How to read one", body:"Context is the whole game. Use the other calls he makes around it, and — far better — <b>watch him</b>: his body language and the situation he’s in usually give it away. This is where observation earns its keep.<br><br>Can’t see him, or he isn’t talking enough to give you context? Then listen for the same two tells you’d use on any bull call:<ul><li><b>Any raspy growl</b> anywhere in it — that leans <b>dominant</b>.</li><li><b>What kind of chuckles</b> he tags on the end, if any — high-pitched, fast-paced leans <b>contact</b>; excited leans <b>dominant</b>.</li></ul>Tease those out and you can often work out what he meant. Sometimes." },
       { h:"The two you’ll actually see", body:"<b>Distraction.</b> Watch one and it often looks like he simply <b>lost focus</b> mid-bugle — saw something, heard something, and his concentration broke. Rather than finish the call as intended, he stops or stutters through it.<br><br><b>Frustration.</b> Other times he’s in the middle of something and clearly fed up with how it’s going, or with what he’s hearing. Instead of a full bugle he throws his head back, fires off a brief check bugle, and carries straight on with whatever he was doing — hunting for another elk, chasing and courting cows, or trying to run a rival off." },
-      { h:"Takeaways", body:"<ul><li>A bugle that <b>starts, stops short, and either quits or restarts</b> — broken, not smooth.</li><li>Nearly always a <b>contact</b> or <b>dominant</b> bugle underneath.</li><li>Its meaning comes from <b>context</b>: the intended call, and what he says either side of it.</li><li>No context? Listen for <b>growl</b> (dominant) and <b>which chuckles</b> he uses (fast-paced = contact, excited = dominant).</li><li>Most often it’s <b>distraction</b> or <b>frustration</b> — not a message aimed at you.</li></ul>" }
+      { h:"Using it yourself", body:"There’s no hard and fast rule — you mix check bugles into <b>contact</b> or <b>dominant</b> bugling for two reasons: to add <b>realism</b>, and to add a sense of <b>frustration</b> that nudges a bull into finally answering or coming to look.<br><br>There’s a bonus in pressured country: <b>almost nobody else is making these</b>. Throwing a few in doesn’t just make your bugling sound real — it makes you sound like a different animal than every other hunter on the mountain, which is sometimes all it takes to get a better response." },
+      { h:"When contact bugles stall", body:"If the three normal levels just aren’t drawing an answer, mix in a few <b>contact check bugles</b>. When Chris is sure there has to be a bull in that bowl or basin and he ought to be answering, he’ll <b>move across the country</b> mixing Level 2 and 3 contact bugles with contact check bugles — selling a bull who’s <b>frustrated at getting no reply</b>.<br><br>The payoff: <b>some bulls won’t answer a full contact bugle but will answer a check bugle.</b> It might only be a faint chuckle or a quiet check bugle of his own — but he answers, and now you know where he is." },
+      { h:"When dominant bugles stall", body:"Trading dominant bugles and gone to a standstill? Transition into a few <b>dominant check bugles</b> and start sounding frustrated.<br><br>The psychology is the same trick as swinging downwind: after a long back-and-forth, a bull who suddenly sounds <b>frustrated or like he’s second-guessing himself</b> hands the real bull confidence. He starts to feel he’s in the driver’s seat — and that it might be in his best interest to come take advantage of the situation. For anyone who likes challenging bulls this is deadly, and better still with <b>raking</b> and a few <b>whines and moans</b> mixed in." },
+      { h:"The partner version", body:"Hunting with someone, you can really seal it. The <b>caller</b> transitions into check bugles with whines and moans while <b>drifting back and circling around</b> the bull or his cows — sounding like a bull who’s second-guessing the standoff and trying to sneak around rather than face him.<br><br>Bulls frequently come unglued at that. He’ll wind his own bugling up and often finally break out of wherever he’s been holding, moving on the caller to give this nervous newcomer one last shove out of the country — straight past the shooter." },
+      { h:"Takeaways", body:"<ul><li>A bugle that <b>starts, stops short, and either quits or restarts</b> — broken, not smooth.</li><li>Nearly always a <b>contact</b> or <b>dominant</b> bugle underneath; context gives it meaning.</li><li>Reading one: <b>growl</b> leans dominant, and the <b>chuckle type</b> tells you which root it came from.</li><li>In a bull you’re watching, it’s usually <b>distraction</b> or <b>frustration</b>.</li><li>In <b>your</b> calling it buys <b>realism</b> and <b>frustration</b> — and hardly anyone else uses it.</li><li>Sounding unsure can be the point: it makes the real bull confident enough to commit.</li></ul>" }
     ],
     pairs:["contactBugle","dominantBugle","chuckle"] },
 ];
@@ -324,6 +327,18 @@ const SCENARIOS = [
       { call:"silence", action:"The moment his answer pins him, stop calling and go.", note:"Don’t keep bugling just to keep tabs — close the distance and decide up close whether to work him with cow or bull sounds." },
     ],
     principle:"Start quiet, wait longer than he does, and stay one notch below his intensity. Once you know where he is, stop talking and move."
+  },
+  {
+    title:"Bugling and getting nothing back", tag:"Sound frustrated",
+    situation:"You’re certain there’s a bull in that bowl or basin, and he ought to be answering another bull — but the normal contact bugles are getting you silence.",
+    setup:"Almost no other hunter makes check bugles, so this also makes you sound like a different animal than everyone else working the country.",
+    steps:[
+      { call:"contactBugle", action:"Keep working Level 2 and Level 3 contact bugles — and move as you call.", note:"Cover country rather than standing and repeating yourself from one spot." },
+      { call:"checkBugle", action:"Mix in contact check bugles between them.", note:"You’re selling a bull who’s getting frustrated at not being answered. Some bulls won’t reply to a full bugle but will reply to a broken one." },
+      { call:"tip", action:"Listen hard for a small answer.", note:"It may only be a faint chuckle or a quiet check bugle of his own — that’s still him telling you where he is." },
+      { call:"silence", action:"Once he’s answered, stop bugling and go to him.", note:"From there, decide up close whether to work him with cow calls or bull talk." },
+    ],
+    principle:"When a straight question gets no answer, sound like a bull who’s fed up with being ignored."
   },
   {
     title:"Calling a bull in with bull talk", tag:"Swing downwind",
