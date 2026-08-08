@@ -108,6 +108,8 @@ main{max-width:var(--maxw); margin:0 auto; padding:22px 22px 80px}
 .controls{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:20px}
 .search{flex:1 1 220px; min-width:170px; display:flex; align-items:center; gap:10px; background:var(--surface); border:2px solid var(--line-2); border-radius:999px; padding:11px 18px}
 .search input{border:0; outline:0; background:transparent; color:var(--ink); font:inherit; width:100%}
+.search input[type=search]::-webkit-search-cancel-button,
+.search input[type=search]::-webkit-search-decoration{-webkit-appearance:none; appearance:none; display:none}
 .search svg{width:18px; height:18px; color:var(--faint); flex:none}
 .seg{display:inline-flex; background:var(--surface); border:2px solid var(--line-2); border-radius:999px; padding:3px}
 .seg button{font-size:.95rem; font-weight:700; border:0; background:transparent; color:var(--muted); padding:10px 20px; border-radius:999px; cursor:pointer; min-height:44px}
@@ -155,6 +157,32 @@ ul.use{margin:0 0 14px; padding:0; list-style:none; display:flex; flex-direction
 ul.use li{position:relative; padding-left:20px; font-size:.96rem; color:var(--muted); line-height:1.45}
 ul.use li b{color:var(--ink)}
 ul.use li::before{content:""; position:absolute; left:4px; top:.62em; width:7px; height:7px; border-radius:50%; background:var(--c,var(--neutral))}
+
+/* ============================================================
+   GLOBAL SEARCH
+   ============================================================ */
+.gsearch-wrap{position:sticky; top:56px; z-index:35; background:var(--paper); border-bottom:1px solid var(--line)}
+.gsearch{max-width:var(--maxw); margin:0 auto; padding:11px 22px}
+.gsearch .search{width:100%}
+.gclear{border:0; background:none; color:var(--faint); font-size:1.5rem; line-height:1; cursor:pointer; padding:0 4px; min-width:36px; min-height:36px}
+.gclear:hover{color:var(--ink)}
+.gresults{max-width:var(--maxw); margin:0 auto; padding:0 22px 16px; max-height:min(66vh,560px); overflow-y:auto}
+.gr-group{font-family:var(--mono); font-size:.66rem; letter-spacing:.11em; text-transform:uppercase; color:var(--gold); font-weight:700; margin:14px 0 7px}
+.gr{display:flex; align-items:center; gap:11px; width:100%; text-align:left; cursor:pointer; border:1px solid var(--line); border-left:4px solid var(--c,var(--neutral)); background:var(--surface); color:var(--ink); border-radius:10px; padding:10px 13px; margin-bottom:7px; min-height:52px}
+.gr:hover{border-color:var(--c,var(--neutral)); background:var(--surface-2)}
+.gr .grplay{flex:none; width:32px; height:32px; border-radius:50%; background:var(--c,var(--neutral)); display:grid; place-items:center; border:0; cursor:pointer}
+.gr .grplay svg{width:14px; height:14px; fill:#fff}
+:root[data-theme="dark"] .gr .grplay svg{fill:#0b0f0a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .gr .grplay svg{fill:#0b0f0a}}
+.gr .grplay.playing{animation:pulse 1s ease-in-out infinite}
+.gr-txt{flex:1; min-width:0}
+.gr-nm{font-weight:700; font-size:1rem; line-height:1.25; display:block}
+.gr-sub{font-size:.87rem; color:var(--muted); line-height:1.35; display:block; margin-top:1px}
+.gr mark{background:color-mix(in srgb,var(--gold) 34%,transparent); color:inherit; border-radius:3px; padding:0 2px}
+.gr-none{color:var(--muted); font-style:italic; padding:18px 2px}
+.call.flash-hit{animation:hit 1.6s ease-out}
+@keyframes hit{0%,22%{box-shadow:0 0 0 4px color-mix(in srgb,var(--gold) 55%,transparent)}100%{box-shadow:var(--shadow-sm)}}
+@media (max-width:620px){ .gsearch{padding:9px 16px} .gresults{padding:0 16px 14px} }
 
 /* ============================================================
    STUDY
@@ -448,15 +476,22 @@ footer{border-top:1px solid var(--line); background:var(--paper-2)}
   </div>
 </nav>
 
+<div class="gsearch-wrap">
+  <div class="gsearch">
+    <label class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="gq" type="search" placeholder="Search everything &mdash; a call, a situation, a word he used&hellip;" autocomplete="off" aria-label="Search the whole guide">
+      <button type="button" id="gclear" class="gclear" hidden aria-label="Clear search">&times;</button>
+    </label>
+  </div>
+  <div class="gresults" id="gresults" hidden></div>
+</div>
+
 <main>
   <!-- ============ CALLS ============ -->
   <section class="panel" id="panel-calls" role="tabpanel" aria-labelledby="tab-calls">
     <p class="intro">Every call has a <b>green play button</b> — tap it to hear the sound right away. Open <b>“Show the full lesson”</b> on any call for Chris Roe’s complete teaching on it.</p>
     <div class="controls">
-      <label class="search">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-        <input id="callFilter" type="search" placeholder="Search calls&hellip;" autocomplete="off" aria-label="Search calls">
-      </label>
       <div class="seg" id="voiceSeg" role="group" aria-label="Cow or bull">
         <button type="button" data-voice="all" aria-pressed="true">All</button>
         <button type="button" data-voice="cow" aria-pressed="false">Cow</button>

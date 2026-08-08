@@ -261,21 +261,149 @@
     callGrid.appendChild(card);
   });
 
-  const filterInput = document.getElementById("callFilter");
   const noResults = document.getElementById("noResults");
   function applyFilter(){
-    const q = filterInput.value.trim().toLowerCase();
     let shown = 0;
     [...callGrid.children].forEach(card => {
-      const show = (!q || card.dataset.text.includes(q)) &&
-                   (activeVoice === "all" || card.dataset.voice === activeVoice || card.dataset.voice === "both");
+      const show = activeVoice === "all" || card.dataset.voice === activeVoice || card.dataset.voice === "both";
       card.classList.toggle("hidden", !show);
       if(show) shown++;
     });
     noResults.classList.toggle("hidden", shown !== 0);
   }
-  filterInput.addEventListener("input", applyFilter);
   applyFilter();
+
+  /* =====================================================================
+     GLOBAL SEARCH — one box, every tab, everything in it
+     ===================================================================== */
+  (function(){
+    const q = document.getElementById("gq");
+    const out = document.getElementById("gresults");
+    const clr = document.getElementById("gclear");
+    if(!q || !out) return;
+
+    const strip = h => String(h == null ? "" : h).replace(/<[^>]+>/g, " ").replace(/&[a-z]+;/g, " ").replace(/\s+/g, " ").trim();
+
+    /* build the index once */
+    const IX = [];
+    CALLS.forEach(c => IX.push({
+      kind:"Calls", panel:"calls", anchor:"call-" + c.id, id:c.id,
+      name:c.name, sub:strip(c.plain),
+      color:cvar(c.role), src:firstClip(c),
+      hay:strip([c.name, c.plain, (c.use||[]).join(" "), c.meaning, c.short,
+                 (c.lesson||[]).map(l => l.h + " " + l.body).join(" ")].join(" ")).toLowerCase()
+    }));
+    SCENARIOS.forEach((sc, i) => IX.push({
+      kind:"Situations", panel:"scenarios", anchor:"scn-" + i,
+      name:sc.title, sub:sc.tag + " — " + strip(sc.situation).slice(0,110),
+      color:"--pine",
+      hay:strip([sc.title, sc.tag, sc.situation, sc.setup, sc.cue, sc.principle,
+                 (sc.steps||[]).map(st => st.action + " " + (st.note||"")).join(" ")].join(" ")).toLowerCase()
+    }));
+    BEHAVIOR.forEach((bh, i) => {
+      IX.push({ kind:"Behavior", panel:"behavior", anchor:"beh-" + i, name:bh.title,
+        sub:strip(bh.summary).slice(0,120), color:"--gold",
+        hay:strip([bh.title, bh.tag, bh.summary, (bh.sections||[]).map(x => x.h + " " + x.body).join(" ")].join(" ")).toLowerCase() });
+      (bh.sections||[]).forEach(sec => IX.push({
+        kind:"Behavior", panel:"behavior", anchor:"beh-" + i, name:strip(sec.h),
+        sub:"in “" + bh.title + "”", color:"--gold",
+        hay:strip(sec.h + " " + sec.body).toLowerCase() }));
+    });
+    if(typeof SOUND_GROUPS !== "undefined") SOUND_GROUPS.forEach(g => (g.clips||[]).forEach(cl => IX.push({
+      kind:"Sound library", panel:"sounds", anchor:"", name:strip(cl.name),
+      sub:strip(cl.about).slice(0,110), color:"--locate", src:"assets/sounds/" + cl.file,
+      hay:strip(cl.name + " " + cl.about + " " + (cl.where||"") + " " + g.title).toLowerCase() })));
+
+    const hl = (text, needle) => {
+      if(!needle) return text;
+      const i = text.toLowerCase().indexOf(needle);
+      if(i < 0) return text;
+      const esc = t => t.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+      return esc(text.slice(0,i)) + "<mark>" + esc(text.slice(i, i+needle.length)) + "</mark>" + esc(text.slice(i+needle.length));
+    };
+
+    function run(){
+      const needle = q.value.trim().toLowerCase();
+      clr.hidden = !needle;
+      if(needle.length < 2){ out.hidden = true; out.replaceChildren(); return; }
+
+      const hits = IX.filter(x => x.hay.includes(needle));
+      // a name match beats a body match
+      hits.sort((a,b) => {
+        const an = a.name.toLowerCase().includes(needle) ? 0 : 1;
+        const bn = b.name.toLowerCase().includes(needle) ? 0 : 1;
+        return an - bn;
+      });
+
+      out.replaceChildren();
+      out.hidden = false;
+      if(!hits.length){ out.appendChild(el("p","gr-none", "Nothing matches “" + q.value.trim() + "”.")); return; }
+
+      const order = ["Calls","Situations","Behavior","Sound library"];
+      const seen = {};
+      // a group holding a title match comes before a group that only matches in body text —
+      // otherwise "doorway" shows the Glunk card above the card actually called "The doorway"
+      const groups = order.map(k => {
+        const rows = hits.filter(h => h.kind === k).filter(h => {
+          const key = k + "|" + h.name + "|" + h.anchor;
+          if(seen[key]) return false; seen[key] = 1; return true;
+        }).slice(0, 8);
+        return { k, rows, best: rows.some(r => r.name.toLowerCase().includes(needle)) ? 0 : 1 };
+      });
+      groups.sort((a, b) => a.best - b.best || order.indexOf(a.k) - order.indexOf(b.k));
+      groups.forEach(({ k, rows }) => {
+        if(!rows.length) return;
+        out.appendChild(el("div","gr-group", k + " · " + rows.length));
+        rows.forEach(h => {
+          const b = el("button","gr");
+          b.type = "button";
+          b.style.setProperty("--c", `var(${h.color})`);
+          const play = h.src
+            ? `<span class="grplay" role="button" aria-label="Hear it">${PLAY_SVG}</span>` : "";
+          b.innerHTML = play +
+            `<span class="gr-txt"><span class="gr-nm">${hl(h.name, needle)}</span>` +
+            `<span class="gr-sub">${hl(h.sub || "", needle)}</span></span>`;
+          b.addEventListener("click", ev => {
+            const disc = ev.target.closest(".grplay");
+            if(disc && h.src){ ev.stopPropagation(); playClip(h.src, disc); return; }
+            go(h);
+          });
+          out.appendChild(b);
+        });
+      });
+    }
+
+    function go(h){
+      showPanel(h.panel);
+      out.hidden = true;
+      q.blur();
+      requestAnimationFrame(() => {
+        const t = h.anchor && document.getElementById(h.anchor);
+        if(!t){ window.scrollTo({ top:0 }); return; }
+        if(t.tagName === "DETAILS") t.open = true;
+        t.scrollIntoView({ block:"start" });
+        window.scrollBy(0, -110);   // clear the sticky tabs + search bar
+        t.classList.add("flash-hit");
+        setTimeout(() => t.classList.remove("flash-hit"), 1700);
+      });
+    }
+
+    let t;
+    q.addEventListener("input", () => { clearTimeout(t); t = setTimeout(run, 110); });
+    clr.addEventListener("click", () => { q.value = ""; run(); q.focus(); });
+    q.addEventListener("keydown", e => {
+      if(e.key === "Escape"){ q.value = ""; run(); q.blur(); }
+      if(e.key === "Enter"){ const first = out.querySelector(".gr"); if(first) first.click(); }
+    });
+    document.addEventListener("click", e => {
+      if(!out.hidden && !e.target.closest(".gsearch-wrap")) out.hidden = true;
+    });
+    document.addEventListener("keydown", e => {
+      if(e.key === "/" && document.activeElement !== q && !/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName)){
+        e.preventDefault(); q.focus();
+      }
+    });
+  })();
 
 
   /* =====================================================================
@@ -542,6 +670,7 @@
   const list = document.getElementById("scenarioList");
   SCENARIOS.forEach((s, i) => {
     const d = el("details","scenario");
+    d.id = "scn-" + i;
     if(i === 0) d.open = true;
 
     const sum = el("summary");
@@ -628,6 +757,7 @@
   if(bList && typeof BEHAVIOR !== "undefined"){
     BEHAVIOR.forEach((b, i) => {
       const d = el("details","scenario");
+      d.id = "beh-" + i;
       if(i === 0) d.open = true;
       const sum = el("summary");
       sum.appendChild(el("span","num", String(i+1).padStart(2,"0")));
