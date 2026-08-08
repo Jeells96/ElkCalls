@@ -226,6 +226,7 @@
       { n:"1", title:"Contact bugle", say:"Asks “who’s out there?” — start low, escalate only if ignored.", ids:["contactBugle"], variants:true },
       { n:"2", title:"Dominant bugle",say:"Makes a statement. Open at Level 2.", ids:["dominantBugle"], variants:true },
       { n:"+", title:"Chuckle",       say:"Raises the intensity — or works alone.", ids:["chuckle"], variants:true },
+      { n:"•", title:"He won’t fight", say:"Skip him — talk to his cows instead. “Stay put.”", ids:["glunk"] },
     ]},
   ];
 

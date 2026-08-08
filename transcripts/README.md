@@ -38,6 +38,7 @@ in `../data.js`). This folder is the raw source of record.
 | Dominant bugle | [dominant-bugle.md](dominant-bugle.md) |
 | Chuckle | [chuckle.md](chuckle.md) |
 | Check bugle | [check-bugle.md](check-bugle.md) |
+| Glunk | [glunk.md](glunk.md) |
 
 ## Cow *and* bull
 
@@ -58,5 +59,6 @@ That's the cow series complete, in Roe's own progression: general contact
 → punctuation (demanding mew) → emotion (whines, selfish mew, long mew) →
 sentences built from all of it (the "hyper-hot").
 
-_Still to come: the glunk, cow bugling, bull whines/moans/groans, and the rest of
-the behavior series — the next one is **"The Doorway"** (choosing your setups)._
+_Still to come: cow bugling, bull whines/moans/groans, and the rest of the
+behavior series — the next one is **"The Doorway"** (choosing your setups), which
+the glunk lesson already leans on._
