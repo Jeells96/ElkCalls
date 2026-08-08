@@ -105,6 +105,7 @@
   function routeFromHash(){
     const h = (location.hash || "").replace("#","");
     if(h === "tree"){ showPanel("calls"); showView("tree"); return true; }
+    if(h === "cards"){ showPanel("calls"); showView("cards"); return true; }
     if(["calls","scenarios","study","sounds","behavior"].includes(h)){ showPanel(h); return true; }
     return false;
   }

@@ -499,26 +499,25 @@ footer{border-top:1px solid var(--line); background:var(--paper-2)}
 <main>
   <!-- ============ CALLS ============ -->
   <section class="panel" id="panel-calls" role="tabpanel" aria-labelledby="tab-calls">
-    <p class="intro">Tap any call to hear it.</p>
     <div class="controls">
       <div class="seg" id="viewSeg" role="group" aria-label="How to show the calls">
-        <button type="button" data-view="cards" aria-pressed="true">One at a time</button>
-        <button type="button" data-view="tree" aria-pressed="false">All on one page</button>
+        <button type="button" data-view="tree" aria-pressed="true">All on one page</button>
+        <button type="button" data-view="cards" aria-pressed="false">One at a time</button>
       </div>
-      <div class="seg" id="voiceSeg" role="group" aria-label="Cow or bull">
+      <div class="seg" id="voiceSeg" role="group" aria-label="Cow or bull" hidden>
         <button type="button" data-voice="all" aria-pressed="true">All</button>
         <button type="button" data-voice="cow" aria-pressed="false">Cow</button>
         <button type="button" data-voice="bull" aria-pressed="false">Bull</button>
       </div>
     </div>
 
-    <div id="viewCards">
+    <div id="viewCards" hidden>
       <div class="call-grid" id="callGrid"></div>
       <p class="no-results hidden" id="noResults">No calls match that search.</p>
     </div>
 
-    <div id="viewTree" hidden>
-      <div class="tree-legend">Read left to right. You rarely need more than the first three steps &mdash; <b>find him, then tell him to come to you.</b></div>
+    <div id="viewTree">
+      <div class="tree-legend">Work through in order. You rarely need more than the first three steps &mdash; <b>find him, then tell him to come to you.</b></div>
       <div class="tree" id="tree"></div>
     </div>
   </section>
