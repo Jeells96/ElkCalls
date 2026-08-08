@@ -13,7 +13,7 @@ can string them together to tell a bull whatever story the moment calls for.
 ## What's inside
 
 - **The Calls** — a searchable lexicon. Filter by **voice** (Cow / Bull) or by
-  **job** (a color key: locate / direct / emotion / challenge / his-reply /
+  **job** (a color key: contact / locate / direct / emotion / challenge /
   combo). **Tap any call name** to play its demo clip, read its meaning, open
   Chris Roe's **full breakdown** of that call, and see what it pairs with.
 - **Scenarios** — real situations with a numbered, step-by-step calling

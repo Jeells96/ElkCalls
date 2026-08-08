@@ -12,7 +12,7 @@ const ROLES = {
   direct:    { label:"Direct",    var:"--direct",    blurb:"Bring him in to you" },
   emotion:   { label:"Emotion",   var:"--emotion",   blurb:"Add feeling & urgency" },
   challenge: { label:"Challenge", var:"--challenge", blurb:"Bull aggression & dominance" },
-  cue:       { label:"His reply", var:"--cue",       blurb:"A sound to read, not make" },
+  contact:   { label:"Contact",   var:"--contact",   blurb:"Everyday check-ins inside the group" },
   combo:     { label:"Combo",     var:"--combo",     blurb:"A string of calls" },
 };
 
@@ -24,7 +24,7 @@ const FLAG_TITLES = {
 
 const CALLS = [
   /* ---------------------- COW ---------------------- */
-  { id:"chirp", name:"Chirp", role:"locate", voice:"cow",
+  { id:"chirp", name:"Chirp", role:"contact", voice:"cow",
     clip:"assets/media/chirp.mp4",
     short:"Basic “checking-in” contact between close companions; asks for a response, not action.",
     meaning:"The most basic contact call — a content, relaxed animal checking in with another elk in its own group (classically a cow to her calf). It asks for a response, not an action: the reply is what tells her whether all is well or something’s wrong.",
@@ -37,7 +37,7 @@ const CALLS = [
     ],
     pairs:["mew","lostMew"] },
 
-  { id:"mew", name:"Basic mew", role:"locate", voice:"cow",
+  { id:"mew", name:"Basic mew", role:"contact", voice:"cow",
     clip:"assets/media/mew.mp3",
     short:"Everyday “staying in touch” contact within the group; implies movement. Asks for a response, not an action.",
     meaning:"The everyday contact call cows use to *stay* in touch — a step up from the chirp. It says “Are you still there?” / “I’m right here,” between animals in the same group (not to outside elk), and it asks for or gives a response, not an action. The key: elk mew when they can’t keep visual track of each other — so a mew implies the group is up and moving, doing something.",
@@ -52,9 +52,16 @@ const CALLS = [
 
   { id:"lostMew", name:"Lost mew", role:"locate", voice:"cow",
     clip:"assets/media/lost-mew.mp3",
-    short:"“Where are you?” Locate him & open a direct line.",
-    meaning:"“Where are you?” A locating call. You heard him and want to pin down exactly where he is. It opens a direct, one-on-one line of communication — use it to make contact before you ask for anything.",
-    pairs:["assemblyMew","longMew","aggravatedWhine"] },
+    short:"“Where are you?” — with the implied “…so I can come to you.” Asks for a response, not an action. Hold or punch the high note.",
+    meaning:"“Where are you?” — asked by an elk looking for an unseen animal, inside or outside its group. The catch is the implied second half: <b>“…so that I can come to you.”</b> It asks for a <b>response, not an action</b> — which is exactly why a bull will answer every call and never take a step. It’s not only a separated cow or calf; it’s any elk seeking a response from one it can’t see.",
+    lesson:[
+      { h:"What it means", body:"An elk looking for some individual or group it can’t see. Unlike the chirp and mew (which stay inside the group), the lost mew can reach an animal <b>inside or outside</b> the group — this is where general contact becomes specific communication. It asks for a <b>response, not an action</b>, and carries the implied understanding “<b>where are you, so that I can go to you</b>.” Most hunters know it as the “lost cow / lost calf call,” but it isn’t only a separated animal." },
+      { h:"Why he bugles back but never comes", body:"The classic complaint — he answers every call and still doesn’t come, then drifts off or goes silent. It’s usually not the wind, call-shyness, or bad calling: <b>he’s doing exactly what you asked.</b> You said “where are you?”, he said “over here,” and now he’s waiting for <b>you</b> to show up. Chris’s barbecue picture: you shout “where are you?” from the driveway, they shout “back here!” — and then you just keep shouting from the same spot. Eventually they either come get you (some elk will), or shrug you off (many will). And because a lone cow can be unwelcome, an adult cow sound can even work against you." },
+      { h:"Making the sound", body:"About <b>½–¾ second</b> (up to a full second at most). Start high, <b>hold or punch that high note</b>, then <b>quickly</b> drop to the low note — the held/emphasized top is what separates it from a plain mew. Both deliveries occur: some elk drag the top out, others punch it. Push from the diaphragm. <b>Calf</b> = the highest pitch (tip of the reed); <b>cow</b> = high through low (center of the reed). On a mechanical call, do the opposite of a mew: run the barrel <b>all the way out</b> and push with a <b>full bulb</b> so you get the lengthened high note." },
+      { h:"How Chris uses it", body:"<b>1) As a locator.</b> When you’d rather not bugle, send a lost mew, get an answer, then go to him or plan a setup.<br><br><b>2) Work your way in as a lost calf.</b> Since the call implies <b>you</b> travel, do exactly that — and sound like a <b>calf</b>, not a cow: it avoids threatening cows, plays on maternal instinct, and it’s plausible a calf doesn’t know the country. Answer, close to a few hundred yards, hammer back excited, then drift toward the <b>downwind</b> side rather than straight at him, calling now and then, as if the calf can’t quite work out how to reach him. As you get close, slow down and call <b>more</b> often. Bulls alone come readily to calf sounds; if he has cows, a calf often breaks out first (be patient, don’t spook it) and a cow follows to collect it — and then the bull moves to gather her. Either way he’s in motion toward you.<br><br><b>3) Calf in distress — a last resort.</b> Best for rifle/muzzleloader. It’s invasive and can scatter elk, so save it for the last day or two. Take the nastiest, darkest bedding/escape timber, walk fast cutting cross-country (skip the game trails), and hammer lost calf mews back-to-back — “about every time my left foot hits the ground” — snapping twigs and stumbling on purpose. Elk will either stand up and stare or come crashing in to whip up on whatever’s chasing that calf. Be ready fast; the bull often stands last or hangs at the back." },
+      { h:"Takeaways", body:"<ul><li>~½–¾ second; start high, <b>hold or emphasize the high note</b>, then drop quickly.</li><li>Asks for a <b>response</b>, not an action.</li><li>Means “<b>where are you — so that I can come to you</b>.”</li><li>Reaches animals <b>inside or outside</b> the group, and any unseen elk — not just a lost one.</li><li>If you won’t go to him, pair it with an assembly mew or you’re leaving the choice entirely to him.</li></ul>" }
+    ],
+    pairs:["assemblyMew","demandingMew","frustratedWhine","longMew"] },
 
   { id:"assemblyMew", name:"Assembly mew", role:"direct", voice:"cow",
     clip:"assets/media/assembly-mew.mp4",
@@ -125,17 +132,25 @@ const CALLS = [
     lesson:[
       { h:"What it means", body:"“Pay attention to me — listen to me.” Chris considers it an <b>extension of the demanding mew</b> — a demanding mew on steroids. About <b>½–¾ second</b>, high→low and smooth, but so heavily emphasized it turns <b>rough and gravelly</b>; crank the volume and rasp and it becomes the “<b>selfish scream</b>.” It comes <b>after</b> a series of lost mews (seeking a response) or assembly mews (trying to get others to follow), and once she has the attention she wants, she follows with one of those. Chris avoids the “estrus” label — he’s heard it on summer and winter range — though a cow near her peak in the chaos of the rut might well belt it." },
       { h:"When you hear it", body:"Mostly when <b>large or multiple groups co-mingle</b> and it’s bedlam — bulls screaming and herding, cows milling and running — and an ordinary mew is just lost in the fray. A cow who really wants to be heard drops the loud, raspy, guttural selfish mew, and elk start paying attention." },
+      { h:"Not an “estrus” call", body:"This is the sound most people mean when they say “estrus call” — and Chris is emphatic that <b>it isn’t one</b>. Most often it’s aimed at <b>other cows and calves</b>: a cow searching hard for her calf, or a dominant cow telling another group “I’m in charge, we’re going this way.” Which means it’s fully in play with a <b>cow tag</b>, and any time of year — he’s called cows in with it and had the bull simply follow them. (Steve Chapel, who demos it beautifully on a diaphragm, uses it only rarely — if it truly meant “come breed me,” why would anyone ever call anything else?)" },
       { h:"Making the sound", body:"If you can make a mew (or a demanding mew) and <b>growl in your throat at the same time</b>, you’ve basically got it. Open reed or mouth diaphragm; louder and raspier gives you the scream (on a diaphragm you can buzz your lips for it). No mechanical call can do it." },
       { h:"How Chris uses it", body:"When your calling just blends in. On a <b>herd bull ignoring you</b> (busy with cows/satellites): get in close, wind in your face, good setup, hit a couple selfish mews; if you can see him or the tops of his antlers, hammer them until he <b>turns to look</b>, then follow immediately with a few forceful <b>assembly mews</b>. Every time he hesitates or looks away, another selfish mew. Work the perimeter of his cows. Caveat: if he never actually <b>sees</b> the cow, he may just scream and wander back — and satellites will come looking. (He once pulled a valley-crossing lone bull off a big herd with nothing but loud selfish mews — an 80-yard first bull for a buddy.)" },
       { h:"Takeaways", body:"<ul><li>~½–¾ second; smooth high→low but with a <b>loud, gravelly, raspy</b> emphasis throughout.</li><li>Used to <b>stand out</b> and grab attention: “listen to me.”</li><li>An <b>extension of the demanding mew</b>; louder = the “selfish scream.”</li><li>Usually <b>followed</b> by a lost mew or an assembly mew.</li></ul>" }
     ],
     pairs:["demandingMew","assemblyMew","lostMew"] },
 
-  { id:"hyperHot", name:"Hyper-hot / hyper-estrous", role:"combo", voice:"cow",
+  { id:"hyperHot", name:"Hyper-hot / “estrus” calls", role:"combo", voice:"cow",
     clip:"assets/media/hyper-hot.mp3",
-    short:"Fast combo of everyday calls = “need a bull NOW.” Last resort.",
-    meaning:"Not a special, unique call — a fast, repeated string of everyday calls (assembly → demanding mew → frustrated whine → assembly → demanding mew → aggravated whine → assembly) that together say “I need a bull in my location right now.” A last resort when bulls answer but won’t commit.",
-    pairs:["assemblyMew","demandingMew","frustratedWhine","aggravatedWhine"] },
+    short:"A sentence, not a call — and per Roe, a cow-elk estrus call doesn’t exist. Everyday calls strung together: “where are you / I want you here / now.”",
+    meaning:"Chris Roe’s position is blunt: <b>a cow-elk estrus call doesn’t exist.</b> The “hyper-hot” isn’t a unique vocalization — it’s a <b>sentence</b> built from everyday calls run back-to-back (assembly → demanding mew → frustrated whine → assembly → demanding mew → aggravated whine → assembly), saying “where are you, I want you here, now.” Useful, but nothing to do with estrus — and that matters, because it means you can use these sounds any time of year, on bulls or cows.",
+    lesson:[
+      { h:"The claim — and why it fails", body:"The accepted idea: a cow coming into heat with no bull around makes a special call, and bulls lose their minds. Chris tests beliefs by trying to <b>disprove</b> them (correlation isn’t causation — hearing a sound and then seeing fired-up bulls doesn’t link them). It fails immediately:<ul><li>Bulls find estrus cows by <b>scent</b> — she doesn’t need to say a word. A cycling cow leaves that scent everywhere she walks and urinates; if we worry about our own scent drifting valleys, hers is not going unnoticed.</li><li>On video, cows in estrus <b>go to the bull</b> — rubbing on him, flirting, cutting him off — rather than calling. <b>Cows choose the bull</b>, and any bull will do the job, so finding one is not her problem.</li><li>And if she’d already exhausted her options, we know what an elk uses to get a response: the <b>lost mew</b>.</li></ul>" },
+      { h:"Three different sounds, one name", body:"The tell: ask three people to make an “estrus call” and you get <b>three unrelated sounds</b> — (1) a loud, gravelly, buzzed lost mew (that’s the <b>selfish mew</b>), (2) a long, drawn-out wavy note (that’s a <b>frustrated</b> or <b>aggravated whine</b>), and (3) the Woods Wise “hyper-hot” string of distinct notes. If a cow truly made one specific sound only while in estrus, we would all mean the <b>same</b> sound. And no one can show it repeatedly — a one-off clip isn’t biology; a real breeding call would be consistent, every time." },
+      { h:"So what is the hyper-hot?", body:"Listen to the distinct notes in it and you can hear <b>separate everyday calls</b> strung together: assembly mews, demanding mews, aggravated whines, maybe selfish mews and long mews. Put those back-to-back and you get exactly the “hyper-hot” — but what it’s saying is simply “<b>where are you? I need you here. Come to me — now</b>,” with plenty of emotion on top. It works; it just isn’t about breeding." },
+      { h:"Why the label matters", body:"Two real costs to calling it an “estrus” call.<br><br><b>1) It makes you lean on testosterone</b> — a wild card. One day a sound runs a bull over; the next day, in the same spot, nothing. Chris deliberately builds on the vocabulary elk use in <b>January, March, August, November</b> — when testosterone isn’t a factor. Master the base dialogue and it works during the rut too, without betting on his mood.<br><br><b>2) It boxes the sounds in.</b> If it “means estrus,” you’d assume it only works on a rutting bull — so a cow hunter, or anyone hunting early or late, would never use it. Wrong: the selfish mew is often aimed at <b>other cows and calves</b> (Chris has called cows in with it — the bull just followed), and the whines are used <b>year-round</b>, in June, July, November, even February on winter range. Those aren’t estrus calls; they’re an animal expressing an attitude." },
+      { h:"Takeaways", body:"<ul><li>Per Roe, <b>there is no cow-elk estrus call</b> — behaviorally there’s no need for one.</li><li>The “hyper-hot” is a <b>sentence</b> of everyday calls, not a unique vocalization.</li><li>The three sounds people call “estrus” are really the selfish mew, the whines, and this string.</li><li>Bulls locate estrus cows by <b>scent</b>; cows in heat go to the bull and flirt.</li><li>Drop the label and you free the sounds up — any season, on bulls <b>or</b> cows.</li></ul>" }
+    ],
+    pairs:["assemblyMew","demandingMew","frustratedWhine","aggravatedWhine","selfishMew"] },
 
   /* ---------------------- BULL --------------------- */
   /* Chris Roe's bull system: Contact & Dominant bugles graded by intensity
@@ -220,9 +235,31 @@ const SCENARIOS = [
     title:"Bulls answer but won’t commit", tag:"Last resort",
     situation:"Bulls are there and will answer once or twice, but nothing brings them in. Everything else has failed.",
     steps:[
-      { call:"hyperHot", action:"Run the hyper-hot combination fast and back-to-back: assembly → demanding mew → frustrated whine → assembly → demanding mew → aggravated whine → assembly — then repeat.", note:"Strung together, they say “I need a bull in my location right now.”" },
+      { call:"hyperHot", action:"Run the hyper-hot combination fast and back-to-back: assembly → demanding mew → frustrated whine → assembly → demanding mew → aggravated whine → assembly — then repeat.", note:"Strung together, they say “where are you? I want you here — now.”" },
     ],
-    principle:"It isn’t a magic call — it’s the everyday words strung together with urgency. Save it for when nothing else works."
+    principle:"Not a magic “estrus” call — there’s no such thing. It’s everyday words built into an urgent sentence, so it works any season, on bulls or cows."
+  },
+  {
+    title:"He answers every call but never takes a step", tag:"Lost mew fix",
+    situation:"You’re working him with lost mews and he bugles back at every single one — then drifts off bugling, or just goes quiet. The wind was fine and your calling was fine.",
+    steps:[
+      { call:"tip", action:"Realize he’s doing exactly what you asked.", note:"A lost mew asks for a response, not an action — and it implies “where are you, so that I can come to you.” He answered and is waiting on you." },
+      { call:"assemblyMew", action:"Either switch to the assembly mew…", note:"That’s the call that asks for an action: come to me. Stop asking where he is." },
+      { call:"lostMew", action:"…or make good on the implication and go to him.", note:"Keep calling as a lost calf, drifting toward his downwind side rather than straight at him, and call more often as you close." },
+      { call:"frustratedWhine", action:"If he stops answering altogether, add a frustrated whine to the lost mews.", note:"“Please — give me a response.”" },
+    ],
+    principle:"A lost mew says “where are you, so I can come to you.” Either go, or switch to the call that asks him to come to you."
+  },
+  {
+    title:"Pressured elk holed up in the nasty stuff", tag:"Calf in distress · last resort",
+    situation:"Last day or two. Elk are pressured and won’t move in legal light, and they’re bedded in the darkest, ugliest cover in the drainage.",
+    setup:"Best for rifle or muzzleloader — elk can appear fast and close. It’s invasive and can scatter them, so save it until you’ve exhausted everything else. Take the biggest, nastiest chunk of bedding or escape cover you can find.",
+    steps:[
+      { call:"lostMew", action:"Walk fast into the timber hammering lost calf mews, back to back.", note:"Roughly one call every time your left foot hits the ground." },
+      { call:"tip", action:"Cut cross-country instead of following game trails — snap twigs, stumble on rocks.", note:"The racket only makes it more believable: a calf busting through the timber, scared out of its wits." },
+      { call:"silence", action:"Stay sharp — they’ll either stand up and stare, or come crashing down at you.", note:"Cows come to run off whatever’s chasing that calf. Expect the bull to stand late or hang at the back of the group." },
+    ],
+    principle:"Cows will come to a calf in trouble. Five minutes might do it — or an hour; keep at it."
   },
   {
     title:"Locating a bull at first light", tag:"Find him first",
