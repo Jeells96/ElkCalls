@@ -4,11 +4,85 @@
 > Raw auto-generated transcript kept for reference (the app shows a distilled
 > breakdown instead).
 >
-> Transcriber mis-hears in this one: "aspins" = aspens · "suck her out" = sucker
-> him out · "Very to what we did" = very similar to what we did · "Primo's
+> Transcriber mis-hears in this one: **"contact vehicle" = contact bugle** ·
+> **"Lost Mule" = lost mew** · "aspins" = aspens · "suck her out" = sucker him
+> out · "Very to what we did" = very similar to what we did · "Primo's
 > Terminator" is a real call (Primos Terminator).
+>
+> Two parts, in order: **Part 1 — what it is and the three levels**, then
+> **Part 2 — how to use it in the field**.
 
 ---
+
+## Part 1 — what it is, and the three levels
+
+Because of both the information it requests and the information it relays.
+
+The contact vehicle is used from late summer, as bulls start heading out from their summer ranges, moving toward those cow-calf groups during the pre-rut move, through the fall, and pretty much all of the different phases of the rut, and even into the late fall and early winter, as bulls head toward their winter ranges.
+
+The reason it's used so frequently and in such a variety of different situations is that, in general, contact vehicles are used to both solicit a response from another animal when initiated by a bull, and to express a level of curiosity and/or interest in another animal when given as a response.
+
+In essence, it's a vocalization that actively engages in more "information-gathering" type dialogue as opposed to "information-sending."
+
+Now, while contact vehicles given in response to other animals are technically information-sending in nature—I mean, after all, they did respond to the other animal and sent them that response—they still relay a sense of interest in, or curiosity for, the other animal in which they're responding to.
+
+They're still engaged in an "information-gathering" sense, in that oftentimes they're interested in, or curious about, the location of another animal, or the intent of another animal, or maybe they're just trying to evaluate the other animal and ascertain the social stature of that other animal, usually another bull.
+
+So they're still trying to gather information, in most cases, even if to a small degree.
+
+Now, like with most bull vocalizations, there can be differing levels of intensity in contact vehicles, depending on the level of interest or perceived urgency a bull has within a particular situation.
+
+Because the different levels of intensity are brought about by different vocal expressions of the vocalization, I go ahead and split the vocalization into three distinct levels, based on the general differences in those expressions.
+
+For the most part, I split them into three basic levels: levels 1, 2, and 3, ranging from the least intense level 1 to the most intense level 3.
+
+Now, obviously, there are going to be gradations in intensity and expression even within those three levels that I split out, but the three levels, in general, are a little bit easier to keep track of and identify when you're out in the field.
+
+In all cases, however, the key to the contact vehicle is the emphasis on the clear high note of the vocalization.
+
+If you think back to the Lost Mule and cows seeking a response from another animal, you'll see that there's a similarity in the two vocalizations in the holding or emphasizing of the clear high note portion of the vocalizations.
+
+In essence, a contact vehicle could be considered the bugling equivalent to a Lost Mule.
+
+The level 1 contact vehicle is the mildest or least intense form of a contact vehicle.
+
+It starts with a long, drawn-out, clear whistling high note, and then falls off to a short, breathy lower note.
+
+Most will recognize this as a bugle heard quite often when you're out in the field.
+
+In general, it's going to sound something like this: In many cases, the level 1 contact vehicle is the first level of the vocalization used by a bull to make contact with another animal.
+
+And, similar to a Lost Mule made by cows and calves, when initiated by a bull, it asks, "Who's out there and where are you?" and seeks some sort of response, typically vocal.
+
+Now, the request can be sent in order to locate another elk, either a bull or a cow, or to solicit a vocal response from another bull in order to audibly evaluate them from a safe distance.
+
+When given in response to another elk, the level 1 contact vehicle expresses mild interest in, or curiosity for, what was heard, while at the same time, if in response to another bull, relaying very little information from which the other bull can evaluate the responding bull with.
+
+The level 2 contact vehicle is the next step up in the intensity level of a contact vehicle.
+
+It generally starts at a breathy low pitch, rises to a long, drawn-out high-pitch whistle that is held momentarily, and then either ends there with a high note ending as the animal cuts off the vocalization in mid-breath, or by falling off to a breathy low pitch again that may or may not be as low as where the vocalization started.
+
+In either case, again, the high note of the vocalization is what's drawn out the longest and/or emphasized the most.
+
+In general, it's going to sound something like this: Like the level 1, when initiated by the bull, the level 2 contact vehicle is used to solicit a response from another animal, but this time adds more intensity to the request.
+
+When given in response to another elk, the level 2 essentially expresses a moderate level of interest in what was heard.
+
+The level 3 contact vehicle is the most intense vocalization of the three.
+
+It starts at a breathy low pitch, rises to a long, drawn-out high-pitch whistle that is held momentarily, with the high-pitch bugle portion of the vocalization either ending there, with the high note ending as the animal cuts the vocalization off mid-breath, or by falling off to a breathy low pitch again that may or may not be as low as where the vocalization started, just like with the level 2, but this time after the bugle portion, either high-pitched, fast-paced chuckles or excited chuckles are added to express a higher level of curiosity, interest, or earnestness.
+
+In general, it's going to sound something like this: Like the level 1 and the level 2, when initiated by a bull, the level 3 contact vehicle is used to solicit a response from another animal, but this time adds a high level of intensity to the request.
+
+And when given in response to another elk, it essentially expresses a high level of interest in what was heard.
+
+Now, depending on the bull and the intended level of intensity, for the level 3 contact vehicle, either the high note of the vocalization is what's drawn out the longest and/or emphasized the most, the high notes of the chuckles are emphasized the most, or both the high notes of the bugle and chuckles are emphasized.
+
+Again, it's still used to solicit a response from another animal or relay curiosity and/or interest in whatever was heard, but this time it carries the highest level of interest, intensity, and/or urgency in the request or the response.
+
+---
+
+## Part 2 — using it in the field
 
 Now, while all three levels of contact bugles ask for a response when initiated by a bull, and most responses are vocal, just like with a lost mew sometimes the response can be physical, with another animal coming in to make visual contact with a bull that's doing the vocalizing.
 
