@@ -3,8 +3,49 @@
 > Source: Chris Roe's elk vocalization & communication series — bull vocalizations.
 > Raw auto-generated transcript kept for reference (the app shows a distilled
 > breakdown instead). This one came through cleanly.
+>
+> Two parts, in order: **Part 1 — what chuckles are and the two kinds**, then
+> **Part 2 — how to use them in the field**.
 
 ---
+
+## Part 1 — what chuckles are, and the two kinds
+
+Chuckles (in general) are a set of vocal expressions that relay how a bull "feels"—his attitude, his disposition—about what he's either heard, what he said, or what's going on around him.
+
+And like with whines, moans, and groans—in a general sense—chuckles can be delivered on a scale of intensity, from very mild and almost passive to extremely intense.
+
+And while that scale of intensity is essentially continuous from one extreme to the other, for ease of discussion and understanding them, and for when you want to use them out in the field, I generally separate chuckles into two different categories: high-pitch fast-paced chuckles and excited chuckles.
+
+High-pitch fast-paced chuckles being on the lower end of the intensity scale, with excited chuckles generally being on the upper end of that intensity scale.
+
+Now, high-pitch fast-paced chuckles can be heard pretty much any time through the season, from early season in mid to late August and early September, as bulls are preparing for the upcoming breeding season, all the way into late season, on into November, when bulls—and typically it's the younger bulls—are looking for other elk that they can group up with as they start thinking about heading down to their winter ranges.
+
+Excited chuckles, however, are typically heard in and around the rut, and are often made by mature bulls, or bulls that believe themselves to be at least somewhat dominant in their area.
+
+As far as their general meanings go, high-pitch fast-paced chuckles typically seem to either convey a heightened level of intensity to the bugles that they're tacked onto—typically contact bugles—or a mild to moderate level of curiosity, interest, and/or eagerness with regard to whatever a bull heard from another elk or from a hunter that he's vocally reacting to or directly responding to.
+
+For high-pitch fast-paced chuckles, each chuckle (note) gives a brief high-pitched squeak or squeal, and then is either cut off during the exhale or falls immediately to a very short, medium to lower-pitched breathy note and lasts about a third to no more than about a half of a second in length.
+
+And oftentimes the lower-pitched breathy portion of the note is actually the accentuated sound of the bull sucking air back into his lungs rather than an actual exhaled vocalization.
+
+For these chuckles, individual notes are strung together in a cadence or rhythm that stacks roughly 2 to 3 notes per second back-to-back, and strings can often be between 5 and 20 notes, with strings of 7 to 12 notes being fairly common.
+
+Generally, high-pitch fast-paced chuckles sound something like this: Now, excited chuckles convey a more intense or elevated level of interest, eagerness, or earnestness with regard to whatever the bull just said—again, when tacked onto one of his bugles or other vocalizations—or that he heard from another elk or from a hunter that he's vocally reacting to or directly responding to.
+
+For excited chuckles, each chuckle (note) gives a high-pitched squeal or scream, which is then either cut off in mid-exhale or falls to a medium to lower-pitched note.
+
+Each note lasts anywhere from about a half of a second to maybe a second in length, and often—again just like the other one—the lower-pitched portion of the note is actually the accentuated sound of the bull sucking air back into his lungs rather than an actual exhaled vocalization.
+
+With excited chuckles, individual notes are strung together in a cadence or rhythm that stacks roughly 1 to 2 notes per second back-to-back, and strings can often be between 3 and maybe 10 notes, with strings of 5 to maybe 7 notes being fairly common.
+
+For excited chuckles, the longer and higher-pitched the squeals or screams are within each string of notes, and the "raspier" or "guttural" the lower notes or inhales or lung sounds are in that string, the more intense the string is and the more intense the bull's level of interest, eagerness, or feeling is in that situation.
+
+In general, excited chuckles sound something like this:
+
+---
+
+## Part 2 — using them in the field
 
 The most common way most folks use chuckles is by tacking them on at the end of their bugles, and that's a legitimate way of using them because that's how most bulls use them.
 
