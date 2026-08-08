@@ -153,19 +153,18 @@
     }
 
     /* full lesson + video, tucked away */
-    const vid = clips.filter(x => isVideo(x.src));
-    if((c.lesson && c.lesson.length) || vid.length){
+    if((c.lesson && c.lesson.length) || c.video){
       const det = el("details","more");
       det.appendChild(el("summary", null, "Show the full lesson"));
       const body = el("div","more-body");
-      if(vid.length){
+      if(c.video){
         const w = el("div","watch");
         const wb = el("button","watch-btn", "▶ Watch Chris demonstrate it");
         wb.type = "button";
         wb.addEventListener("click", () => {
           stopAudio();
           const v = document.createElement("video");
-          v.controls = true; v.playsInline = true; v.preload = "metadata"; v.src = vid[0].src;
+          v.controls = true; v.playsInline = true; v.preload = "metadata"; v.src = c.video;
           w.replaceChildren(v);
           v.play().catch(()=>{});
         });
@@ -204,42 +203,52 @@
   /* =====================================================================
      TREE — the conversation, top to bottom
      ===================================================================== */
-  const TIERS = [
-    { n:"1", title:"Open the conversation", say:"“All is calm — anyone around?”", ids:["chirp","mew"] },
-    { n:"2", title:"Find him", say:"“Where are you?” — he answers, but expects you to come to him.", ids:["lostMew"] },
-    { n:"3", title:"Bring him in", say:"“Come to me.” This is the one that asks him to move.", ids:["assemblyMew"] },
-    { n:"4", title:"If he stalls, add feeling", say:"Push the same message harder.", ids:["demandingMew","frustratedWhine","longMew"] },
-    { n:"5", title:"Last resort — make him look", say:"Loud and hard to ignore. Save these for when nothing else works.", ids:["selfishMew","aggravatedWhine","hyperHot"] },
-    { n:"B", title:"Bull talk", say:"Use his own language — to locate him, or to pick a fight.", ids:["contactBugle","dominantBugle","chuckle"] },
+  const LANES = [
+    { lane:"Cow calls — how a conversation goes", cols:[
+      { n:"1", title:"Open",        say:"“Anyone around?”",              ids:["chirp","mew"] },
+      { n:"2", title:"Find him",    say:"“Where are you?”",              ids:["lostMew"] },
+      { n:"3", title:"Bring him in",say:"“Come to me.”",                 ids:["assemblyMew"] },
+      { n:"4", title:"Add feeling", say:"He’s slow — push harder.",      ids:["demandingMew","frustratedWhine","longMew"] },
+      { n:"5", title:"Last resort", say:"Loud. Hard to ignore.",         ids:["selfishMew","aggravatedWhine","hyperHot"] },
+    ]},
+    { lane:"Bull talk — his own language", cols:[
+      { n:"1", title:"Ask",         say:"“Who’s out there?”",            ids:["contactBugle"] },
+      { n:"2", title:"State",       say:"Makes a statement, not a question.", ids:["dominantBugle"] },
+      { n:"+", title:"Turn it up",  say:"Tack on to raise the intensity.",    ids:["chuckle"] },
+    ]},
   ];
 
   const tree = document.getElementById("tree");
-  TIERS.forEach((t, i) => {
-    if(i > 0){
-      const br = el("div","branch", i === TIERS.length - 1 ? "<span>or switch to</span>" : "<span>then</span>");
-      tree.appendChild(br);
-    }
-    const box = el("div","tier");
-    const head = el("div","tier-head");
-    head.appendChild(el("span","tier-num", t.n));
-    head.appendChild(el("h3", null, t.title));
-    head.appendChild(el("span","say", t.say));
-    box.appendChild(head);
+  LANES.forEach(L => {
+    const lane = el("div","lane");
+    lane.appendChild(el("div","lane-title", L.lane));
+    const cols = el("div","cols");
+    L.cols.forEach((t, i) => {
+      if(i > 0) cols.appendChild(el("div","arrow","›"));
+      const col = el("div","col");
+      const head = el("div","col-head");
+      head.appendChild(el("span","col-step", t.n));
+      head.appendChild(el("h3", null, t.title));
+      col.appendChild(head);
+      col.appendChild(el("div","col-say", t.say));
 
-    const nodes = el("div","tier-nodes");
-    t.ids.forEach(id => {
-      const c = byId[id]; if(!c) return;
-      const b = el("button","node", `<span class="disc">${PLAY_SVG}</span>${c.name}`);
-      b.type = "button";
-      b.dataset.id = id;
-      b.style.setProperty("--c", `var(${cvar(c.role)})`);
-      b.title = "Hear the " + c.name;
-      const src = firstClip(c);
-      if(src) b.addEventListener("click", () => playClip(src, b));
-      nodes.appendChild(b);
+      const nodes = el("div","col-nodes");
+      t.ids.forEach(id => {
+        const c = byId[id]; if(!c) return;
+        const b = el("button","node", `<span class="disc">${PLAY_SVG}</span>${c.name}`);
+        b.type = "button";
+        b.dataset.id = id;
+        b.style.setProperty("--c", `var(${cvar(c.role)})`);
+        b.title = "Hear the " + c.name;
+        const src = firstClip(c);
+        if(src) b.addEventListener("click", () => playClip(src, b));
+        nodes.appendChild(b);
+      });
+      col.appendChild(nodes);
+      cols.appendChild(col);
     });
-    box.appendChild(nodes);
-    tree.appendChild(box);
+    lane.appendChild(cols);
+    tree.appendChild(lane);
   });
 
   /* =====================================================================

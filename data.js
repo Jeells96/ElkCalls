@@ -64,7 +64,7 @@ const CALLS = [
     pairs:["assemblyMew","demandingMew","frustratedWhine","longMew"] },
 
   { id:"assemblyMew", name:"Assembly mew", role:"direct", voice:"cow",
-    clip:"assets/media/assembly-mew.mp4",
+    clip:"assets/media/assembly-mew.mp3", video:"assets/media/assembly-mew.mp4",
     short:"“Come to me — join me here.” Asks for an action, not a reply; often answers a lost mew. The most universal call.",
     meaning:"“I want you to come to me.” The directing call: it asks another animal for an action — join me in my location — not a vocal reply, and it’s often the answer to a lost mew. Cows use it to call calves in to nurse and to regroup the herd, so every elk has known it from birth. Almost always an adult, so it’s made at a medium-to-low pitch — and it’s the most universal call you have.",
     lesson:[
@@ -76,7 +76,7 @@ const CALLS = [
     pairs:["lostMew","frustratedWhine","demandingMew","longMew"] },
 
   { id:"demandingMew", name:"Demanding mew", role:"emotion", voice:"cow",
-    clip:"assets/media/demanding-mew.mp4",
+    clip:"assets/media/demanding-mew.mp3", video:"assets/media/demanding-mew.mp4",
     short:"The exclamation point — “now.” Tagged onto a lost or assembly mew when they’re too slow.",
     meaning:"A mew that tags an exclamation point — the word “now” — onto the call before it. It never stands alone: it rides on the back of a lost mew (“Where are you? Answer me — now.”) or an assembly mew (“Come here — now.”). Any age uses it when a request isn’t answered in the timeframe they wanted.",
     lesson:[
@@ -113,7 +113,7 @@ const CALLS = [
     pairs:["lostMew","assemblyMew","demandingMew"] },
 
   { id:"aggravatedWhine", name:"Aggravated whine", role:"emotion", voice:"cow",
-    clip:"assets/media/aggravated-whine.mp4",
+    clip:"assets/media/aggravated-whine.mp3", video:"assets/media/aggravated-whine.mp4",
     short:"A cow fed up with a pushy young bull — “leave me alone.” Draws a mature bull in to play protector. Harsh, raspy ending.",
     meaning:"A standalone whine that paints one vivid picture: a cow fed up with a pushy young bull hooking and shoving her — “knock it off, leave me alone.” A mature bull that hears a lady being harassed will often come step in and play protector (and pick up a cow for it). The tell is a loud, raspy, aggressive ending.",
     lesson:[
