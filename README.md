@@ -74,8 +74,8 @@ sequences and the behavior series for the **Behavior** tab. Verbatim transcripts
 live in `transcripts/`.
 
 Still to come, based on lessons Roe references but that aren't captured here yet:
-**cow bugling**, bull **whines/moans/groans**, and the rest of the behavior
-series (the next one is *"The Doorway"* — choosing your setups).
+**cow bugling**, bull **whines/moans/groans**, and whatever follows principle 2
+in the behavior series.
 
 
 ## The sound library (separate from the Roe material)

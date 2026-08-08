@@ -53,6 +53,7 @@ The groundwork the calling sits on — shown in the app under the **Behavior** t
 | Principle | Transcript |
 |-----------|-----------|
 | 1 · See you first, hear you second, smell you third | [see-you-first.md](see-you-first.md) |
+| 2 · The doorway | [the-doorway.md](the-doorway.md) |
 | Elk psychology — who are you actually calling to? *(seminar)* | [elk-psychology.md](elk-psychology.md) |
 
 **Two videos on one call.** The **alarm bark** has both an original series
@@ -77,6 +78,5 @@ mew is the loud end of it) → asking for action (assembly mew) → punctuation
 The psychology talk is a **seminar**, not one of the numbered series videos, so
 it sits alongside the principles rather than in their sequence.
 
-_Still to come: cow bugling, bull whines/moans/groans, and the rest of the
-behavior series — the next numbered one is **"The Doorway"** (choosing your
-setups), which both the glunk lesson and the psychology seminar lean on._
+_Still to come: cow bugling, bull whines/moans/groans, and whatever follows
+principle 2 in the behavior series._
