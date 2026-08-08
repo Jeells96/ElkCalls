@@ -285,8 +285,8 @@ footer{border-top:1px solid var(--line); background:var(--paper-2)}
   .hero-inner{padding:24px 18px 22px}
   main{padding:18px 16px 70px}
   .s-body{padding:0 16px 20px 18px}
-  .tab{font-size:.95rem; padding:13px 6px 11px}
-  .tab .lbl{display:inline}
+  .tab{font-size:.86rem; padding:13px 2px 11px; gap:0}
+  .tab svg{display:none}
 }
 @media print{
   .tabs,.controls,.hero canvas,.play-btn,.levels,.watch{display:none}
@@ -323,6 +323,9 @@ footer{border-top:1px solid var(--line); background:var(--paper-2)}
     <button class="tab" role="tab" id="tab-scenarios" aria-controls="panel-scenarios" aria-selected="false" data-panel="scenarios">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span class="lbl">Situations</span>
     </button>
+    <button class="tab" role="tab" id="tab-behavior" aria-controls="panel-behavior" aria-selected="false" data-panel="behavior">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a4 4 0 0 0-4 4c0 1.5.8 2.4 1.2 3.4.5 1.2.3 2.6-.7 3.6M12 3a4 4 0 0 1 4 4c0 1.5-.8 2.4-1.2 3.4-.5 1.2-.3 2.6.7 3.6M9 21h6M10 18h4"/></svg><span class="lbl">Behavior</span>
+    </button>
   </div>
 </nav>
 
@@ -356,6 +359,12 @@ footer{border-top:1px solid var(--line); background:var(--paper-2)}
   <section class="panel" id="panel-scenarios" role="tabpanel" aria-labelledby="tab-scenarios" hidden>
     <p class="intro">Real situations and the exact order to call. Tap any call in a step to hear it.</p>
     <div class="scenarios" id="scenarioList"></div>
+  </section>
+
+  <!-- ============ BEHAVIOR ============ -->
+  <section class="panel" id="panel-behavior" role="tabpanel" aria-labelledby="tab-behavior" hidden>
+    <p class="intro">How elk actually communicate &mdash; the groundwork the calling sits on. <b>Get this wrong and even a perfect call won&rsquo;t save the setup.</b></p>
+    <div class="scenarios" id="behaviorList"></div>
   </section>
 </main>
 

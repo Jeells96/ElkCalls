@@ -38,9 +38,18 @@ in `../data.js`). This folder is the raw source of record.
 | Dominant bugle | [dominant-bugle.md](dominant-bugle.md) |
 | Chuckle | [chuckle.md](chuckle.md) |
 
+## Behavior series
+
+The groundwork the calling sits on — shown in the app under the **Behavior** tab.
+
+| Principle | Transcript |
+|-----------|-----------|
+| 1 · See you first, hear you second, smell you third | [see-you-first.md](see-you-first.md) |
+
 That's the cow series complete, in Roe's own progression: general contact
 (chirp → mew) → specific contact (lost mew) → asking for action (assembly mew)
 → punctuation (demanding mew) → emotion (whines, selfish mew, long mew) →
 sentences built from all of it (the "hyper-hot").
 
-_Still to come: the glunk, the alarm bark, cow bugling, and the behavior series._
+_Still to come: the glunk, the alarm bark, cow bugling, and the rest of the behavior
+series — the next one is **"The Doorway"** (choosing your setups)._

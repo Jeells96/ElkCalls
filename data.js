@@ -178,7 +178,7 @@ const CALLS = [
   { id:"dominantBugle", name:"Dominant bugle", role:"challenge", voice:"bull",
     clips:[
       { label:"Level 1 — the mildest statement", src:"assets/media/bull-dominant-1.mp3",
-        when:"The least intense statement. Worth knowing and recognising, but note that Chris’s tactical advice <b>starts at Level 2</b> — he doesn’t single out a use for Level 1, and to locate a bull he’d reach for a contact bugle instead." },
+        when:"The least intense statement. Worth knowing and recognizing, but note that Chris’s tactical advice <b>starts at Level 2</b> — he doesn’t single out a use for Level 1, and to locate a bull he’d reach for a contact bugle instead." },
       { label:"Level 2 — your working bugle", src:"assets/media/bull-dominant-2.mp3",
         when:"<b>This is the one you use.</b> It’s what a real bull uses to attract cows and intimidate rivals, so it’s where you open — big, loud and raspy for a bow setup. It’s also what you throw at cows you accidentally bump, because that’s exactly what a bull does when a cow breaks away from him." },
       { label:"Level 3 — held in reserve", src:"assets/media/bull-dominant-3.mp3",
@@ -342,16 +342,23 @@ const SCENARIOS = [
   },
 ];
 
-/* Kept for reference but NOT displayed anywhere — the on-page philosophy list
-   was removed per request. Each scenario still carries its own "takeaway". */
-const PRINCIPLES = [
-  { t:"Learn the words", d:"Once you know what each call means, you can combine them to say almost anything a cow can say." },
-  { t:"One caller, one cow", d:"Keep the same call and voice through a sequence so the bull focuses on a single animal. Multiple calls paint multiple animals." },
-  { t:"Locate, then direct", d:"Start with a lost mew to open contact, then switch to assembly mews to bring him in." },
-  { t:"Call strategically, not constantly", d:"A couple of well-placed calls beat a lot of noise. When he’s committed, go quiet and get ready." },
-  { t:"Add emotion when needed", d:"Long mews and frustrated or aggravated whines add feeling for a bull who won’t commit." },
-  { t:"Two voices, one story", d:"Mix cow and bull sounds to build a believable scene — a rival bull that already has cows, or a hot cow trailing a satellite bull." },
-  { t:"Make it realistic", d:"Pair calls with terrain, movement, sound, timing, and wind so the whole scene is believable." },
-  { t:"Read his replies", d:"A weak or quiet contact bugle is your cue to stop locating and start assembling." },
-  { t:"Setup is everything", d:"The right wind and position let your calls do their job." },
+/* =========================================================================
+   BEHAVIOR — Chris Roe's behavior series. The grammar underneath the calls:
+   how elk actually communicate, and what that means for setups and calling.
+   ========================================================================= */
+const BEHAVIOR = [
+  {
+    id:"see-you-first",
+    tag:"Behavior series · principle 1",
+    title:"See you first, hear you second, smell you third",
+    summary:"Elk communicate visually before anything else. When you call, you’re promising a set of eyes — so set up where they’ll naturally come looking, and take the downwind option away from them.",
+    sections:[
+      { h:"The three ways elk talk", body:"Elk are herd animals adapted to open country, so day-to-day communication is mostly <b>visual</b> — body language, ear position, head and neck position, read across the group.<ul><li><b>Vocalizing</b> kicks in when sight isn’t possible, isn’t telling them enough, or when they want to back up what their eyes are seeing.</li><li><b>Smell</b> comes last for <i>communication</i> — scent-checking a cow for estrus, a cow confirming a calf is hers, or working out something the eyes and ears can’t make sense of.</li></ul>The livestock version: cattle and horses left alone are quiet and in sight of each other. Move them between pastures, sort the calves, pull one horse out — <i>now</i> they’re bawling. Elk are no different." },
+      { h:"One important caveat", body:"“Smell you third” is about how elk <b>prioritize communication</b> — <b>not</b> how important their senses are. For sorting out danger, their nose trumps everything. <b>They can be fooled by their eyes and fooled by their ears; they are rarely fooled by their nose.</b>" },
+      { h:"What it means when you call", body:"Every time you call you’re playing an elk engaging in <b>vocal</b> communication — which tells any elk in earshot exactly what you want, what you’re doing, and roughly where you are. And if he’s interested, he expects that at some point he’ll <b>see</b> the animal he’s hearing. Sometimes he’ll come make that contact; sometimes (a lost mew, say) he expects <b>you</b> to come to <b>him</b>. Either way, expect him to want eyes on you as soon as possible — and if you’re the one who should be closing the distance and you don’t, within about the time he’d expect it, that’s when things fall apart." },
+      { h:"Setting up so they come looking", body:"“Set up back in cover, not on the edge of an opening” is good advice — but <b>setting up in heavy cover and setting up in the spot within that cover where an elk naturally wants to make visual contact are two different things.</b> Pick the spot that <i>he</i> would choose as the place to lay eyes on you. Then pick vocalizations that make coming to look feel like his idea. You can never make an elk do anything — all you can do is put in his mind what he ought to do, or what’s in his best interest right now. Let him follow his own programming; make it easy." },
+      { h:"Why they swing downwind — and how to stop it", body:"Pressured elk skip step one. They’d like to come look, but every other time they closed on a sound, a blob moved, something flew at them, or there was a loud bang. So they jump to option three: <b>smell you from a safe distance</b>, without you ever knowing they were there.<br><br>The fix is to take that option away. Set up so terrain, blowdowns, a rock pile or a scree slope <b>physically blocks</b> a downwind loop — or put a <b>big open park downwind</b> so getting your scent means fully exposing themselves. Remove the ability (or the appeal), and they revert to <b>see you first</b> and come in where you can plan for them." },
+      { h:"Takeaways", body:"<ul><li>Elk want to <b>see you first, hear you second, smell you third</b>.</li><li>Given the choice, they’ll engage <b>visually</b> at the first opportunity.</li><li>You’ll never make an elk do anything — you can only make the right move feel like <b>his best interest</b>.</li><li>Choose the setup and the calls so coming in to look is the natural thing to do.</li><li>When they’ve learned to skip to smell, make going downwind <b>impossible or unappealing</b>.</li></ul>" }
+    ]
+  },
 ];

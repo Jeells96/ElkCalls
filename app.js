@@ -74,7 +74,7 @@
   }
   tabs.forEach(t => t.addEventListener("click", () => showPanel(t.dataset.panel)));
   const startPanel = (location.hash || "").replace("#","");
-  if(["calls","tree","scenarios"].includes(startPanel)) showPanel(startPanel);
+  if(["calls","tree","scenarios","behavior"].includes(startPanel)) showPanel(startPanel);
 
   /* =====================================================================
      CALLS
@@ -319,6 +319,38 @@
     d.appendChild(body);
     list.appendChild(d);
   });
+
+  /* =====================================================================
+     BEHAVIOR — the principles under the calling
+     ===================================================================== */
+  const bList = document.getElementById("behaviorList");
+  if(bList && typeof BEHAVIOR !== "undefined"){
+    BEHAVIOR.forEach((b, i) => {
+      const d = el("details","scenario");
+      if(i === 0) d.open = true;
+      const sum = el("summary");
+      sum.appendChild(el("span","num", String(i+1).padStart(2,"0")));
+      const head = el("div","s-head");
+      head.appendChild(el("span","s-tag", b.tag));
+      head.appendChild(el("h3", null, b.title));
+      sum.appendChild(head);
+      sum.appendChild(el("span","caret","›"));
+      d.appendChild(sum);
+
+      const body = el("div","s-body");
+      body.appendChild(el("p","situation", b.summary));
+      const inner = el("div","more-body");
+      b.sections.forEach(sec => {
+        const s = document.createElement("section");
+        s.appendChild(el("h4", null, sec.h));
+        s.appendChild(el("div", null, sec.body));
+        inner.appendChild(s);
+      });
+      body.appendChild(inner);
+      d.appendChild(body);
+      bList.appendChild(d);
+    });
+  }
 
   /* stop audio with Escape */
   document.addEventListener("keydown", e => { if(e.key === "Escape") stopAudio(); });
