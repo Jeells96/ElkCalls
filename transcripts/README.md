@@ -26,7 +26,7 @@ in `../data.js`). This folder is the raw source of record.
 | 5 | Demanding mew | [demanding-mew.md](demanding-mew.md) |
 | 6 | Frustrated whine | [frustrated-whine.md](frustrated-whine.md) |
 | 7 | Aggravated whine | [aggravated-whine.md](aggravated-whine.md) |
-| 8 | Selfish mew | [selfish-mew.md](selfish-mew.md) |
+| 8 | Selfish mew *(+ Roe's later revision)* | [selfish-mew.md](selfish-mew.md) |
 | — | Long mew *(later update video)* | [long-mew.md](long-mew.md) |
 | — | Estrus calls *(they don't exist)* | [estrus-calls.md](estrus-calls.md) |
 
@@ -54,10 +54,17 @@ The groundwork the calling sits on — shown in the app under the **Behavior** t
 |-----------|-----------|
 | 1 · See you first, hear you second, smell you third | [see-you-first.md](see-you-first.md) |
 
+**Revisions.** Roe put out an update video on the **selfish mew** in which he
+changes his own read of it — from an extension of the demanding mew to an
+extension of the **lost mew**, and probably not a standalone call at all. It's
+kept as Part 2 of `selfish-mew.md`, and the app card carries an `updated` tag
+explaining the change.
+
 That's the cow series complete, in Roe's own progression: general contact
-(chirp → mew) → specific contact (lost mew) → asking for action (assembly mew)
-→ punctuation (demanding mew) → emotion (whines, selfish mew, long mew) →
-sentences built from all of it (the "hyper-hot").
+(chirp → mew) → specific contact (lost mew, and per the revision the selfish
+mew is the loud end of it) → asking for action (assembly mew) → punctuation
+(demanding mew) → emotion (whines, long mew) → sentences built from all of it
+(the "hyper-hot").
 
 _Still to come: cow bugling, bull whines/moans/groans, and the rest of the
 behavior series — the next one is **"The Doorway"** (choosing your setups), which

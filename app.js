@@ -214,10 +214,10 @@
   const LANES = [
     { lane:"Cow calls — how a conversation goes", cols:[
       { n:"1", title:"Open",        say:"“Anyone around?”",              ids:["chirp","mew"] },
-      { n:"2", title:"Find him",    say:"“Where are you?”",              ids:["lostMew"] },
+      { n:"2", title:"Find him",    say:"“Where are you?” — the selfish mew is the same call, turned up.", ids:["lostMew","selfishMew"] },
       { n:"3", title:"Bring him in",say:"“Come to me.”",                 ids:["assemblyMew"] },
       { n:"4", title:"Add feeling", say:"He’s slow — push harder.",      ids:["demandingMew","frustratedWhine","longMew"] },
-      { n:"5", title:"Last resort", say:"Loud. Hard to ignore.",         ids:["selfishMew","aggravatedWhine","hyperHot"] },
+      { n:"5", title:"Last resort", say:"Loud. Hard to ignore.",         ids:["aggravatedWhine","hyperHot"] },
     ]},
     { lane:"If it goes wrong", cols:[
       { n:"!", title:"Busted", say:"Answer it — a bark means “might”, not “is”.", ids:["alarmBark"] },

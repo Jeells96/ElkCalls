@@ -4,8 +4,22 @@
 > Raw auto-generated transcript kept for reference (the app shows a distilled
 > breakdown instead). Usual mis-hears: "meow" = mew, "meows" = mews, "loss
 > meow" = lost mew.
+>
+> **Two parts.** Part 1 is the original lesson. Part 2 is a later update video
+> in which Roe revises his own interpretation — he now reads this as an
+> extension of the **lost mew**, not the demanding mew, and probably not a
+> standalone vocalization at all. The app card reflects Part 2 and flags the
+> change.
+>
+> Part 2 mis-hears, on top of the usual ones: **"asterisk"** = **estrus**
+> throughout ("asterisk meow" = estrus mew, "not associated with asterisks at
+> all" = not associated with estrus at all) · **"row hunting resources"** =
+> **Roe** Hunting Resources · **"Hey, bang it"** = hey, dang it · **"ow, you
+> hear it"** = oh, you hear it.
 
 ---
+
+## Part 1 — the original lesson
 
 So far in this series, we've talked about basic contact vocalizations, specific vocalizations that ask for either a response or a specific action from another animal, as well as how an elk can put a little punctuation behind their vocal request.
 
@@ -198,3 +212,173 @@ In my experience, once a cow gets that attention, she'll either usually follow i
 Thanks for joining me in this video, and I hope it helps in your efforts this fall.
 
 Good luck, and I look forward to hearing from you.
+
+---
+
+## Part 2 — the update ("Selfish Mew Revisited")
+
+Alright.
+
+Now, this video right here is an example of where I think row hunting resources sets itself apart from all of the rest of the elk calling and elk vocalization field, if you will.
+
+You know, all the other people that are out there talking about it, because I am going to possibly modify what I— my interpretation and what might actually be the truth behind the vocalization that I talk about in this series, the Cow Elk Vocalizations and Communications series, as "the selfish meow," alright?
+
+If you have not— if you've watched the other videos and you've gotten into the bull vocalization series and you've watched the glunk video, I'm not telling you to jump ahead to do that yet, right?
+
+But if you have already, then you know about what I talk about as far as testing behavioral hypotheses.
+
+You know, when we're talking about behavioral ecology and you're talking about vocalizations and communication, you have to be very careful that you're not mixing correlation with causation.
+
+Just because you see and hear something associated with something else does not necessarily mean that they are related, or one causes the other, alright?
+
+And if you have not watched that yet, when you get there, this will make additional sense to you, alright?
+
+We'll cover it.
+
+But the more time that I have spent watching and listening to the videos that I have— myself, or Kelly, or even others, Jay, Scott, and some others that have posted and put online, or shared with me— the vocalization that I talk about in here as the selfish meow, again, if I'm going to make an example of this is what it sounds like: meow, meow, meow.
+
+Alright?
+
+Very growly, growl.
+
+Alright?
+
+It is the vocalization that some people associate or call an "asterisk meow," "asterisk whine," "asterisk scream," "asterisk whatever," alright?
+
+There's a lot of people that dub this "asterisk something."
+
+Again, I do not believe it is associated with asterisks at all.
+
+In that video, I talk about the fact that I— and the reason why I kind of coined it as a "selfish meow" is because it is a vocalization that is very loud, and it seemed to be the vocalization that cows were using to say, "Pay attention to me."
+
+It usually happened when there's a heck of a lot of activity going on, and a cow wants to stand out from everybody else and grab that attention from the rest of the group.
+
+You know, kind of selfishly pay attention to me, not anybody else, pay attention to me.
+
+Or when a cow is completely by herself and she's panicked, and she's out there and she's trying to get a response, she's trying to locate either the previous group or a harem that she was with, or another bull, or whatever.
+
+Hence the reason why some people say the asterisk meow, if that cow's out there just meow, screaming, you know, trying to get a response and trying to get that attention, alright?
+
+However, the more I watch it, the more I am not convinced that it is a standalone vocalization.
+
+I don't.
+
+I am increasingly getting to the point where I do not believe it is its own standalone vocalization.
+
+When you sit and you watch what is going on within the herd dynamic, when you sit and you watch the body language of the cows that are doing that vocalization, and when you sit and you watch the bulk of the outcomes of that vocalization— and I think that the In the Gallery, the Elk Herd on the Move video really shows this the best.
+
+Now, it's not a very common vocalization, number 1.
+
+Unfortunately, the Elk Herd on the Move video in the gallery is probably the best example I have of it, with cows literally in front of you doing the vocalization.
+
+And even then, it was hard to catch them.
+
+You know, I might be looking over here and, ow, you hear it, and I whip the camera over, whoosh, I whip it once, and that's it, alright?
+
+So it's not a very common vocalization that is just thrown around all the time.
+
+So it is hard to catch it on video where it's of quality, where I can show it and share it with you, alright?
+
+If you look at the structure of that vocalization, generally, if I take the growl out of it— okay, again, I'm meow, meow, meow, alright?
+
+I'm just growling, meow, meow, okay, in my throat as I do that vocalization.
+
+Just like I talked about before, I'm kind of emphasizing that high note, I'm holding that high note, and then falling off at the other end, just like I talk about with a lost meow.
+
+This is just growling.
+
+Well, quite honestly, the more I watch elk and I hear this, I am very— I am starting to convince myself, and I think it's worth— and I think it's worth mentioning, that's why I'm doing this update.
+
+I'm not convinced that it's its own vocalization.
+
+I'm almost more convinced now that it is nothing more than an extension of the lost meow.
+
+You have the lost meow, meow, alright?
+
+You can either accentuate that high note, or you can hold that high note, alright, like we talked about in the lost meow video.
+
+But in order to step up, almost kind of like what I talk about with the contact bugles and the dominant bugles, where I, you know, you've got three different levels of intensity— you've got multiple levels of intensity— I just break them out into three different levels just to make it easy to understand.
+
+If you watch cows, you can see that they can elevate that intensity level of that lost meow, either by, you know, going higher with the volume, or, you know, dragging out that high note, or emphasizing that high note even more.
+
+But quite honestly, I have also heard cows lost meow, lost meow, loud, wham, right into selfish meow.
+
+I will probably still call it the selfish meow for now.
+
+I don't know.
+
+I'm half tempted to start just kind of referring to it as, like, maybe the lost scream, if you will.
+
+But I'd have to go through the Elk Hunter Strategy app and change all that, all those references to that.
+
+I might do that.
+
+It's a— it's a sizable undertaking, so that's why I'm kind of resisting.
+
+I don't know if I want to change it yet, because I've got a lot of reference to all these other videos and the Elk Hunter Strategy app.
+
+It just may be worth talking about here for you and understanding how to use this vocalization, and when you hear it, what it actually may be relaying.
+
+I really think it might be more along the lines of an extension of the lost meow.
+
+It's adding more intensity, probably the maximum amount of intensity, to a lost meow that possibly can be given, without starting to add in, say, you know, maybe a frustrated whine, or a demanding meow, or something like that, alright?
+
+If it's going to be a standalone vocalization and she just really wants to, ah, give me a response, it has the exact same structure.
+
+All it does is add a growl to it.
+
+And the more I watch it in context with other cows, with context with cows and bulls and cows with their calves, I really do think it's just a progression of that lost meow, alright?
+
+So keep that in mind, alright?
+
+And I wanted to do this update so that you guys— I mean, it is something that I'm kind of changing my mind on and kind of getting a better understanding of, and I want to have that available to you guys so that, you know, some of you may even be thinking that or thought that already.
+
+Well, I can tell you, the more I watch video and the more elk I watch and hear it doing it, it seems to be more of an extension of that lost meow than maybe a standalone vocalization.
+
+Maybe it is.
+
+Maybe it absolutely is.
+
+It has a different level of meaning.
+
+Maybe they completely, you know, separate them.
+
+Either they're going to do a lost meow, or they choose to do a selfish meow.
+
+But I think now that it is an extension of the— basically the elevation of the intensity level of a lost meow.
+
+So I have started to use it and play with it in the field in conjunction with my lost meows.
+
+"Where are you?
+
+Where are you?"
+
+I get a half-hearted response.
+
+"Where are you?"
+
+Frustrated whine, meow, "Where are you?
+
+Answer me."
+
+Still a similar meaning, very selfish.
+
+I'm trying to grab the attention.
+
+I'm trying to get those animals to focus on me.
+
+But I'm using it more in conjunction now with my lost meows before I transition into those assembly meows.
+
+And it's working very well, and it's getting the exact same response that I see in the videos, that I see out in the field, that I see with other cows.
+
+Consider that, at least for now, as an update.
+
+If I get more video footage of it with cows that you can see— again, most of the time when I'm seeing it, it's a cow talking to her, looking for and trying to get a response from her calf, and getting that calf to, "Hey, bang it, pay attention to me, do what I tell you."
+
+Or it's a cow looking for another cow, or a cow looking for another group of cows that she may have gotten separated from.
+
+So keep that in mind.
+
+But I just wanted to make sure that you guys had that update, and as soon as I had it, to where I felt confident enough to make that update.
+
+So there you go.
