@@ -35,6 +35,7 @@ in `../data.js`). This folder is the raw source of record.
 | Call | Transcript |
 |------|-----------|
 | Contact bugle | [contact-bugle.md](contact-bugle.md) |
+| Dominant bugle | [dominant-bugle.md](dominant-bugle.md) |
 | Chuckle | [chuckle.md](chuckle.md) |
 
 That's the cow series complete, in Roe's own progression: general contact
@@ -42,4 +43,4 @@ That's the cow series complete, in Roe's own progression: general contact
 → punctuation (demanding mew) → emotion (whines, selfish mew, long mew) →
 sentences built from all of it (the "hyper-hot").
 
-_Still to come: the dominant bugle (and the glunk)._
+_Still to come: the glunk, the alarm bark, cow bugling, and the behavior series._
