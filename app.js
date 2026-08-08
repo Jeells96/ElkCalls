@@ -85,7 +85,7 @@
   }
   tabs.forEach(t => t.addEventListener("click", () => showPanel(t.dataset.panel)));
   const startPanel = (location.hash || "").replace("#","");
-  if(["calls","tree","scenarios","sounds","behavior"].includes(startPanel)) showPanel(startPanel);
+  if(["calls","tree","scenarios","study","sounds","behavior"].includes(startPanel)) showPanel(startPanel);
 
   /* =====================================================================
      CALLS
@@ -276,6 +276,183 @@
   }
   filterInput.addEventListener("input", applyFilter);
   applyFilter();
+
+
+  /* =====================================================================
+     STUDY — flashcards and a listening quiz, both built from CALLS
+     ===================================================================== */
+  (function(){
+    const area   = document.getElementById("studyArea");
+    const progEl = document.getElementById("studyProg");
+    if(!area) return;
+
+    const KEY = "elkcalls.known";
+    let known = {};
+    try { known = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch(e){ known = {}; }
+    const remember = () => { try { localStorage.setItem(KEY, JSON.stringify(known)); } catch(e){} };
+
+    let mode = "cards", voice = "all", deck = [], at = 0, flipped = false;
+    let right = 0, asked = 0;
+
+    const shuffle = a => { for(let i=a.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
+    const inVoice = c => voice === "all" || c.voice === voice || c.voice === "both";
+
+    function build(){
+      let pool = CALLS.filter(inVoice);
+      if(mode === "quiz") pool = pool.filter(c => firstClip(c));      // must have a sound to hear
+      // cards you haven't got yet come first; if you've got them all, study them all again
+      const fresh = pool.filter(c => !known[c.id]);
+      deck = shuffle((mode === "cards" && fresh.length) ? fresh : pool);
+      at = 0; flipped = false; right = 0; asked = 0;
+      render();
+    }
+
+    function metaBits(c){
+      const m = el("div","fmeta");
+      const b = el("span","badge", ROLES[c.role].label);
+      b.style.setProperty("--c", `var(${cvar(c.role)})`);
+      m.appendChild(b);
+      m.appendChild(el("span","voice-pill", c.voice === "both" ? "Cow &amp; bull" : c.voice === "bull" ? "Bull" : "Cow"));
+      return m;
+    }
+
+    function playRow(c, label){
+      const src = firstClip(c);
+      const btn = el("button","play-btn");
+      btn.type = "button";
+      btn.style.setProperty("--c", `var(${cvar(c.role)})`);
+      btn.innerHTML = `<span class="disc">${PLAY_SVG}</span><span class="txt"><span class="nm">${label}</span>` +
+                      `<span class="hint">${src ? "Tap to hear it" : "No recording yet"}</span></span>`;
+      if(src) btn.addEventListener("click", () => playClip(src, btn));
+      else btn.disabled = true;
+      return btn;
+    }
+
+    function done(msgTitle, msgBody){
+      area.replaceChildren();
+      const d = el("div","done-note");
+      d.appendChild(el("h3", null, msgTitle));
+      d.appendChild(el("p", null, msgBody));
+      const again = el("button","big-btn primary","Go again");
+      again.type = "button";
+      again.addEventListener("click", () => { known = {}; remember(); build(); });
+      d.appendChild(again);
+      area.appendChild(d);
+      progEl.textContent = "";
+    }
+
+    function render(){
+      area.replaceChildren();
+      stopAudio();
+
+      if(!deck.length){ done("Nothing to study here", "Try a different filter."); return; }
+      if(at >= deck.length){
+        if(mode === "quiz") done("Quiz finished", `You got ${right} of ${asked} right.`);
+        else done("Deck finished", "You've been through every card. Start again any time.");
+        return;
+      }
+
+      const c = deck[at];
+      progEl.textContent = mode === "quiz"
+        ? `${at+1} of ${deck.length} · ${right}/${asked} right`
+        : `${at+1} of ${deck.length}`;
+
+      const card = el("div","flash");
+      card.style.setProperty("--c", `var(${cvar(c.role)})`);
+
+      if(mode === "cards"){
+        if(!flipped){
+          card.appendChild(el("div","q","What does this one mean?"));
+          card.appendChild(el("h3","fname", c.name));
+          card.appendChild(metaBits(c));
+          card.appendChild(playRow(c, "Hear it first"));
+          const acts = el("div","flash-actions");
+          const show = el("button","big-btn primary","Show the answer");
+          show.type = "button";
+          show.addEventListener("click", () => { flipped = true; render(); });
+          acts.appendChild(show);
+          card.appendChild(acts);
+        } else {
+          card.appendChild(el("div","q", c.name));
+          card.appendChild(el("p","fplain", c.plain));
+          if(c.use && c.use.length){
+            card.appendChild(el("div","use-label","Use it when"));
+            const ul = el("ul","use");
+            c.use.forEach(u => ul.appendChild(el("li", null, u)));
+            card.appendChild(ul);
+          }
+          const names = (c.pairs||[]).map(id => byId[id] && byId[id].name).filter(Boolean);
+          if(names.length) card.appendChild(el("p","fpairs", "<b>Use it with</b>" + names.join(", ")));
+          card.appendChild(playRow(c, "Hear it again"));
+
+          const acts = el("div","flash-actions");
+          const again = el("button","big-btn again","Need more work");
+          again.type = "button";
+          again.addEventListener("click", () => { delete known[c.id]; remember(); at++; flipped = false; render(); });
+          const got = el("button","big-btn good","Got it");
+          got.type = "button";
+          got.addEventListener("click", () => { known[c.id] = 1; remember(); at++; flipped = false; render(); });
+          acts.appendChild(again); acts.appendChild(got);
+          card.appendChild(acts);
+        }
+      } else {
+        /* quiz: hear it, name it */
+        card.appendChild(el("div","q","Which call is this?"));
+        card.appendChild(playRow(c, "Play the sound"));
+
+        // wrong answers come from the same pool you're studying — otherwise "Bull only"
+        // hands you cow calls as decoys and they're trivial to rule out
+        let pool = CALLS.filter(x => x.id !== c.id && firstClip(x) && inVoice(x));
+        if(pool.length < 3) pool = CALLS.filter(x => x.id !== c.id && firstClip(x));
+        const others = shuffle(pool).slice(0,3);
+        const opts = shuffle([c].concat(others));
+        const box = el("div","qz-choices");
+        opts.forEach(o => {
+          const b = el("button","qz", o.name);
+          b.type = "button";
+          b.addEventListener("click", () => {
+            asked++;
+            const hit = o.id === c.id;
+            if(hit) right++;
+            [...box.children].forEach(x => { x.disabled = true; });
+            [...box.children].forEach(x => {
+              if(x.textContent.replace(/[✓✗]\s*$/,"").trim() === c.name){ x.classList.add("right"); x.innerHTML = c.name + '<span class="tick">✓</span>'; }
+            });
+            if(!hit){ b.classList.add("wrong"); b.innerHTML = o.name + '<span class="tick">✗</span>'; }
+            const nxt = el("button","big-btn primary", at + 1 >= deck.length ? "See your score" : "Next sound");
+            nxt.type = "button";
+            nxt.addEventListener("click", () => { at++; render(); });
+            const wrap = el("div","flash-actions");
+            wrap.appendChild(nxt);
+            card.appendChild(wrap);
+            progEl.textContent = `${at+1} of ${deck.length} · ${right}/${asked} right`;
+            // playing it again after answering is genuinely useful
+            card.appendChild(el("p","score", hit ? "Correct." : "That one was the " + c.name + "."));
+          });
+          box.appendChild(b);
+        });
+        card.appendChild(box);
+      }
+
+      area.appendChild(card);
+    }
+
+    document.getElementById("modePick").addEventListener("click", e => {
+      const b = e.target.closest(".mode"); if(!b) return;
+      mode = b.dataset.mode;
+      [...b.parentNode.children].forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+      build();
+    });
+    document.getElementById("studyVoice").addEventListener("click", e => {
+      const b = e.target.closest("button"); if(!b) return;
+      voice = b.dataset.sv;
+      [...b.parentNode.children].forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+      build();
+    });
+    document.getElementById("studyRestart").addEventListener("click", () => { known = {}; remember(); build(); });
+
+    build();
+  })();
 
   /* =====================================================================
      SOUNDS STILL NEEDED — one list, in the Sounds tab

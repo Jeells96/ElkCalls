@@ -156,6 +156,48 @@ ul.use li{position:relative; padding-left:20px; font-size:.96rem; color:var(--mu
 ul.use li b{color:var(--ink)}
 ul.use li::before{content:""; position:absolute; left:4px; top:.62em; width:7px; height:7px; border-radius:50%; background:var(--c,var(--neutral))}
 
+/* ============================================================
+   STUDY
+   ============================================================ */
+.mode-pick{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:11px; margin-bottom:18px}
+.mode{text-align:left; cursor:pointer; border:2px solid var(--line-2); background:var(--surface); color:var(--ink); border-radius:var(--radius); padding:14px 16px; min-height:72px; display:flex; flex-direction:column; gap:3px}
+.mode:hover{border-color:var(--gold)}
+.mode[aria-pressed="true"]{border-color:var(--pine); background:color-mix(in srgb,var(--pine) 11%,var(--surface))}
+.mode .mt{font-family:var(--serif); font-size:1.2rem; font-weight:600}
+.mode .md{font-size:.9rem; color:var(--muted); line-height:1.35}
+
+.study-bar{display:flex; flex-wrap:wrap; align-items:center; gap:11px; margin-bottom:18px}
+.study-bar .prog{font-family:var(--mono); font-size:.78rem; letter-spacing:.06em; text-transform:uppercase; color:var(--faint); font-weight:700}
+.restart{margin-left:auto; font-size:.86rem; font-weight:700; cursor:pointer; border:2px solid var(--line-2); background:var(--surface); color:var(--muted); padding:9px 16px; border-radius:999px; min-height:44px}
+.restart:hover{border-color:var(--gold); color:var(--ink)}
+
+.flash{background:var(--surface); border:1px solid var(--line); border-top:5px solid var(--c,var(--neutral)); border-radius:var(--radius); box-shadow:var(--shadow); padding:22px 20px; max-width:640px; margin:0 auto}
+.flash .q{font-family:var(--mono); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; color:var(--faint); font-weight:700; margin-bottom:10px}
+.flash .fname{font-family:var(--serif); font-size:2rem; line-height:1.15; margin-bottom:6px}
+.flash .fmeta{display:flex; flex-wrap:wrap; gap:7px; margin-bottom:16px}
+.flash .fplain{font-size:1.14rem; font-weight:600; line-height:1.45; margin-bottom:14px}
+.flash ul.use{margin-bottom:16px}
+.flash .fpairs{font-size:.92rem; color:var(--muted); margin-bottom:4px}
+.flash .fpairs b{font-family:var(--mono); font-size:.62rem; letter-spacing:.09em; text-transform:uppercase; color:var(--faint); display:block; margin-bottom:4px}
+.flash-actions{display:flex; flex-wrap:wrap; gap:10px; margin-top:20px}
+.big-btn{flex:1 1 150px; cursor:pointer; font-size:1.02rem; font-weight:700; border:2px solid var(--line-2); background:var(--surface); color:var(--ink); border-radius:12px; padding:14px 18px; min-height:56px}
+.big-btn:hover{border-color:var(--gold)}
+.big-btn.primary{background:var(--pine); color:var(--pine-ink); border-color:transparent}
+.big-btn.good{border-color:var(--locate); color:var(--locate)}
+.big-btn.again{border-color:var(--emotion); color:var(--emotion)}
+
+.qz-choices{display:flex; flex-direction:column; gap:10px; margin-top:20px}
+.qz{cursor:pointer; text-align:left; font-size:1.04rem; font-weight:700; border:2px solid var(--line-2); background:var(--surface); color:var(--ink); border-radius:12px; padding:14px 18px; min-height:56px}
+.qz:hover{border-color:var(--gold)}
+.qz.right{border-color:var(--locate); background:color-mix(in srgb,var(--locate) 14%,var(--surface))}
+.qz.wrong{border-color:var(--challenge); background:color-mix(in srgb,var(--challenge) 12%,var(--surface))}
+.qz:disabled{cursor:default}
+.qz .tick{float:right; font-weight:700}
+.score{font-family:var(--mono); font-size:.8rem; letter-spacing:.06em; text-transform:uppercase; color:var(--faint); font-weight:700; margin-top:16px; text-align:center}
+.done-note{text-align:center; padding:30px 16px; max-width:520px; margin:0 auto}
+.done-note h3{font-size:1.5rem; margin-bottom:8px}
+.done-note p{color:var(--muted); margin-bottom:18px}
+
 /* the "sounds still needed" summary in the Sounds tab */
 .needed{margin-top:34px; border-top:2px solid var(--line); padding-top:22px}
 .needed h3{font-size:1.3rem; margin-bottom:6px}
@@ -394,6 +436,9 @@ footer{border-top:1px solid var(--line); background:var(--paper-2)}
     <button class="tab" role="tab" id="tab-scenarios" aria-controls="panel-scenarios" aria-selected="false" data-panel="scenarios">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span class="lbl">Situations</span>
     </button>
+    <button class="tab" role="tab" id="tab-study" aria-controls="panel-study" aria-selected="false" data-panel="study">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H10a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H5.5A1.5 1.5 0 0 1 4 15.5zM20 5.5A1.5 1.5 0 0 0 18.5 4H14a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h4.5a1.5 1.5 0 0 0 1.5-1.5z"/></svg><span class="lbl">Study</span>
+    </button>
     <button class="tab" role="tab" id="tab-sounds" aria-controls="panel-sounds" aria-selected="false" data-panel="sounds">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5zM16 9a4 4 0 0 1 0 6M19 6a8 8 0 0 1 0 12"/></svg><span class="lbl">Sounds</span>
     </button>
@@ -436,6 +481,34 @@ footer{border-top:1px solid var(--line); background:var(--paper-2)}
   </section>
 
   <!-- ============ SOUNDS (independent library) ============ -->
+  <!-- ============ STUDY ============ -->
+  <section class="panel" id="panel-study" role="tabpanel" aria-labelledby="tab-study" hidden>
+    <p class="intro">Learn the calls by testing yourself. Everything here is built from the same lessons &mdash; nothing new to read.</p>
+
+    <div class="mode-pick" id="modePick">
+      <button type="button" class="mode" data-mode="cards" aria-pressed="true">
+        <span class="mt">Flashcards</span>
+        <span class="md">See a call &mdash; say what it means &mdash; flip to check.</span>
+      </button>
+      <button type="button" class="mode" data-mode="quiz" aria-pressed="false">
+        <span class="mt">Name that sound</span>
+        <span class="md">Hear a call &mdash; pick which one it was.</span>
+      </button>
+    </div>
+
+    <div class="study-bar">
+      <div class="seg" id="studyVoice" role="group" aria-label="Which calls">
+        <button type="button" data-sv="all" aria-pressed="true">All</button>
+        <button type="button" data-sv="cow" aria-pressed="false">Cow</button>
+        <button type="button" data-sv="bull" aria-pressed="false">Bull</button>
+      </div>
+      <span class="prog" id="studyProg"></span>
+      <button type="button" class="restart" id="studyRestart">Start over</button>
+    </div>
+
+    <div id="studyArea"></div>
+  </section>
+
   <section class="panel" id="panel-sounds" role="tabpanel" aria-labelledby="tab-sounds" hidden>
     <p class="intro">A library of <b>real elk recorded in the wild</b> &mdash; every kind of noise they make. Tap any one to hear it.</p>
     <div class="lib-note">
