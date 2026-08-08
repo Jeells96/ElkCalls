@@ -134,7 +134,7 @@
     /* meta row */
     const meta = el("div","call-meta");
     meta.appendChild(el("span","badge", ROLES[c.role].label));
-    meta.appendChild(el("span","voice-pill", c.voice === "bull" ? "Bull" : "Cow"));
+    meta.appendChild(el("span","voice-pill", c.voice === "both" ? "Cow &amp; bull" : c.voice === "bull" ? "Bull" : "Cow"));
     if(c.flag){
       const t = (FLAG_TITLES[c.flag] || "").replace(/"/g,"&quot;");
       meta.insertAdjacentHTML("beforeend", `<span class="foundation" title="${t}">${c.flag}</span>`);
@@ -199,7 +199,7 @@
     let shown = 0;
     [...callGrid.children].forEach(card => {
       const show = (!q || card.dataset.text.includes(q)) &&
-                   (activeVoice === "all" || card.dataset.voice === activeVoice);
+                   (activeVoice === "all" || card.dataset.voice === activeVoice || card.dataset.voice === "both");
       card.classList.toggle("hidden", !show);
       if(show) shown++;
     });
@@ -218,6 +218,9 @@
       { n:"3", title:"Bring him in",say:"“Come to me.”",                 ids:["assemblyMew"] },
       { n:"4", title:"Add feeling", say:"He’s slow — push harder.",      ids:["demandingMew","frustratedWhine","longMew"] },
       { n:"5", title:"Last resort", say:"Loud. Hard to ignore.",         ids:["selfishMew","aggravatedWhine","hyperHot"] },
+    ]},
+    { lane:"If it goes wrong", cols:[
+      { n:"!", title:"Busted", say:"Answer it — a bark means “might”, not “is”.", ids:["alarmBark"] },
     ]},
     { lane:"Bull talk — his own language", cols:[
       { n:"1", title:"Contact bugle", say:"Asks “who’s out there?” — start low, escalate only if ignored.", ids:["contactBugle"], variants:true },

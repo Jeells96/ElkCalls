@@ -14,7 +14,7 @@ can string them together to tell a bull whatever story the moment calls for.
 
 - **The Calls** — a searchable lexicon. Filter by **voice** (Cow / Bull) or by
   **job** (a color key: contact / locate / direct / emotion / challenge /
-  combo). **Tap any call name** to play its demo clip, read its meaning, open
+  combo / alarm). **Tap any call name** to play its demo clip, read its meaning, open
   Chris Roe's **full breakdown** of that call, and see what it pairs with.
 - **Scenarios** — real situations with a numbered, step-by-step calling
   sequence, including two that mix cow and bull calling.
@@ -68,13 +68,13 @@ guide and the field card automatically.
 
 ## Source & attribution
 
-Every call in the guide — all 13, cow and bull — is drawn from Chris Roe's own
+Every call in the guide — all 15, cow and bull — is drawn from Chris Roe's own
 lesson on that call, plus the "putting it all together" video for the calling
 sequences and the behavior series for the **Behavior** tab. Verbatim transcripts
 live in `transcripts/`.
 
 Still to come, based on lessons Roe references but that aren't captured here yet:
-the **glunk**, the **alarm bark**, **cow bugling**, and the rest of the behavior
+the **glunk**, **cow bugling**, bull **whines/moans/groans**, and the rest of the behavior
 series (the next one is *"The Doorway"* — choosing your setups).
 
 

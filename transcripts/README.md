@@ -39,6 +39,12 @@ in `../data.js`). This folder is the raw source of record.
 | Chuckle | [chuckle.md](chuckle.md) |
 | Check bugle | [check-bugle.md](check-bugle.md) |
 
+## Cow *and* bull
+
+| Call | Transcript |
+|------|-----------|
+| Alarm bark | [alarm-bark.md](alarm-bark.md) |
+
 ## Behavior series
 
 The groundwork the calling sits on — shown in the app under the **Behavior** tab.
@@ -52,5 +58,5 @@ That's the cow series complete, in Roe's own progression: general contact
 → punctuation (demanding mew) → emotion (whines, selfish mew, long mew) →
 sentences built from all of it (the "hyper-hot").
 
-_Still to come: the glunk, the alarm bark, cow bugling, and the rest of the behavior
-series — the next one is **"The Doorway"** (choosing your setups)._
+_Still to come: the glunk, cow bugling, bull whines/moans/groans, and the rest of
+the behavior series — the next one is **"The Doorway"** (choosing your setups)._

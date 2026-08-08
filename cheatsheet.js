@@ -9,11 +9,14 @@
   const groups = [
     { voice:"cow",  title:"Cow calls" },
     { voice:"bull", title:"Bull sounds" },
+    { voice:"both", title:"Cow &amp; bull — either one makes it" },
   ];
   groups.forEach(g => {
+    const inGroup = CALLS.filter(c => c.voice === g.voice);
+    if(!inGroup.length) return;
     callsHost.appendChild(el("div","voice-title", g.title));
     const col = el("div","calls");
-    CALLS.filter(c => c.voice === g.voice).forEach(c => {
+    inGroup.forEach(c => {
       const item = el("div","call");
       item.style.setProperty("--c", `var(${cvar(c.role)})`);
       const pairs = (c.pairs || []).map(pid => byId[pid] && byId[pid].name).filter(Boolean).join(", ");
@@ -46,7 +49,7 @@
 
   /* ---- Footer ---- */
   document.getElementById("cheatFoot").textContent =
-    "Cow calls from the Understanding Cow-Elk Vocalizations series; bull sounds carry the same approach over to widely-taught elk behavior. Filter, cross-reference, and full definitions in the web guide.";
+    "Cow calls, bull sounds, and the alarm bark, all from Chris Roe's elk vocalization & communication series. Full breakdowns, recordings, and the call tree are in the web guide.";
 
   /* ---- Print ---- */
   const btn = document.getElementById("printBtn");
